@@ -1,0 +1,36 @@
+
+.card.create__post {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0px;
+    box-shadow: $box-shadow-2;
+}
+
+
+.create__post__caption {
+    color: black;
+    padding: .5rem 1.5rem;
+    margin: auto;
+    margin-left: 1rem;
+    width: 40rem;
+    height: 3rem;
+    background-color: rgba(43, 32, 36, 0.1);
+    border-radius: 15px;
+    display: inline;
+
+    & .options {
+        display: block;
+        margin: auto 0;
+    }
+}
+
+.create__post {
+    padding: 1.5rem 3rem;
+}
+
+ .create__post__thumb {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 100%;
+    object-fit:cover;
+}

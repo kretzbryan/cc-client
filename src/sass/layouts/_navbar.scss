@@ -1,0 +1,53 @@
+.nav {
+	// navbar children
+	&bar {
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 7rem;
+		width: 100vw;
+		box-shadow: 0 0.5rem 0.5rem 0 rgba($color-black, 0.15);
+		z-index: 100;
+		background-color: $background-color;
+		&-nav {
+			position: absolute;
+			display: flex;
+			right: 2rem;
+			top: 50%;
+			transform: translateY(-75%);
+			list-style: none;
+			font-size: 1.5rem;
+			align-items: center;
+		}
+
+		&-brand {
+			font-size: 4rem;
+			color: $logo-color;
+			font-family: 'Permanent Marker', cursive;
+			&-guest {
+				text-align: end;
+				margin-right: 2rem;
+			}
+
+			&-authorized {
+				margin-left: 2rem;
+			}
+		}
+	}
+
+	// nav children
+	&-thumb {
+		height: 4rem;
+		width: 4rem;
+		border-radius: 100%;
+		object-fit: cover;
+	}
+	&-item {
+		margin: 0 0.25rem;
+	}
+
+	&-link {
+		text-decoration: none;
+		color: $color-blue-dark-1;
+	}
+}

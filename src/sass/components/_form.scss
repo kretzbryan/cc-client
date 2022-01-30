@@ -1,0 +1,212 @@
+.form {
+	height: 80%;
+	width: 100%;
+	margin: 0 auto;
+	position: relative;
+	padding-top: 1rem;
+	top: 0;
+	left: 0;
+
+	&-title {
+		margin: auto;
+		grid-area: form-title;
+	}
+
+	&.login-form {
+		transform: translateX(20%);
+		opacity: 0;
+		visibility: hidden;
+		height: 35rem;
+		background-color: $color-grey-dark-1;
+		width: 45rem;
+		margin: auto;
+		border-radius: 5px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		transition: all 0.5s;
+		&-show {
+			grid-area: auth-form;
+			height: 35rem;
+			background-color: $color-grey-dark-1;
+			width: 45rem;
+			margin: auto;
+			border-radius: 5px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			box-shadow: $box-shadow-1;
+			transform: translateX(-90%);
+			opacity: 1;
+			visibility: visible;
+			transition: all 0.5s;
+		}
+	}
+
+	&.register-form {
+		padding-bottom: 2rem;
+		transform: translateX(-50%);
+		margin: auto;
+		opacity: 0;
+		visibility: hidden;
+		display: grid;
+		border-radius: 5px;
+		grid-gap: 0 1rem;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(4, 1fr);
+		grid-template-areas:
+			'form-title form-title'
+			'first-name last-name'
+			'email username'
+			'password password2'
+			'form-button form-button'
+			'auth-footer auth-footer';
+		height: 35rem;
+		width: 60rem;
+		background-color: $color-grey-dark-1;
+		transition: all 0.5s;
+		&-show {
+			padding-bottom: 2rem;
+			margin: auto;
+			display: grid;
+			border-radius: 5px;
+			grid-gap: 0 1rem;
+			box-shadow: $box-shadow-1;
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: repeat(5, 1fr);
+			grid-template-areas:
+				'form-title form-title'
+				'first-name last-name'
+				'email username'
+				'password password2'
+				'form-button form-button'
+				'auth-footer auth-footer';
+			height: 35rem;
+			width: 60rem;
+			background-color: $color-grey-dark-1;
+			transform: translateX(15%);
+			opacity: 1;
+			visibility: visible;
+			transition: all 0.5s;
+		}
+	}
+
+	& textarea {
+		width: 100%;
+		height: 100%;
+		border: none;
+		resize: none;
+		float: left;
+		background-color: $color-grey-light-1;
+		padding-left: 1rem;
+	}
+
+	&__group {
+		display: block;
+		margin: auto;
+		height: 5.5rem;
+
+		&:not(:last-child) {
+			margin-bottom: 1rem;
+		}
+	}
+
+	&__footer {
+		width: 50%;
+		text-align: center;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		margin-bottom: 1rem;
+	}
+
+	&__input {
+		font-size: 1.5rem;
+		font-family: inherit;
+		padding: 1rem 1.5rem;
+		color: inherit;
+		background-color: $color-grey-light-1;
+		border-radius: 3px;
+		border: none;
+		width: 20rem;
+		height: 3rem;
+		border-bottom: 2px solid transparent;
+		display: block;
+		margin: auto;
+
+		&:focus {
+			outline: none;
+			box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+			border-bottom: 2px solid $color-green;
+
+			&:invalid {
+				border-bottom: 2px solid $color-red;
+			}
+		}
+
+		&::-webkit-input-placeholder {
+			color: $color-grey-dark-1;
+		}
+	}
+
+	&__input:placeholder-shown + &__label {
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(-5rem);
+	}
+
+	&__label {
+		width: 50%;
+		display: block;
+		font-size: 1.2rem;
+		font-weight: 700;
+		margin: 0 auto;
+		transition: all 0.6s;
+		padding-left: 1.5rem;
+	}
+}
+
+.register-form__button {
+	grid-area: form-button;
+	margin: auto;
+	height: 4rem;
+}
+
+.photo__input {
+	display: block;
+	width: 75%;
+	margin: 2rem auto;
+}
+
+.auth-footer {
+	margin: auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	text-align: center;
+	grid-area: auth-footer;
+}
+
+.first-name {
+	grid-area: first-name;
+}
+
+.last-name {
+	grid-area: last-name;
+}
+
+.email {
+	grid-area: email;
+}
+
+.username {
+	grid-area: username;
+}
+
+.password {
+	grid-area: password;
+}
+
+.password2 {
+	grid-area: password2;
+}

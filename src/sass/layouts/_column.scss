@@ -1,0 +1,63 @@
+.column {
+	&-profile,
+	&-primary,
+	&-tertiary,
+	&-secondary {
+		overflow: scroll;
+		height: 93vh;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
+
+	&-profile {
+		width: 75vw;
+		height: 90vh;
+	}
+
+	&-primary {
+		background-color: $color-blue-grey;
+		padding: 0 3rem;
+		overflow: scroll;
+		width: 50vw;
+
+		@include respond(gfold-land) {
+			width: 70vw;
+		}
+		@include respond(phone) {
+			width: 100vw;
+		}
+	}
+
+	&-secondary {
+		width: 20vw;
+		background: linear-gradient(to bottom right, #1e53a8, #6c99e1);
+		box-shadow: 0 2rem 2rem 0 rgba($color-black, 0.15);
+		height: 93vh;
+		@include respond(gfold-land) {
+			width: 30vw;
+		}
+
+		@include respond(phone) {
+			display: none;
+		}
+	}
+
+	&-tertiary {
+		height: 93vh;
+		overflow: scroll;
+		width: 30vw;
+		margin: 0;
+		padding: 3rem 2rem 0;
+		background-color: $color-blue-grey;
+
+		@include respond(gfold-land) {
+			display: none;
+		}
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
+}

@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import Routes from './config/Routes';
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// Redux
+import { Provider } from 'react-redux';
+import store from './store';
+import setAuthToken from './utils/setAuthToken';
+import { loadUser } from './actions/auth';
+import Popup from './components/layout/Popup';
+// import './firebase/firebase';
+
+if (localStorage.token) {
+	setAuthToken(localStorage.token);
 }
+
+const App = () => {
+	useEffect(() => {
+		store.dispatch(loadUser());
+	}, []);
+
+	return (
+		<Provider store={store}>
+			<div>
+				<Header />
+				<Routes />
+				<Footer />
+				<Popup />
+			</div>
+		</Provider>
+	);
+};
 
 export default App;

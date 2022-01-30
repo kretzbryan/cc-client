@@ -1,0 +1,34 @@
+.landing {
+	&__container {
+		background-color: $background-color;
+		margin: 1.5rem;
+		width: 100vw;
+		height: 90vh;
+		position: fixed;
+		top: 5vh;
+		display: grid;
+		grid-gap: 0 1.5rem;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: 1fr 3rem 20rem;
+		grid-template-areas:
+			'form-container form-container landing-photo'
+			'.... about-title ......'
+			'column1 column2 column3';
+	}
+
+	&-form__container {
+		grid-area: form-container;
+		display: flex;
+		position: absolute;
+		height: 45rem;
+	}
+
+	&__photo {
+		height: 60rem;
+		width: 60rem;
+		position: absolute;
+		left: -20rem;
+		z-index: -10;
+		grid-area: landing-photo;
+	}
+}

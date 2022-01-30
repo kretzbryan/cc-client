@@ -1,0 +1,51 @@
+
+div.modal{
+
+    &-title {
+        display: block;
+        margin: auto;
+        font-size: $font-lg;
+    }
+    
+    &-footer {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding: 0;
+    }
+
+    &-header {
+        margin: 1rem 4rem;
+        text-align: center;
+    }
+
+    &-body {
+        display: flex;
+        justify-content: center;
+        padding: .5rem 3rem 2rem 3rem;
+    }
+}
+
+.close {
+    position: absolute;
+    top: 1.5rem;
+    right: 4rem;
+    
+    & span {
+        font-size: 2.5rem;
+    }
+}
+
+.modal-title {
+    display: block;
+    margin: auto;
+    font-size: $font-lg;
+    letter-spacing: .2rem;
+    font-weight: 300;
+}
+
+#login-error, #register-error {
+    text-align: center;
+    color: $color-red;
+    margin-bottom: 1rem;
+}
