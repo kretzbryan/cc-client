@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { setEditPost } from '../../actions/form';
+import { setEditPost } from '../../redux/actions/form';
 import PropTypes from 'prop-types';
 import ReactTimeAgo from 'react-time-ago';
-import { deletePost } from '../../actions/post';
+import { deletePost } from '../../redux/actions/post';
 import image from '../../images/default.png';
 
 const PostHeader = ({

@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getUserDashboard } from '../actions/profile';
-import { getPosts } from '../actions/post';
+import { getUserDashboard } from '../redux/actions/profile';
+import { getPosts } from '../redux/actions/post';
 
 import Popup from '../components/layout/Popup';
 

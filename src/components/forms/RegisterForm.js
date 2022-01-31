@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { register } from '../../actions/auth';
+import { register } from '../../redux/actions/auth';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 

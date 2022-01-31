@@ -1,4 +1,4 @@
-import api from '../utils/api';
+import { get, post, put, remove } from '../../utils/api';
 import {
 	ADD_GIG,
 	GET_GIGS,
@@ -20,7 +20,12 @@ export const addGig =
 
 		const body = JSON.stringify({ title, location, text });
 		try {
-			const res = await api.post('gig', body, config);
+			const authRequired = true;
+			const res = await post('data/gig', body, authRequired).catch((err) => {
+				throw {
+					message: err.message,
+				};
+			});
 			console.log(res.data);
 			dispatch({
 				type: ADD_GIG,
@@ -36,7 +41,12 @@ export const addGig =
 
 export const getGig = (id) => async (dispatch) => {
 	try {
-		const res = await api.get(`/gig/${id}`);
+		const authRequired = true;
+		const res = await get(`data/gig/${id}`, {}, authRequired).catch((err) => {
+			throw {
+				message: err.message,
+			};
+		});
 		dispatch({
 			type: GET_GIG,
 			payload: res.data,
@@ -51,7 +61,8 @@ export const getGig = (id) => async (dispatch) => {
 
 export const getGigs = () => async (dispatch) => {
 	try {
-		const res = await api.get('gig');
+		const authRequired = true;
+		const res = await get('data/gig', {}, authRequired);
 		dispatch({
 			type: GET_GIGS,
 			payload: res.data,
@@ -66,7 +77,12 @@ export const getGigs = () => async (dispatch) => {
 
 export const deleteGig = (id) => async (dispatch) => {
 	try {
-		const res = api.delete(`gig${id}`);
+		const authRequired = true;
+		const res = await remove(`data/gig${id}`, {}, authRequired).catch((err) => {
+			throw {
+				message: err.message,
+			};
+		});
 		dispatch({
 			type: DELETE_GIG,
 			payload: id,
@@ -78,8 +94,15 @@ export const editGig =
 	({ title, location, text, _id }) =>
 	async (dispatch) => {
 		try {
+			const authRequired = true;
 			const body = JSON.stringify({ title, location, text });
-			const res = await api.put(`gig/${_id}`, body);
+			const res = await put(`data/gig/${_id}`, body, authRequired).catch(
+				(err) => {
+					throw {
+						message: err.message,
+					};
+				}
+			);
 
 			dispatch({
 				type: EDIT_POST,
@@ -98,13 +121,27 @@ export const getRecentGigs =
 	async (dispatch) => {
 		try {
 			if (!num) {
-				const res = await api.get('gig/recent');
+				const authRequired = true;
+				const res = await get('data/gig/recent', {}, authRequired).catch(
+					(err) => {
+						throw {
+							message: err.message,
+						};
+					}
+				);
 				dispatch({
 					type: GET_GIGS,
 					payload: res.data,
 				});
 			} else {
-				const res = await api.get(`gig/recent/${num}`);
+				const authRequired = true;
+				const res = await get(`data/gig/recent/${num}`, {}, authRequired).catch(
+					(err) => {
+						throw {
+							message: err.message,
+						};
+					}
+				);
 				console.log('res.data', res.data);
 				dispatch({
 					type: GET_GIGS,

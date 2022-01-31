@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import ReactTimeAgo from 'react-time-ago';
-import { deletePostComment } from '../../actions/post';
+import { deletePostComment } from '../../redux/actions/post';
 import EditCommentForm from '../forms/EditCommentForm';
 import Spinner from '../layout/Spinner';
 import { connect } from 'react-redux';

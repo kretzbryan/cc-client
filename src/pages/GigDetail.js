@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { getGig } from '../actions/gig';
+import { getGig } from '../redux/actions/gig';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import GigCardShow from '../components/gig/GigCardShow';

@@ -7,7 +7,7 @@ import Footer from './components/layout/Footer';
 import { Provider } from 'react-redux';
 import store from './store';
 import setAuthToken from './utils/setAuthToken';
-import { loadUser } from './actions/auth';
+import { loadUser } from './redux/actions/auth';
 import Popup from './components/layout/Popup';
 // import './firebase/firebase';
 

@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { deletePost } from '../../actions/post';
-import { addPostComment } from '../../actions/post';
+import { deletePost } from '../../redux/actions/post';
+import { addPostComment } from '../../redux/actions/post';
 // import TextareaAutosize from 'react-autosize-textarea';
 
 const PostFooter = ({

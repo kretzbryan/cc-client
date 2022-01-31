@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { getPosts } from '../../actions/post';
+import { getPosts } from '../../redux/actions/post';
 import CreatePostContainer from './CreatePostContainer';
 import PostContainer from './PostContainer';
 import PropTypes from 'prop-types';

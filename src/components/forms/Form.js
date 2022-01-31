@@ -2,15 +2,15 @@ import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { register, login } from '../../actions/auth';
+import { register, login } from '../../redux/actions/auth';
 import {
 	addPost,
 	deletePost,
 	editPost,
 	addPostComment,
-} from '../../actions/post';
-import { addGig } from '../../actions/gig';
-import { clearForm } from '../../actions/form';
+} from '../../redux/actions/post';
+import { addGig } from '../../redux/actions/gig';
+import { clearForm } from '../../redux/actions/form';
 
 const Form = ({
 	isAuthenticated,

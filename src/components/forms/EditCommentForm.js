@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 // import TextareaAutosize from 'react-autosize-textarea';
-import { editPostComment } from '../../actions/post';
+import { editPostComment } from '../../redux/actions/post';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 

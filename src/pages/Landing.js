@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { setLogin } from '../actions/form';
+import { setLogin } from '../redux/actions/form';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import About from '../components/landing/About';

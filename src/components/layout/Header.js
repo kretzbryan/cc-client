@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { logout } from '../../actions/auth';
+import { logout } from '../../redux/actions/auth';
 import React, { useState, Fragment } from 'react';
-import { setLogin, setRegister, setAddGig } from '../../actions/form';
+import { setLogin, setRegister, setAddGig } from '../../redux/actions/form';
 import { useEffect } from 'react';
-import { getUserProfile } from '../../actions/profile';
+import { getUserProfile } from '../../redux/actions/profile';
 import image from '../../images/default.png';
 
 const Header = ({

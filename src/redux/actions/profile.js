@@ -1,4 +1,4 @@
-import api from '../utils/api';
+import { get, post, put, remove } from '../../utils/api';
 import {
 	GET_PROFILE,
 	PROFILE_ERROR,
@@ -8,7 +8,8 @@ import {
 
 export const getUserDashboard = () => async (dispatch) => {
 	try {
-		const res = await api.get('user');
+		const authRequired = true;
+		const res = await get('data/user', {}, authRequired);
 		console.log(res.data);
 		dispatch({
 			type: GET_PROFILE,
@@ -24,7 +25,7 @@ export const getUserDashboard = () => async (dispatch) => {
 
 export const getUserProfile = (id) => async (dispatch) => {
 	try {
-		const res = await api.get(`profile/${id}`);
+		const res = await get(`data/profile/${id}`, {}, authRequired);
 		dispatch({
 			type: GET_PROFILE,
 			payload: res.data,
@@ -39,7 +40,7 @@ export const getUserProfile = (id) => async (dispatch) => {
 
 export const getAllProfiles = () => async (dispatch) => {
 	try {
-		const res = await api.get('profile/all');
+		const res = await get('data/profile/all', {}, authRequired);
 
 		dispatch({
 			type: GET_PROFILES,
@@ -56,14 +57,10 @@ export const getAllProfiles = () => async (dispatch) => {
 export const editProfileImage = (file) => async (dispatch) => {
 	const formData = new FormData();
 	formData.append('file', file);
-	const config = {
-		headers: {
-			'Content-Type': 'multipart/form-data',
-		},
-	};
 
 	try {
-		const res = await api.put('profile/image/', formData, config);
+		const authRequired = true;
+		const res = await put('data/profile/image/', formData, authRequired);
 		dispatch({
 			type: UPDATE_PROFILE,
 			payload: res.data,

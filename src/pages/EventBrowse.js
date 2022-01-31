@@ -7,7 +7,7 @@ import UserCardMobile from '../components/user/UserCardMobile';
 import PostColumn from '../components/post/PostColumn';
 import MediaCard from '../components/MediaCard';
 
-import { getUserDashboard } from '../actions/profile';
+import { getUserDashboard } from '../redux/actions/profile';
 import { connect } from 'react-redux';
 import EventCard from '../components/event/EventCard';
 import ToolBar from '../components/event/ToolBar';

@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { login } from '../../actions/auth';
+import { login } from '../../redux/actions/auth';
 import { Redirect } from 'react-router-dom';
 
 const LoginForm = ({ login, isAuthenticated, show, toggle }) => {
