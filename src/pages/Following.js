@@ -5,6 +5,8 @@ import DashboardNav from '../components/user/dashboard/DashboardNav';
 import GigNav2 from '../components/gig/GigNav2';
 import UserCardMobile from '../components/user/UserCardMobile';
 import ToolBar from '../components/event/ToolBar';
+import requireAuth from '../components/hoc/AuthComponent';
+import redirectHOC from '../components/hoc/RedirectHOC';
 
 const Following = (props) => {
 	return (
@@ -24,4 +26,4 @@ const Following = (props) => {
 
 Following.propTypes = {};
 
-export default Following;
+export default redirectHOC(requireAuth(Following));

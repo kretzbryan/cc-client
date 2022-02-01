@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import UserCard from '../components/user/UserCard';
 import DashboardNav from '../components/user/dashboard/DashboardNav';
@@ -11,7 +11,10 @@ import { getUserDashboard } from '../redux/actions/profile';
 import { connect } from 'react-redux';
 import EventCard from '../components/event/EventCard';
 import ToolBar from '../components/event/ToolBar';
+import requireAuth from '../components/hoc/AuthComponent';
+import redirectHOC from '../components/hoc/RedirectHOC';
 const EventBrowse = ({ getUserDashboard }) => {
+	const [formOpen, toggleForm] = useState(false);
 	const categories = ['arch', 'nature', 'animals', 'tech'];
 	const filters = [null, 'grayscale', 'sepia'];
 	const events = [];
@@ -51,7 +54,14 @@ const EventBrowse = ({ getUserDashboard }) => {
 			</section>
 			<section className='event__browse-container'>
 				<UserCardMobile />
+				{/* <a className='nav-link' href='#gigForm'>
+					Add Gig
+				</a> */}
+				<a href='#gigForm' className='add-event'>
+					+
+				</a>
 				<ToolBar type='event' />
+
 				{events.map((event) => (
 					<EventCard
 						category={event.category}
@@ -68,4 +78,6 @@ EventBrowse.propTypes = {
 	getUserDashboard: PropTypes.func.isRequired,
 };
 
-export default connect(null, { getUserDashboard })(EventBrowse);
+export default connect(null, { getUserDashboard })(
+	redirectHOC(requireAuth(EventBrowse))
+);

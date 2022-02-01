@@ -3,26 +3,26 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Form from '../forms/Form';
 import { clearForm } from '../../redux/actions/form';
+import popup from '../../redux/reducers/popup';
+import EventForm from '../forms/EventForm';
 
-const Popup = ({ form: { name, headerValue }, clearForm }) => {
-	const [formName, setFormName] = useState([]);
-	const [formHeader, setFormHeader] = useState([]);
-
-	useEffect(() => {
-		setFormName(name);
-		setFormHeader(headerValue);
-	});
+const Popup = ({ popup, clearForm }) => {
+	const handleFormShow = () => {
+		const { name } = popup;
+		if (name === 'add-event') return <EventForm />;
+	};
 
 	return (
-		<div className='popup' id={name}>
+		<div className='popup' id={popup.name}>
 			<div className='popup__content'>
 				<div className='popup__header'>
 					<a href='#' className='popup__close' onClick={() => clearForm()}>
 						&times;
 					</a>
-					<h3 className='popup__header--text'>{formHeader}</h3>
+					<h3 className='popup__header--text'>{popup.formHeader}</h3>
 				</div>
-				{formName && <Form />}
+				{handleFormShow()}
+				{/* {formName && <Form />} */}
 			</div>
 		</div>
 	);
@@ -34,7 +34,7 @@ Popup.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-	form: state.form,
+	popup: state.popup,
 });
 
 export default connect(mapStateToProps, { clearForm })(Popup);

@@ -9,6 +9,8 @@ import GigNav1 from '../components/gig/GigNav1';
 import CreatePostContainer from '../components/post/CreatePostContainer';
 import UserCardMobile from '../components/user/UserCardMobile';
 import DashboardNav from '../components/user/dashboard/DashboardNav';
+import requireAuth from '../components/hoc/AuthComponent';
+import redirectHOC from '../components/hoc/RedirectHOC';
 const Browse = () => (
 	<div className='row main__container'>
 		<div className='column-secondary'>
@@ -25,4 +27,4 @@ const Browse = () => (
 	</div>
 );
 
-export default Browse;
+export default redirectHOC(requireAuth(Browse));

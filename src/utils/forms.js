@@ -1,5 +1,3 @@
-import { login } from '../actions/auth';
-
 const registerForm = {
 	name: 'register',
 	className: 'register-form',
@@ -245,3 +243,86 @@ const userForm = {
 };
 
 export { registerForm, loginForm, postForm, gigForm, userForm };
+
+// const userForm = {
+// 	name: 'eventForm',
+// 	className: 'event-form',
+// 	values: {
+// 		title: '',
+// 		description: '',
+// 		timeRange: {
+// 			start: '',
+// 			end: '',
+// 		},
+// 		tags: [],
+// 		location: {
+// 			lat: '',
+// 			long: '',
+// 		},
+// 	},
+// 	buttonText: 'Submit',
+// 	headerValue: 'Add Event',
+// 	inputs: [
+// 		{
+// 			key: '0',
+// 			type: 'text',
+// 			placeholder: 'Title',
+// 			name: 'title',
+// 			label: {
+// 				htmlFor: 'title',
+// 				className: 'login-form__label',
+// 			},
+// 		},
+// 		{
+// 			key: '1',
+// 			type: 'text-area',
+// 			placeholder: 'description',
+// 			name: 'description',
+// 			label: {
+// 				htmlFor: 'description',
+// 				className: 'login-form__label',
+// 			},
+// 		},
+// 		{
+// 			key: '2',
+// 			type: 'date',
+// 			placeholder: null,
+// 			name: 'start',
+// 			label: {
+// 				htmlFor: 'start',
+// 				className: 'login-form__label',
+// 			},
+// 		},
+// 		{
+// 			key: '3',
+// 			type: 'date',
+// 			placeholder: null,
+// 			name: 'end',
+// 			label: {
+// 				htmlFor: 'end',
+// 				className: 'login-form__label',
+// 			},
+// 		},
+// 		{
+// 			key: '4',
+// 			type: 'password',
+// 			placeholder: 'Password',
+// 			name: 'password1',
+// 			label: {
+// 				htmlFor: 'password1',
+// 				className: 'login-form__label',
+// 			},
+// 		},
+// 		{
+// 			key: '5',
+// 			type: 'password',
+// 			placeholder: 'Re-type Password',
+// 			name: 'password2',
+// 			label: {
+// 				htmlFor: 'password2',
+// 				className: 'login-form__label',
+// 			},
+// 		},
+// 	],
+// 	textAreas: null,
+// };

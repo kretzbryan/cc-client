@@ -53,7 +53,7 @@ export const setAddGig = () => async (dispatch) => {
 export const setEditPost = (id) => async (dispatch) => {
 	try {
 		const authRequired = true;
-		const res = await get(`data/post/${id}`, {}, authRequired);
+		const res = await get(`/api/data/post/${id}`, {}, authRequired);
 		dispatch({
 			type: SET_FORM,
 			payload: {
@@ -69,6 +69,13 @@ export const setEditPost = (id) => async (dispatch) => {
 			payload: err,
 		});
 	}
+};
+
+export const setAddEvent = () => (dispatch) => {
+	dispatch({
+		type: SET_FORM,
+		payload: gigForm,
+	});
 };
 
 export const clearForm = () => async (dispatch) => {

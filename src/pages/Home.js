@@ -16,6 +16,8 @@ import UserCardMobile from '../components/user/UserCardMobile';
 import UserCard from '../components/user/UserCard';
 import DashboardNav from '../components/user/dashboard/DashboardNav';
 import MediaCard from '../components/MediaCard';
+import requireAuth from '../components/hoc/AuthComponent';
+import redirectHOC from '../components/hoc/RedirectHOC';
 
 const Home = ({ getUserDashboard, getGigs, getPosts, auth, profile }) => {
 	useEffect(() => {
@@ -53,4 +55,6 @@ const mapStateToProps = (state) => ({
 	profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getUserDashboard, getPosts })(Home);
+export default connect(mapStateToProps, { getUserDashboard, getPosts })(
+	redirectHOC(requireAuth(Home))
+);

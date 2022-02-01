@@ -4,6 +4,8 @@ import UserCard from '../components/user/UserCard';
 import DashboardNav from '../components/user/dashboard/DashboardNav';
 import GigNav2 from '../components/gig/GigNav2';
 import UserCardMobile from '../components/user/UserCardMobile';
+import requireAuth from '../components/hoc/AuthComponent';
+import redirectHOC from '../components/hoc/RedirectHOC';
 
 const Notifications = (props) => {
 	return (
@@ -26,4 +28,4 @@ const Notifications = (props) => {
 
 Notifications.propTypes = {};
 
-export default Notifications;
+export default redirectHOC(requireAuth(Notifications));

@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import GigCardShow from '../components/gig/GigCardShow';
 import UserCard from '../components/user/UserCard';
 import DashboardNav from '../components/user/dashboard/DashboardNav';
+import requireAuth from '../components/hoc/AuthComponent';
+import redirectHOC from '../components/hoc/RedirectHOC';
 
 const GigDetail = ({ gig, gigLoading, getGig, match }) => {
 	console.log('gig detail', gig);
@@ -36,4 +38,6 @@ const mapStateToProps = (state) => ({
 	gigLoading: state.gig.loading,
 });
 
-export default connect(mapStateToProps, { getGig })(GigDetail);
+export default connect(mapStateToProps, { getGig })(
+	redirectHOC(requireAuth(GigDetail))
+);

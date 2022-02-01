@@ -18,16 +18,16 @@ const Routes = () => {
 	return (
 		<Switch>
 			<Route exact path='/' component={Landing} />
-			<PrivateRoute path='/home' component={Home} />
-			<PrivateRoute path='/profile/:id' component={ProfileDetail} />
-			<PrivateRoute path='/dashboard/connections' component={Connections} />
-			<PrivateRoute path='/dashboard/events' component={EventBrowse} />
-			<PrivateRoute path='/dashboard/notifications' component={Notifications} />
-			<PrivateRoute path='/dashboard/following' component={Following} />
-			<PrivateRoute path='/dashboard/discover' component={Discover} />
-			<PrivateRoute path='/browse' component={ProfileBrowse} />
-			<PrivateRoute exact path='/gig' component={GigBrowse} />
-			<PrivateRoute path='/gig/:id' component={GigDetail} />
+			<Route path='/home' component={Home} />
+			<Route path='/profile/:id' component={ProfileDetail} />
+			<Route path='/dashboard/connections' component={Connections} />
+			<Route path='/dashboard/events' component={EventBrowse} />
+			<Route path='/dashboard/notifications' component={Notifications} />
+			<Route path='/dashboard/following' component={Following} />
+			<Route path='/dashboard/discover' component={Discover} />
+			<Route path='/browse' component={ProfileBrowse} />
+			<Route exact path='/gig' component={GigBrowse} />
+			<Route path='/gig/:id' component={GigDetail} />
 		</Switch>
 	);
 };

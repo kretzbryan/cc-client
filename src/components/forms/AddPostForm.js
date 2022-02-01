@@ -8,7 +8,7 @@ const AddPostForm = ({ toggleForm, addPost }) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		addPost(text);
+		addPost({ text, postType: 'self' });
 		toggleForm();
 	};
 

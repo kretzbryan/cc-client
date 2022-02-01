@@ -37,14 +37,11 @@ export default function (state = initialState, action) {
 				loading: false,
 			};
 		case HANDLE_COMMENT:
-			console.log(payload.post);
-			updatedPost = state.posts.find((post) => post._id === payload.post._id);
 			return {
 				...state,
-				posts: [
-					{ ...payload.post },
-					...state.posts.filter((post) => post !== updatedPost),
-				],
+				posts: state.posts.map((post) => {
+					return post._id === payload._id ? payload : post;
+				}),
 			};
 		case DELETE_POST:
 			return {

@@ -19,6 +19,7 @@ const LoginForm = ({ login, isAuthenticated, show, toggle }) => {
 	};
 
 	const onSubmit = (e) => {
+		console.log('Submitted');
 		e.preventDefault();
 		login(data);
 	};

@@ -5,6 +5,8 @@ import DashboardNav from '../components/user/dashboard/DashboardNav';
 import GigNav2 from '../components/gig/GigNav2';
 import UserCardMobile from '../components/user/UserCardMobile';
 import ToolBar from '../components/event/ToolBar';
+import requireAuth from '../components/hoc/AuthComponent';
+import redirectHOC from '../components/hoc/RedirectHOC';
 
 const Connections = (props) => {
 	return (
@@ -26,4 +28,4 @@ const Connections = (props) => {
 
 Connections.propTypes = {};
 
-export default Connections;
+export default redirectHOC(requireAuth(Connections));

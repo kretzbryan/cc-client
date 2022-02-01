@@ -9,17 +9,13 @@ import {
 	LOGOUT,
 	CLEAR_PROFILE,
 } from './types';
-import setAuthToken from '../../utils/setAuthToken';
 import { get, post, put, remove } from '../../utils/api';
+import { setRedirect } from './redirect';
 
 export const loadUser = () => async (dispatch) => {
-	if (localStorage.token) {
-		setAuthToken(localStorage.token);
-	}
-
 	try {
 		const authRequired = true;
-		const res = await get('data/user', {}, authRequired);
+		const res = await get('/api/data/user', {}, authRequired);
 		dispatch({
 			type: USER_LOADED,
 			payload: res.data,
@@ -45,7 +41,7 @@ export const register =
 
 		try {
 			const authRequired = false;
-			const res = await post('auth/register', body, authRequired);
+			const res = await post('/api/auth/register', body, authRequired);
 			dispatch(setAlert('Register Success!', 'success'));
 			dispatch({
 				type: REGISTER_CONFIRMED,
@@ -75,14 +71,27 @@ export const login =
 
 		try {
 			const authRequired = false;
-			const res = await post('auth/login', body, authRequired);
+			const res = await post('/api/auth/login', body, authRequired).catch(
+				(err) => {
+					throw {
+						message: `In login response ${err.message}`,
+					};
+				}
+			);
 			dispatch({
 				type: LOGIN_CONFIRMED,
 				payload: res.data,
 			});
 			const { token } = res.data;
-			localStorage.setItem('token', token);
-			dispatch(loadUser());
+			localStorage.setItem('authToken', token);
+			if (localStorage.getItem('authToken')) {
+				dispatch(setRedirect('/home')).catch((err) => {
+					throw {
+						message: `In setRedirect ${err.message}`,
+					};
+				});
+			}
+			// dispatch(loadUser());
 		} catch (err) {
 			const errors = err.message;
 			console.log(errors);

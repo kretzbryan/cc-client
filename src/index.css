@@ -674,7 +674,7 @@ button.dashboard-btn {
 }
 
 .post__content {
-  margin-top: 15px;
+  margin-top: 1rem;
 }
 
 .poster__name {
@@ -685,6 +685,10 @@ button.dashboard-btn {
   margin-right: 1rem;
 }
 
+.post__header {
+  display: flex;
+  align-items: center;
+}
 .post__header .poster__name {
   font-size: 1.2rem;
 }
@@ -708,9 +712,24 @@ button.dashboard-btn {
   object-fit: cover;
   margin-right: 1rem;
 }
+.comment__main {
+  background-color: #eee;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 15px;
+}
+.comment__main p {
+  margin: 0.5rem auto 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.comment .options {
+  margin-top: 0;
+}
 .comment__options {
   position: absolute;
   right: 5rem;
+  margin-top: 0;
 }
 .comment .timestamp {
   color: #888888;
@@ -737,8 +756,9 @@ button.dashboard-btn {
 .row.comment {
   width: 100%;
   margin: 0;
-  padding: 1.5rem 3rem 0 3rem;
+  padding: 1.5rem 3rem 0 0rem;
   font-size: 1rem;
+  display: flex;
 }
 .row.comment-form form {
   position: relative;
@@ -1527,6 +1547,17 @@ a.content-options__link:hover {
   overflow-x: hidden;
   background-color: transparent;
   z-index: 10;
+}
+.event__browse-container .add-event {
+  position: fixed;
+  font-size: 4rem;
+  font-weight: 500;
+  color: #112e5c;
+  z-index: 30;
+  right: 1.5rem;
+  top: 7.25rem;
+  background-color: transparent;
+  border: none;
 }
 @media only screen and (max-width: 62.5em) {
   .event__browse-container {

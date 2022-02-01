@@ -13,6 +13,8 @@ import GigNav1 from '../components/gig/GigNav1';
 import GigNav2 from '../components/gig/GigNav2';
 import { getUserPosts } from '../redux/actions/post';
 import Popup from '../components/layout/Popup';
+import requireAuth from '../components/hoc/AuthComponent';
+import redirectHOC from '../components/hoc/RedirectHOC';
 
 const ProfileDetail = ({
 	getUserProfile,
@@ -61,5 +63,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { getUserProfile, getUserPosts })(
-	ProfileDetail
+	redirectHOC(requireAuth(ProfileDetail))
 );

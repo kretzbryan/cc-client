@@ -10,13 +10,14 @@ const PostFooter = ({
 	deletePost,
 	loading,
 	user,
-	id,
+	postId,
 	toggleEditPost,
 	addPostComment,
 }) => {
 	const [commentData, setCommentData] = useState({
 		text: '',
-		id: id,
+		itemId: postId,
+		itemType: 'post',
 	});
 	const handleChange = (e) => {
 		setCommentData({

@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import requireAuth from '../components/hoc/AuthComponent';
+import redirectHOC from '../components/hoc/RedirectHOC';
 
 const MessageBoard = (props) => {
 	return <div></div>;
@@ -7,4 +9,4 @@ const MessageBoard = (props) => {
 
 MessageBoard.propTypes = {};
 
-export default MessageBoard;
+export default redirectHOC(requireAuth(MessageBoard));

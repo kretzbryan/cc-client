@@ -12,6 +12,18 @@
 	background-color: transparent;
 	z-index: 10;
 
+	& .add-event {
+		position: fixed;
+		font-size: 4rem;
+		font-weight: 500;
+		color: #112e5c;
+		z-index: 30;
+		right: 1.5rem;
+		top: 7.25rem;
+		background-color: transparent;
+		border: none;
+	}
+
 	// -ms-overflow-style: none;  /* IE and Edge */
 	// scrollbar-width: none;
 

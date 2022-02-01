@@ -31,3 +31,6 @@ export const CLEAR_FORM = 'CLEAR_FORM';
 export const EDIT_COMMENT = 'EDIT_COMMENT';
 export const FORM_ERROR = 'FORM_ERROR';
 export const UPDATE_PROFILE = 'UPDATE_PROFILE';
+export const SET_TAGS = 'SET_TAGS';
+export const SET_LOCATIONS = 'SET_LOCATIONS';
+export const SET_POPUP = 'SET_POPUP';

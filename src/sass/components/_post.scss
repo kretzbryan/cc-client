@@ -1,34 +1,31 @@
 .card.post__container {
-    padding: 1.5rem 3rem;
-    box-shadow: $box-shadow-1;
+	padding: 1.5rem 3rem;
+	box-shadow: $box-shadow-1;
 }
 
-
 .post__content {
-    margin-top: 15px;
+	margin-top: 1rem;
 }
 
 .poster__name {
-    margin: auto 0;
+	margin: auto 0;
 }
 
-
-
 .poster {
-
-    &__thumb {
-        margin-right: 1rem;
-    }
-    
+	&__thumb {
+		margin-right: 1rem;
+	}
 }
 
 .post__header {
-    & .poster__name {
-        font-size: 1.2rem;
-    }
+	display: flex;
+	align-items: center;
+	& .poster__name {
+		font-size: 1.2rem;
+	}
 }
 
 .post-error {
-    text-align: center;
-    margin-top: 2rem;
+	text-align: center;
+	margin-top: 2rem;
 }

@@ -9,7 +9,8 @@ import Comment from '../comment/Comment';
 import AddPostForm from '../forms/AddPostForm';
 
 const PostContainer = ({ post, loading }) => {
-	const { name, text, _id, user, createdAt, comments } = post;
+	const { name, text, _id, createdBy, createdAt, comments } = post;
+	const { firstName, lastName } = createdBy;
 	const [formOpen, setFormOpen] = useState(false);
 	console.log('post', post);
 
@@ -23,7 +24,7 @@ const PostContainer = ({ post, loading }) => {
 				{!loading && (
 					<Fragment>
 						<PostHeader
-							name={name}
+							name={`${firstName} ${lastName}`}
 							id={_id}
 							post={post}
 							createdAt={createdAt}
@@ -45,7 +46,7 @@ const PostContainer = ({ post, loading }) => {
 									/>
 								);
 							})}
-						<PostFooter id={_id} user={user} />
+						<PostFooter postId={_id} user={createdBy} />
 					</Fragment>
 				)}
 			</section>

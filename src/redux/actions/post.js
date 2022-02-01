@@ -10,16 +10,16 @@ import {
 	COMMENT_ERROR,
 } from './types';
 
-export const addPost = (text) => async (dispatch) => {
+export const addPost = (body) => async (dispatch) => {
 	const config = {
 		headers: {
 			'Content-Type': 'application/json',
 		},
 	};
-	const body = JSON.stringify({ text });
+	// const body = JSON.stringify({ text });
 	try {
 		const authRequired = true;
-		const res = await post('data/post', body, authRequired);
+		const res = await post('/api/data/post', body, authRequired);
 		dispatch({
 			type: ADD_POST,
 			payload: res.data,
@@ -32,6 +32,13 @@ export const addPost = (text) => async (dispatch) => {
 	}
 };
 
+export const setPosts = (payload) => (dispatch) => {
+	dispatch({
+		type: GET_POSTS,
+		payload,
+	});
+};
+
 export const getPosts =
 	(profileId = null) =>
 	async (dispatch) => {
@@ -39,7 +46,7 @@ export const getPosts =
 			if (profileId === true) {
 				const authRequired = true;
 				const res = await get(
-					`data/post/user/${profileId}`,
+					`/api/data/post/user/${profileId}`,
 					{},
 					authRequired
 				).catch((err) => {
@@ -52,11 +59,14 @@ export const getPosts =
 					payload: res.data,
 				});
 			} else {
-				const res = await get(`data/post`).catch((err) => {
-					throw {
-						message: `In post ${err.message}`,
-					};
-				});
+				const authRequired = true;
+				const res = await get(`/api/data/post`, {}, authRequired).catch(
+					(err) => {
+						throw {
+							message: `In post ${err.message}`,
+						};
+					}
+				);
 				dispatch({
 					type: GET_POSTS,
 					payload: res.data,
@@ -73,7 +83,7 @@ export const getUserPosts = (profileId) => async (dispatch) => {
 	try {
 		const authRequired = true;
 		const res = await get(
-			`data/post/user/${profileId}`,
+			`/api/data/post/user/${profileId}`,
 			{},
 			authRequired
 		).catch((err) => {
@@ -96,7 +106,7 @@ export const getUserPosts = (profileId) => async (dispatch) => {
 export const deletePost = (id) => async (dispatch) => {
 	try {
 		const authRequired = true;
-		const res = await remove(`data/post/${id}`, {}, authRequired);
+		const res = await remove(`/api/data/post/${id}`, {}, authRequired);
 		dispatch({
 			type: DELETE_POST,
 			payload: res.data,
@@ -112,7 +122,7 @@ export const deletePost = (id) => async (dispatch) => {
 export const getPost = (id) => async (dispatch) => {
 	try {
 		const authRequired = true;
-		const res = await get(`data/post/${id}`, {}, authRequired);
+		const res = await get(`/api/data/post/${id}`, {}, authRequired);
 
 		dispatch({
 			type: GET_POST,
@@ -131,7 +141,7 @@ export const editPost = (post) => async (dispatch) => {
 
 	try {
 		const authRequired = true;
-		const res = await put(`data/post/${post.id}`, body, authRequired);
+		const res = await put(`/api/data/post/${post.id}`, body, authRequired);
 		dispatch({
 			type: EDIT_POST,
 			payload: res.data,
@@ -144,25 +154,22 @@ export const editPost = (post) => async (dispatch) => {
 	}
 };
 
-export const addPostComment =
-	({ text, id }) =>
-	async (dispatch) => {
-		const body = { text };
-
-		try {
-			const authRequired = true;
-			const res = await post(`data/post/${id}/comment`, body, authRequired);
-			dispatch({
-				type: HANDLE_COMMENT,
-				payload: res.data,
-			});
-		} catch (err) {
-			dispatch({
-				type: COMMENT_ERROR,
-				payload: err,
-			});
-		}
-	};
+export const addPostComment = (body) => async (dispatch) => {
+	try {
+		const authRequired = true;
+		const res = await post(`/api/data/comment`, body, authRequired);
+		console.log(res.data);
+		dispatch({
+			type: HANDLE_COMMENT,
+			payload: res.data.item,
+		});
+	} catch (err) {
+		dispatch({
+			type: COMMENT_ERROR,
+			payload: err,
+		});
+	}
+};
 
 export const editPostComment =
 	({ text, postId, commentId }) =>
@@ -172,7 +179,7 @@ export const editPostComment =
 		try {
 			const authRequired = true;
 			const res = await put(
-				`data/post/${postId}/comment/${commentId}`,
+				`/api/data/post/${postId}/comment/${commentId}`,
 				body,
 				authRequired
 			);
@@ -193,7 +200,7 @@ export const deletePostComment = (postId, commentId) => async (dispatch) => {
 	try {
 		const authRequired = true;
 		const res = await remove(
-			`data/post/${postId}/comment/${commentId}`,
+			`/api/data/post/${postId}/comment/${commentId}`,
 			{},
 			authRequired
 		);

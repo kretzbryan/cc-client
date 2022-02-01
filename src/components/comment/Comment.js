@@ -5,9 +5,11 @@ import EditCommentForm from '../forms/EditCommentForm';
 import Spinner from '../layout/Spinner';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import image from '../../images/default.png';
 
 const Comment = ({ comment, loading, postId, deletePostComment }) => {
-	const { _id, text, name, user, createdAt } = comment;
+	const { _id, text, name, createdBy, createdAt } = comment;
+	const { firstName, lastName } = createdBy;
 	const [commentFormOpen, setCommentFormOpen] = useState(false);
 
 	const toggleForm = () => {
@@ -26,28 +28,28 @@ const Comment = ({ comment, loading, postId, deletePostComment }) => {
 			) : (
 				<Fragment>
 					<section className='row comment mt-2'>
-						<header className='row profile__header'>
-							<div className='comment__thumb'>
-								<img
-									src='/images/default.png'
-									alt='profile thumbnail'
-									className='comment__thumb'
-								/>
-							</div>
-							<div className='poster__name'>
-								<a className='anchor' href='/profile/'>
-									<p className='options'>{name}</p>
-								</a>
-								<span className='timestamp'>
-									<ReactTimeAgo date={createdAt} locale='en-US' />
-								</span>
-							</div>
-							<div className='content-options'>
-								{/* <input type="checkbox" className="content-options__checkbox" id={`option-toggle${_id}`} />
+						<div className='comment__thumb'>
+							<img
+								src={image}
+								alt='profile thumbnail'
+								className='comment__thumb'
+							/>
+						</div>
+						<div className='comment__main'>
+							<a className='anchor' href='/profile/'>
+								<p className='options'>{`${firstName} ${lastName}`}</p>
+							</a>
+							<span className='timestamp'>
+								<ReactTimeAgo date={createdAt} locale='en-US' />
+							</span>
+							<p>{text}</p>
+						</div>
+						{/* <div className='content-options'> */}
+						{/* <input type="checkbox" className="content-options__checkbox" id={`option-toggle${_id}`} />
                     <label htmlFor={`option-toggle${_id}`}>
                         <i className="fa fa-cog options user-options" aria-hidden="true" ></i>
                     </label> */}
-								<nav className='content-options__nav'>
+						{/* <nav className='content-options__nav'>
 									<ul className='content-options__list'>
 										<a
 											className='content-options__link'
@@ -69,9 +71,8 @@ const Comment = ({ comment, loading, postId, deletePostComment }) => {
 										</a>
 									</ul>
 								</nav>
-							</div>
-						</header>
-						{!commentFormOpen ? (
+							</div> */}
+						{/* {!commentFormOpen ? (
 							<div className='comment__text'>
 								<p>{text}</p>
 							</div>
@@ -82,7 +83,7 @@ const Comment = ({ comment, loading, postId, deletePostComment }) => {
 								postId={postId}
 								toggleForm={toggleForm}
 							/>
-						)}
+						)} */}
 					</section>
 				</Fragment>
 			)}

@@ -15,47 +15,48 @@ const PostHeader = ({
 	deletePost,
 }) => (
 	<Fragment>
-		<header className='row profile__header post__header'>
+		<header className='profile__header post__header'>
 			<div className='poster__thumb'>
 				<img src={image} alt='profile thumbnail' className='image__thumb' />
 			</div>
-			<div className='poster__name'>
-				<a className='anchor' href='/profile/'>
-					<p className='options'>{name}</p>
-				</a>
-				<span className='timestamp'>
-					<ReactTimeAgo date={createdAt} s />
-				</span>
-			</div>
-
-			<div className='content-options'>
-				{/* <input type="checkbox" className="content-options__checkbox" id={`option-toggle${id}`}/>
+			<div className='right'>
+				<div className='poster__name'>
+					<a className='anchor' href='/profile/'>
+						<p className='options'>{name}</p>
+					</a>
+					<span className='timestamp'>
+						<ReactTimeAgo date={createdAt} s />
+					</span>
+				</div>
+				<div className='content-options'>
+					{/* <input type="checkbox" className="content-options__checkbox" id={`option-toggle${id}`}/>
                 <label htmlFor={`option-toggle${id}`}>
                     <i className="fa fa-cog options user-options" aria-hidden="true" ></i>
                 </label> */}
-				<nav className='content-options__nav'>
-					<ul className='content-options__list'>
-						<a
-							className='content-options__link'
-							onClick={(e) => {
-								e.preventDefault();
-								deletePost(id);
-							}}>
-							<li className='content-options__item'>
-								<i className='fas fa-trash-alt'></i>
-								<span>Delete Post</span>
-							</li>
-						</a>
-						<a
-							className='content-options__link'
-							href='#postForm'
-							onClick={toggleForm}>
-							<li className='content-options__item'>
-								<i className='fas fa-user-edit'></i> <span>Edit Post</span>
-							</li>
-						</a>
-					</ul>
-				</nav>
+					<nav className='content-options__nav'>
+						<ul className='content-options__list'>
+							<a
+								className='content-options__link'
+								onClick={(e) => {
+									e.preventDefault();
+									deletePost(id);
+								}}>
+								<li className='content-options__item'>
+									<i className='fas fa-trash-alt'></i>
+									<span>Delete Post</span>
+								</li>
+							</a>
+							<a
+								className='content-options__link'
+								href='#postForm'
+								onClick={toggleForm}>
+								<li className='content-options__item'>
+									<i className='fas fa-user-edit'></i> <span>Edit Post</span>
+								</li>
+							</a>
+						</ul>
+					</nav>
+				</div>
 			</div>
 		</header>
 	</Fragment>

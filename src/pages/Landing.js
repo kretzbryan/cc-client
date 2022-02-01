@@ -10,6 +10,7 @@ import Form from '../components/forms/Form';
 import LoginForm from '../components/forms/LoginForm';
 import RegisterForm from '../components/forms/RegisterForm';
 import AuthFormContainer from '../components/forms/AuthFormContainer';
+import redirectHOC from '../components/hoc/RedirectHOC';
 
 const Landing = ({ setLogin }) => {
 	useEffect(() => {
@@ -31,4 +32,4 @@ Landing.propTypes = {
 	setLogin: PropTypes.func.isRequired,
 };
 
-export default connect(null, { setLogin })(Landing);
+export default connect(null, { setLogin })(redirectHOC(Landing));

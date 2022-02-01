@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import auth from '../redux/reducers/auth';
 import UserCard from '../components/user/UserCard';
 import GigColumn from '../components/gig/GigColumn';
+import requireAuth from '../components/hoc/AuthComponent';
+import redirectHOC from '../components/hoc/RedirectHOC';
 
 const GigBrowse = ({ getRecentGigs, authLoading, user }) => {
 	useEffect(() => {
@@ -33,4 +35,6 @@ const mapStateToProps = (state) => ({
 	user: auth.user,
 });
 
-export default connect(mapStateToProps, { getRecentGigs })(GigBrowse);
+export default connect(mapStateToProps, { getRecentGigs })(
+	redirectHOC(requireAuth(GigBrowse))
+);
