@@ -158,7 +158,6 @@ export const addPostComment = (body) => async (dispatch) => {
 	try {
 		const authRequired = true;
 		const res = await post(`/api/data/comment`, body, authRequired);
-		console.log(res.data);
 		dispatch({
 			type: HANDLE_COMMENT,
 			payload: res.data.item,

@@ -5,7 +5,7 @@ const Spinner = () => {
 	return (
 		<div>
 			<img
-				src='/images/spinner.gif'
+				src={spinner}
 				style={{ margin: 'auto', display: 'block' }}
 				alt='Loading...'
 			/>

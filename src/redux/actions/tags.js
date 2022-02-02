@@ -3,7 +3,7 @@ import { get } from '../../utils/api';
 
 import { SET_ALERT, REMOVE_ALERT, SET_TAGS } from './types';
 
-export const getLocations = (text) => async (dispatch) => {
+export const getTags = (text) => async (dispatch) => {
 	try {
 		const authRequired = true;
 		const res = await get('/api/data/tag', { text }, authRequired);

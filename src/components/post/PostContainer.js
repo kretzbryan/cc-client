@@ -12,8 +12,6 @@ const PostContainer = ({ post, loading }) => {
 	const { name, text, _id, createdBy, createdAt, comments } = post;
 	const { firstName, lastName } = createdBy;
 	const [formOpen, setFormOpen] = useState(false);
-	console.log('post', post);
-
 	const toggleForm = () => {
 		setFormOpen(!formOpen);
 	};

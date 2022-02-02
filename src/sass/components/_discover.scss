@@ -1,0 +1,49 @@
+.subnav {
+	width: 80vw;
+	position: fixed;
+	top: calc(7rem + 1px);
+	left: 20vw;
+	z-index: 40;
+	background-color: #6c99e1;
+	height: 6.5rem;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	&.no-list {
+		justify-content: end;
+	}
+	& ul {
+		list-style: none;
+		display: flex;
+		margin: 0;
+		padding-left: 0;
+		& li {
+			margin: 0;
+			display: flex;
+
+			& button {
+				border: none;
+				border-right: 1px solid #abd2f8;
+				margin: 0;
+				width: 10rem;
+				background-color: transparent;
+				color: $background-color;
+				& img {
+					height: 3rem;
+				}
+			}
+		}
+	}
+}
+
+.discover {
+	&-main {
+		position: fixed;
+		top: calc(13.5rem);
+		right: 0;
+		height: calc(100vh - 13.5rem);
+		width: 80vw;
+	}
+}

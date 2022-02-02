@@ -15,7 +15,6 @@ const DashboardNav = () => {
 			<hr className='dashboard-line' />
 			{buttons.length
 				? buttons.map((button, index) => {
-						console.log(button);
 						const { path, classNames, icon, buttonText } = button;
 
 						return index === 6 ? (

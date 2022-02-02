@@ -11,7 +11,6 @@ export const getUserDashboard = () => async (dispatch) => {
 	try {
 		const authRequired = true;
 		const res = await get('/api/data/user', {}, authRequired);
-		console.log(res.data);
 		dispatch({
 			type: GET_PROFILE,
 			payload: res.data,

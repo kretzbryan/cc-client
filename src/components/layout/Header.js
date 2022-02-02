@@ -28,7 +28,7 @@ const Header = ({
 				</li>
 				{!loading && !!user && (
 					<li className='nav-item'>
-						<a className='nav-link' href={`/profile/${user.user._id}`}>
+						<a className='nav-link' href={`/profile/${user._id}`}>
 							{' '}
 							View Profile
 						</a>

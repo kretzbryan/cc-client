@@ -13,14 +13,16 @@
 	z-index: 10;
 
 	& .add-event {
-		position: fixed;
+		// position: fixed;
+		margin: 0 2rem 0 2rem;
 		font-size: 4rem;
 		font-weight: 500;
-		color: #112e5c;
-		z-index: 30;
-		right: 1.5rem;
-		top: 7.25rem;
+		color: $background-color;
+		// z-index: 45;
+		// right: 2.5rem;
+		// top: 8.75rem;
 		background-color: transparent;
+		text-decoration: none;
 		border: none;
 	}
 

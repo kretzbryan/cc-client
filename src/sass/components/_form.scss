@@ -106,6 +106,55 @@
 		margin: auto;
 		height: 5.5rem;
 
+		&.text-area {
+			width: 60rem;
+			padding-right: 0;
+		}
+
+		&.image {
+			padding-left: 0;
+		}
+
+		& input[type='file'] {
+			width: 27rem;
+			display: flex;
+		}
+		& .autofill-container {
+			margin: 0 auto;
+			width: 20rem;
+			position: absolute;
+			max-height: 30rem;
+
+			overflow-y: scroll;
+			&::-webkit-scrollbar {
+				/* width */
+
+				width: 5px;
+
+				/* Track */
+				&-track {
+					background: #f1f1f1;
+				}
+
+				/* Handle */
+				&-thumb {
+					background: #888;
+				}
+
+				/* Handle on hover */
+				&-thumb:hover {
+					background: #555;
+				}
+			}
+
+			& .result {
+				padding: 0.5rem 1rem;
+				box-shadow: 0px 0px 3px black;
+				font-size: 1rem;
+				background-color: $color-grey-light-1;
+			}
+		}
+
 		&:not(:last-child) {
 			margin-bottom: 1rem;
 		}

@@ -7,44 +7,57 @@ import UserCardMobile from '../components/user/UserCardMobile';
 import PostColumn from '../components/post/PostColumn';
 import MediaCard from '../components/MediaCard';
 
-import { getUserDashboard } from '../redux/actions/profile';
 import { connect } from 'react-redux';
 import EventCard from '../components/event/EventCard';
 import ToolBar from '../components/event/ToolBar';
 import requireAuth from '../components/hoc/AuthComponent';
 import redirectHOC from '../components/hoc/RedirectHOC';
-const EventBrowse = ({ getUserDashboard }) => {
+import { setPopup } from '../redux/actions/popup';
+
+const EventBrowse = ({ setPopup }) => {
 	const [formOpen, toggleForm] = useState(false);
 	const categories = ['arch', 'nature', 'animals', 'tech'];
 	const filters = [null, 'grayscale', 'sepia'];
-	const events = [];
-	for (let num = 0; num < 25; num++) {
-		let randomDate = new Date();
-		randomDate.setDate(randomDate.getDate() + Math.floor(Math.random() * 31));
-		console.log('randomDate', randomDate);
-		let startDate = new Date(randomDate);
-		console.log('start date', startDate);
-		startDate.setHours(startDate.getHours() + Math.floor(Math.random() * 23));
+	const [events, setEvents] = useState(null);
+	const eventFormInfo = {
+		name: 'event-info',
+		headerValue: 'New Event',
+		submitAction: null,
+	};
 
-		let endDate = new Date(startDate);
-		const trimMinuteRange = (date) => {
-			const randomNumber = Math.floor(Math.random() * 2);
-			const mins = date.getMinutes();
-			const remainder = mins % 30;
-			return randomNumber ? mins - remainder : mins - remainder + 30;
-		};
-		startDate.setMinutes(trimMinuteRange(startDate));
-		endDate.setHours(endDate.getHours() + Math.floor(Math.random() * 6));
-		events.push({
-			category: categories[Math.floor(Math.random() * categories.length)],
-			filter: filters[Math.floor(Math.random() * filters.length)],
-			startDate,
-			endDate,
-		});
-	}
-	useEffect(() => {
-		getUserDashboard();
-	}, []);
+	// useEffect(() => {
+	// 	const results = [];
+	// 	for (let num = 0; num < 25; num++) {
+	// 		let randomDate, startDate, endDate;
+	// 		randomDate = new Date();
+	// 		randomDate.setDate(randomDate.getDate() + Math.floor(Math.random() * 31));
+
+	// 		startDate = new Date(randomDate);
+
+	// 		startDate.setHours(startDate.getHours() + Math.floor(Math.random() * 23));
+
+	// 		endDate = new Date(startDate);
+
+	// 		const trimMinuteRange = (date) => {
+	// 			const randomNumber = Math.floor(Math.random() * 2);
+	// 			const mins = date.getMinutes();
+	// 			const remainder = mins % 30;
+
+	// 			return randomNumber ? mins - remainder : mins - remainder + 30;
+	// 		};
+	// 		startDate.setMinutes(trimMinuteRange(startDate));
+	// 		endDate.setHours(endDate.getHours() + Math.floor(Math.random() * 6));
+
+	// 		results.push({
+	// 			category: categories[Math.floor(Math.random() * categories.length)],
+	// 			filter: filters[Math.floor(Math.random() * filters.length)],
+	// 			startDate,
+	// 			endDate,
+	// 		});
+	// 	}
+
+	// 	setEvents(results);
+	// }, []);
 	return (
 		<div className='row main__container'>
 			<section className='column-secondary'>
@@ -57,19 +70,25 @@ const EventBrowse = ({ getUserDashboard }) => {
 				{/* <a className='nav-link' href='#gigForm'>
 					Add Gig
 				</a> */}
-				<a href='#gigForm' className='add-event'>
-					+
-				</a>
-				<ToolBar type='event' />
+				<div className='subnav no-list'>
+					<ToolBar type='event' />
+					<a
+						href='#event-info'
+						className='add-event'
+						onClick={() => setPopup(eventFormInfo)}>
+						+
+					</a>
+				</div>
 
-				{events.map((event) => (
-					<EventCard
-						category={event.category}
-						filter={event.filter}
-						start={event.startDate}
-						end={event.endDate}
-					/>
-				))}
+				{events &&
+					events.map((event) => (
+						<EventCard
+							category={event.category}
+							filter={event.filter}
+							start={event.startDate}
+							end={event.endDate}
+						/>
+					))}
 			</section>
 		</div>
 	);
@@ -78,6 +97,6 @@ EventBrowse.propTypes = {
 	getUserDashboard: PropTypes.func.isRequired,
 };
 
-export default connect(null, { getUserDashboard })(
+export default connect(null, { setPopup })(
 	redirectHOC(requireAuth(EventBrowse))
 );

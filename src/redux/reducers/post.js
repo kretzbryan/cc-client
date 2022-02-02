@@ -18,7 +18,6 @@ const initialState = {
 
 export default function (state = initialState, action) {
 	const { type, payload } = action;
-	console.log(type, payload);
 	let updatedPost;
 	switch (type) {
 		case EDIT_POST:
@@ -61,7 +60,6 @@ export default function (state = initialState, action) {
 			};
 
 		case GET_POSTS:
-			console.log('payload', payload);
 			return {
 				...state,
 				posts: [...payload],

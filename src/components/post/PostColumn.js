@@ -1,13 +1,11 @@
 import React, { Fragment } from 'react';
-import { getPosts } from '../../redux/actions/post';
 import CreatePostContainer from './CreatePostContainer';
 import PostContainer from './PostContainer';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 
-const PostColumn = ({ profileId, getPosts, posts, loading }) => {
-	console.log('posts', posts);
+const PostColumn = ({ posts, loading }) => {
 	return (
 		<Fragment>
 			<div className='post-section'>
@@ -26,14 +24,9 @@ const PostColumn = ({ profileId, getPosts, posts, loading }) => {
 	);
 };
 
-PostColumn.propTypes = {
-	getPosts: PropTypes.func.isRequired,
-	post: PropTypes.object.isRequired,
-};
-
 const mapStateToProps = (state) => ({
 	posts: state.post.posts,
 	loading: state.post.loading,
 });
 
-export default connect(mapStateToProps, { getPosts })(PostColumn);
+export default connect(mapStateToProps, null)(PostColumn);

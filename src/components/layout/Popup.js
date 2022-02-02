@@ -9,17 +9,17 @@ import EventForm from '../forms/EventForm';
 const Popup = ({ popup, clearForm }) => {
 	const handleFormShow = () => {
 		const { name } = popup;
-		if (name === 'add-event') return <EventForm />;
+		if (name === 'event-info') return <EventForm />;
 	};
 
 	return (
-		<div className='popup' id={popup.name}>
-			<div className='popup__content'>
+		<div className={`popup popup__${popup.name}`} id={popup.name}>
+			<div className={`popup__content ${popup.name}`}>
 				<div className='popup__header'>
 					<a href='#' className='popup__close' onClick={() => clearForm()}>
 						&times;
 					</a>
-					<h3 className='popup__header--text'>{popup.formHeader}</h3>
+					<h3 className='popup__header--text'>{popup.headerValue}</h3>
 				</div>
 				{handleFormShow()}
 				{/* {formName && <Form />} */}
@@ -29,7 +29,6 @@ const Popup = ({ popup, clearForm }) => {
 };
 
 Popup.propTypes = {
-	form: PropTypes.object.isRequired,
 	clearForm: PropTypes.func.isRequired,
 };
 

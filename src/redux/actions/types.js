@@ -34,3 +34,4 @@ export const UPDATE_PROFILE = 'UPDATE_PROFILE';
 export const SET_TAGS = 'SET_TAGS';
 export const SET_LOCATIONS = 'SET_LOCATIONS';
 export const SET_POPUP = 'SET_POPUP';
+export const CLEAR_LOCATION_RESULTS = 'CLEAR_LOCATION_RESULTS';

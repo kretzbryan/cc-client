@@ -1,18 +1,21 @@
 import axios from 'axios';
 const baseURL = process.env.REACT_APP_API_URL || '';
 
-const makeRequest = (method, pathname, data, authRequired) => {
+const makeRequest = async (method, pathname, data, authRequired) => {
 	const token = localStorage.getItem('authToken');
-	console.log('token', token);
 	const url = baseURL + pathname;
+
 	let headers = {
 		Accept: '*/*',
-		'content-type': 'application/json',
+		'Content-Type':
+			data instanceof FormData ? 'multipart/form-data' : 'application/json',
 	};
+	const body = data;
 	if (authRequired) headers = { ...headers, 'x-auth-token': token };
-
+	const response = await axios({ method, url, headers, data });
+	console.log('response', response);
 	console.log({ method, url, headers, data });
-	return axios({ method, url, headers, data });
+	return response;
 };
 
 export const get = (pathname, data, authRequired) =>

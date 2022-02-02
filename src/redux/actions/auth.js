@@ -11,6 +11,7 @@ import {
 } from './types';
 import { get, post, put, remove } from '../../utils/api';
 import { setRedirect } from './redirect';
+import { setPosts } from './post';
 
 export const loadUser = () => async (dispatch) => {
 	try {
@@ -18,9 +19,11 @@ export const loadUser = () => async (dispatch) => {
 		const res = await get('/api/data/user', {}, authRequired);
 		dispatch({
 			type: USER_LOADED,
-			payload: res.data,
+			payload: res.data.user,
 		});
+		dispatch(setPosts(res.data.user.posts));
 	} catch (err) {
+		console.log(err.message);
 		dispatch({
 			type: AUTH_DENIED,
 		});
@@ -67,17 +70,17 @@ export const login =
 			},
 		};
 
-		const body = JSON.stringify({ username, password });
-
 		try {
 			const authRequired = false;
-			const res = await post('/api/auth/login', body, authRequired).catch(
-				(err) => {
-					throw {
-						message: `In login response ${err.message}`,
-					};
-				}
-			);
+			const res = await post(
+				'/api/auth/login',
+				{ username, password },
+				authRequired
+			).catch((err) => {
+				throw {
+					message: `In login response ${err.message}`,
+				};
+			});
 			dispatch({
 				type: LOGIN_CONFIRMED,
 				payload: res.data,
@@ -85,11 +88,7 @@ export const login =
 			const { token } = res.data;
 			localStorage.setItem('authToken', token);
 			if (localStorage.getItem('authToken')) {
-				dispatch(setRedirect('/home')).catch((err) => {
-					throw {
-						message: `In setRedirect ${err.message}`,
-					};
-				});
+				dispatch(setRedirect('/home'));
 			}
 			// dispatch(loadUser());
 		} catch (err) {

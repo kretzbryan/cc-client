@@ -1,14 +1,8 @@
 .toolbar {
-	width: 80vw;
-	position: fixed;
-	top: 7rem;
-	right: 0;
-	height: 5rem;
-	padding: 1.5rem 7rem;
+	padding: 1.5rem 0;
 	display: flex;
 	justify-content: flex-end;
 	z-index: 5;
-	background: linear-gradient($background-color 80%, transparent);
 	@include respond(gfold-land) {
 		width: 70vw;
 	}
@@ -16,8 +10,17 @@
 	& .input__section {
 		display: inline-block;
 		margin-left: 1rem;
+
+		& input[type='date'] {
+			//display: none;
+			//-webkit-appearance: none;
+			width: 16rem;
+			padding: 0px;
+			margin: 0px;
+		}
 		& label {
 			margin-right: 0.5rem;
+			color: $background-color;
 		}
 	}
 }
