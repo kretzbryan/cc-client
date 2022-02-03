@@ -1,16 +1,6 @@
 .event__browse-container {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-	width: 80vw;
-	padding: 7rem max(5rem) 0;
-	position: fixed;
-	top: 7rem;
-	right: 0;
-	max-height: calc(100vh - 7rem);
-	overflow: scroll;
-	overflow-x: hidden;
-	background-color: transparent;
-	z-index: 10;
 
 	& .add-event {
 		// position: fixed;
@@ -36,4 +26,17 @@
 		grid-template-columns: repeat(2, 1fr);
 		width: 70vw;
 	}
+}
+.event__browse-container,
+.settings-container {
+	padding-top: 7rem;
+	width: calc(100vw - 21rem);
+	position: fixed;
+	top: 7rem;
+	right: 0;
+	height: calc(100vh - 7rem);
+	overflow: scroll;
+	overflow-x: hidden;
+	background-color: transparent;
+	z-index: 10;
 }

@@ -12,6 +12,11 @@ import DiscoverMain from '../components/discover/DiscoverMain';
 
 const Discover = (props) => {
 	const [window, setWindow] = useState('people');
+	const searchAction = () => {
+		if (window === 'people') {
+			return () => null;
+		}
+	};
 	return (
 		<div className='row main__container'>
 			<section className='column-secondary'>
@@ -22,7 +27,7 @@ const Discover = (props) => {
 			<section className='event__browse-container'>
 				<DiscoverSubnav window={window} setWindow={setWindow} />
 				{/* <ToolBar type='general' /> */}
-				<DiscoverMain />
+				<DiscoverMain window={window} />
 				<UserCardMobile />
 			</section>
 		</div>

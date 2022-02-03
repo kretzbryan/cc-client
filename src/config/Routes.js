@@ -13,6 +13,7 @@ import Connections from '../pages/Connections';
 import Notifications from '../pages/Notifications';
 import Following from '../pages/Following';
 import Discover from '../pages/Discover';
+import EditProfile from '../pages/EditProfile';
 
 const Routes = () => {
 	return (
@@ -25,6 +26,7 @@ const Routes = () => {
 			<Route path='/dashboard/notifications' component={Notifications} />
 			<Route path='/dashboard/following' component={Following} />
 			<Route path='/dashboard/discover' component={Discover} />
+			<Route path='/dashboard/edit-profile' component={EditProfile} />
 			<Route path='/browse' component={ProfileBrowse} />
 			<Route exact path='/gig' component={GigBrowse} />
 			<Route path='/gig/:id' component={GigDetail} />

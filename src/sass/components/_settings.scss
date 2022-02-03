@@ -1,0 +1,41 @@
+.settings {
+	&-general {
+		display: inline-block;
+		width: 65rem;
+		padding-top: 2rem;
+		padding-left: 2rem;
+
+		& header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			border-bottom: 2px solid $color-blue-dark-1;
+			padding-bottom: 1rem;
+			margin-bottom: 1rem;
+			padding-right: 1rem;
+		}
+	}
+	&-item {
+		display: grid;
+		grid-template-columns: 12rem auto;
+		align-items: end;
+		margin-bottom: 1.5rem;
+		padding-bottom: 1rem;
+		border-bottom: 1px solid black;
+
+		& .name {
+			display: inline-block;
+			& label {
+				display: block;
+				margin-bottom: 0.25rem;
+			}
+		}
+		& span {
+			margin-bottom: 0.25rem;
+		}
+
+		& input {
+			margin-right: 1rem;
+		}
+	}
+}

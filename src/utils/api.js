@@ -5,11 +5,15 @@ const makeRequest = async (method, pathname, data, authRequired) => {
 	const token = localStorage.getItem('authToken');
 	const url = baseURL + pathname;
 
-	let headers = {
-		Accept: '*/*',
-		'Content-Type':
-			data instanceof FormData ? 'multipart/form-data' : 'application/json',
-	};
+	let headers;
+	if (data instanceof FormData) {
+		headers = data.getHeaders;
+	} else {
+		headers = {
+			Accept: '*/*',
+			'Content-Type': 'application/json',
+		};
+	}
 	const body = data;
 	if (authRequired) headers = { ...headers, 'x-auth-token': token };
 	const response = await axios({ method, url, headers, data });

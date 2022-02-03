@@ -8,6 +8,7 @@ import {
 	LOGIN_DENIED,
 	LOGOUT,
 	CLEAR_PROFILE,
+	EDIT_USER_FIELD,
 } from './types';
 import { get, post, put, remove } from '../../utils/api';
 import { setRedirect } from './redirect';
@@ -104,7 +105,36 @@ export const login =
 	};
 
 export const logout = () => async (dispatch) => {
-	localStorage.removeItem('token');
+	localStorage.removeItem('authToken');
 	dispatch({ type: LOGOUT });
 	dispatch({ type: CLEAR_PROFILE });
 };
+
+export const editUserField = (key, value) => (dispatch) => {
+	dispatch({
+		type: EDIT_USER_FIELD,
+		payload: { key, value },
+	});
+};
+
+// export const checkUniqueUserField = (key, value) => async (dispatch) => {
+// 	try {
+// 		const authRequired = true;
+// 		const res = await post(
+// 			`/api/data/user/check-unique-field`,
+// 			{ key, value },
+// 			authRequired
+// 		);
+
+// 		if(res.data.unique) {
+
+// 		}
+
+// 		// dispatch({
+// 		// 	type: CHECK_UNIQUE_USER_FIELD,
+// 		// 	payload: { key, value },
+// 		// });
+// 	} catch (err) {
+// 		console.log(err.message);
+// 	}
+// };

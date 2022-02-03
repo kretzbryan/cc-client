@@ -9,6 +9,7 @@
 	border-radius: 0;
 	height: 22rem;
 	display: flex;
+	flex-direction: column;
 
 	&-mobile {
 		margin: 3rem auto;
@@ -67,13 +68,13 @@
 		transform: translateY(-50%);
 		margin: 0 auto;
 		&-container {
-			height: 17.5rem;
-			width: 15rem;
+			height: 12.5rem;
+			width: 12rem;
 			position: absolute;
-			top: 50%;
+			top: 2rem;
 			left: 50%;
 			border-radius: 100%;
-			transform: translate(-50%, -50%);
+			transform: translateX(-50%);
 			display: flex;
 			opacity: 0;
 			transition: all 0.5s;
@@ -85,12 +86,12 @@
 	}
 
 	&__image {
-		height: 17.5rem;
-		width: 15rem;
+		height: 12.5rem;
+		width: 12rem;
 		object-fit: cover;
 		border-radius: 100%;
 		display: block;
-		margin: 3rem auto;
+		margin: 2rem auto 1rem;
 		transition: all 0.5s;
 
 		&:hover {
@@ -166,4 +167,19 @@
 			}
 		}
 	}
+}
+
+.user-info {
+	& span {
+		display: inline-block;
+
+		width: 100%;
+	}
+	& .location,
+	& .occupation {
+		font-size: 1.2rem;
+		color: rgba($color-blue-dark-1, 0.8);
+	}
+	padding-bottom: 1rem;
+	padding-left: 1.5rem;
 }

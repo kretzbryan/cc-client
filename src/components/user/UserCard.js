@@ -18,11 +18,16 @@ const UserCard = () => {
 					</a>
 					<a
 						className='edit__modal__anchor user-card__anchor'
-						href='#'
+						href='/dashboard/edit-profile'
 						data-toggle='modal'
 						data-target='#editModal'>
 						<p className='user-card__options'>edit profile</p>
 					</a>
+				</div>
+				<div className='user-info'>
+					<span className='name'>Bryan Kretz</span>{' '}
+					<span className='location'>San Francisco, Bay Area, Ca</span>{' '}
+					<span className='occupation'>Aerialist/Generalist</span>
 				</div>
 			</section>
 		</Fragment>

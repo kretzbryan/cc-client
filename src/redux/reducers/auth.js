@@ -6,6 +6,7 @@ import {
 	LOGIN_CONFIRMED,
 	LOGIN_DENIED,
 	LOGOUT,
+	EDIT_USER_FIELD,
 } from '../actions/types';
 
 const initialState = {
@@ -24,6 +25,14 @@ export default function (state = initialState, action) {
 				isAuthenticated: true,
 				loading: false,
 				user: payload,
+			};
+		case EDIT_USER_FIELD:
+			return {
+				...state,
+				user: {
+					...state.user,
+					[payload.key]: payload.value,
+				},
 			};
 		case REGISTER_CONFIRMED:
 			return {
