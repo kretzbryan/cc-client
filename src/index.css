@@ -283,7 +283,7 @@ section.card {
   background-color: #dce7fa;
   padding: 0 3rem;
   overflow: scroll;
-  width: 50vw;
+  width: calc(65vw - 21rem);
 }
 @media only screen and (max-width: 43.75em) {
   .column-primary {
@@ -314,9 +314,9 @@ section.card {
 .column-tertiary {
   height: 93vh;
   overflow: scroll;
-  width: 30vw;
+  width: 35vw;
   margin: 0;
-  padding: 3rem 2rem 0;
+  padding: 3rem 18rem 0 2rem;
   background-color: #dce7fa;
 }
 @media only screen and (max-width: 43.75em) {

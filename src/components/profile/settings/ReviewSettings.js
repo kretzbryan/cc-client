@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as EmailValidator from 'email-validator';
@@ -30,9 +30,7 @@ const ReviewSettings = ({
 		username: '',
 		email: '',
 	});
-	const [locationDisplay, setLocationDisplay] = useState(
-		user.location ? user.location.formatted_address : ''
-	);
+	const [locationDisplay, setLocationDisplay] = useState('');
 
 	const handleAlert = (name) => {
 		return uniqueAlerts[name] ? (
@@ -143,6 +141,12 @@ const ReviewSettings = ({
 			);
 		}
 	};
+
+	useEffect(() => {
+		if (user.location && user.location.address) {
+			setLocationDisplay(user.location.address);
+		}
+	}, []);
 	return <>{user ? handleWindow() : null}</>;
 };
 
