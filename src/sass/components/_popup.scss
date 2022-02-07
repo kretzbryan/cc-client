@@ -48,7 +48,11 @@
 			& .form {
 				display: flex;
 				flex-direction: column;
-				padding-top: 0;
+				& button {
+					width: 18rem;
+					padding: 0.75rem;
+					border-radius: 50px;
+				}
 				&__row {
 					display: flex;
 					align-items: flex-start;

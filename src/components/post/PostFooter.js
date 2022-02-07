@@ -44,14 +44,14 @@ const PostFooter = ({
 						name='text'
 						placeholder='Add a comment...'
 						value={commentData.text}
-						cols={50}
-						rows={1}
+						// cols={50}
+						// rows={1}
 						onChange={handleChange}
 						required>
 						{' '}
 					</textarea>
 					<button type='submit' value='Add Comment'>
-						Add Comment
+						Submit
 					</button>
 				</form>
 			</div>

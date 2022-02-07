@@ -5,11 +5,14 @@ import Form from '../forms/Form';
 import { clearForm } from '../../redux/actions/form';
 import popup from '../../redux/reducers/popup';
 import EventForm from '../forms/EventForm';
+import ProfileRequestForm from '../forms/ProfileRequestForm';
 
 const Popup = ({ popup, clearForm }) => {
 	const handleFormShow = () => {
 		const { name } = popup;
 		if (name === 'event-info') return <EventForm />;
+		if (name === 'connect') return <ProfileRequestForm connect={true} />;
+		if (name === 'send-message') return <ProfileRequestForm />;
 	};
 
 	return (

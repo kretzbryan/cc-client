@@ -32,8 +32,8 @@ const ProfileDetail = ({
 	}, []);
 
 	return (
-		<div className='row main__container'>
-			<div className='column-secondary'>
+		<div className='row main__container user-profile'>
+			<div className='user-info'>
 				{!loading && <ProfileCard />}
 				<GigNav2 />
 			</div>

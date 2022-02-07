@@ -76,7 +76,24 @@
 
 		& textarea {
 			border-radius: 2rem;
-			padding: 0.5rem 1rem;
+			padding: 1rem 1rem;
+			width: 100%;
+			margin-bottom: 0.5rem;
+
+			&::placeholder {
+				line-height: 1.5rem;
+			}
+		}
+		& button {
+			position: relative;
+			left: 100%;
+			transform: translateX(-100%);
+			border-radius: 50px;
+			padding: 0.5rem 1.25rem;
+			background-color: $color-offwhite;
+			border: 1px solid $color-blue-dark-1;
+			color: $color-blue-dark-1;
+			font-weight: 500;
 		}
 
 		& input {

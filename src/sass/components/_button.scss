@@ -1,6 +1,6 @@
 .btn.btn-primary {
 	background-color: $color-white;
-	color: $color-red;
+	color: $color-blue-dark-1;
 	border: none;
 	display: block;
 	margin: 0 auto;
@@ -14,8 +14,7 @@
 
 .btn.btn-primary:hover {
 	background-color: $color-white;
-	color: $color-red;
-	border: 1px solid $color-red;
+	border: 1px solid $color-blue-dark-1;
 }
 
 .dashboard-btn {

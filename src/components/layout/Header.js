@@ -35,7 +35,7 @@ const Header = ({
 					</li>
 				)}
 				<li className='nav-item'>
-					<a className='nav-link' href='/browse'>
+					<a className='nav-link' href='/browse-profile'>
 						Browse Profiles
 					</a>
 				</li>
