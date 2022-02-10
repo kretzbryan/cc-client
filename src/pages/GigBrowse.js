@@ -7,6 +7,7 @@ import UserCard from '../components/user/UserCard';
 import GigColumn from '../components/gig/GigColumn';
 import requireAuth from '../components/hoc/AuthComponent';
 import redirectHOC from '../components/hoc/RedirectHOC';
+import DashboardNav from '../components/user/dashboard/DashboardNav';
 
 const GigBrowse = ({ getRecentGigs, authLoading, user }) => {
 	useEffect(() => {
@@ -15,7 +16,10 @@ const GigBrowse = ({ getRecentGigs, authLoading, user }) => {
 
 	return (
 		<div className='row main__container'>
-			<div className='column-secondary'>{!authLoading && <UserCard />}</div>
+			<div className='column-secondary'>
+				{!authLoading && <UserCard />}
+				<DashboardNav />
+			</div>
 			<div className='column-primary'>
 				<GigColumn />
 			</div>

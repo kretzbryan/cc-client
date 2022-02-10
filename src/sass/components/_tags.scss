@@ -1,0 +1,38 @@
+.tag {
+	&-row {
+		& .form__group.tag-search {
+			padding-left: 1rem;
+			margin-right: 0;
+		}
+
+		& .add-tag {
+			margin-bottom: 1.25rem;
+			border-radius: 100%;
+			margin-left: calc(7% - 3.35rem);
+		}
+	}
+}
+
+.tags {
+	align-self: flex-start;
+
+	& span {
+		display: inline-block;
+		border-radius: 50px;
+		padding: 0.5rem 0.25rem 0.5rem 1.25rem;
+		background-color: $color-blue-light-2;
+		color: #fff;
+		font-size: 1.5rem;
+		margin: 1rem 0.5rem;
+	}
+
+	& button {
+		transform: rotate(45deg);
+		background-color: transparent;
+		font-weight: 600;
+		border: none;
+		color: #fff;
+		font-size: 1.75rem;
+		// padding: 0 0 auto 0;
+	}
+}

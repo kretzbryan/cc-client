@@ -1,13 +1,24 @@
-import { SET_ALERT, REMOVE_ALERT } from '../actions/types';
+import {
+	SET_ALERT,
+	REMOVE_ALERT,
+	SET_TAGS,
+	CLEAR_TAGS,
+} from '../actions/types';
 
-const initialState = [];
+const initialState = {
+	tags: [],
+	loading: false,
+};
 
 export default function (state = initialState, action) {
 	switch (action.type) {
-		case SET_ALERT:
-			return [...state, action.payload];
-		case REMOVE_ALERT:
-			return state.filter((alert) => alert.id !== action.payload);
+		case SET_TAGS:
+			return {
+				...state,
+				tags: action.payload,
+			};
+		case CLEAR_TAGS:
+			return initialState;
 		default:
 			return state;
 	}

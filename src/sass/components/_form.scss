@@ -1,5 +1,5 @@
 .form {
-	height: 80%;
+	height: calc(100% - 8rem);
 	width: 100%;
 	margin: 0 auto;
 	position: relative;
@@ -130,6 +130,7 @@
 		& input[type='file'] {
 			width: 27rem;
 			display: flex;
+			background-color: transparent;
 		}
 		& .autofill-container {
 			margin: 0 auto;
@@ -190,7 +191,6 @@
 		border-radius: 3px;
 		border: none;
 		width: 20rem;
-		height: 3rem;
 		border-bottom: 2px solid transparent;
 		display: block;
 		margin: auto;

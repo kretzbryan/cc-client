@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { getTags } from '../../redux/actions/tags';
-import {
-	clearLocationResults,
-	getLocations,
-} from '../../redux/actions/location';
+import { clearTags, getTags } from '../../redux/actions/tags';
+import { getLocations } from '../../redux/actions/location';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { post } from '../../utils/api';
+import FormGroup from './FormGroup';
+import LocationInput from './LocationInput';
+import ImageInput from './ImageInput';
+import TagInput from './TagInput';
 
 const EventForm = ({
 	tags,
 	getTags,
 	getLocations,
-	results,
+	locationResults,
 	loading,
-	clearLocationResults,
+	clearTags,
 }) => {
 	const [data, setData] = useState({
 		title: '',
@@ -45,39 +46,39 @@ const EventForm = ({
 				...data,
 				[e.target.name]: e.target.value,
 			});
-			if (name === 'imageFile') {
-				console.log('files', files[0]);
-				const imageFile = files[0];
-				let body = new FormData();
-
-				body.append('imageFile', imageFile);
-				console.log('body', body.get('imageFile'));
-				handleUploadImage(body);
-			}
-			if (name === 'tagInput' && value.length > 2) {
-				getTags(value);
-			}
-			if (name === 'mapInput' && value.length > 2) {
-				getLocations(value);
+			if (value.length > 2) {
+				// if (name === 'tagInput') {
+				// 	getTags(value);
+				// }
+				if (name === 'mapInput') {
+					getLocations(value);
+				}
 			}
 		} catch (err) {
 			console.log(err.message);
 		}
 	};
 
-	const handleUploadImage = async (imageFile) => {
-		console.log('file', imageFile.get('imageFile'));
-		try {
-			const authRequired = true;
-			const res = await post('/api/data/image/upload', imageFile, authRequired);
-			console.log(res.data);
-		} catch (err) {
-			console.log(err.message);
-		}
+	const handleTagField = (tag, handleType) => {
+		const newArray =
+			handleType === 'add'
+				? [...data.tags, tag]
+				: data.tags.filter((tagItem) => tagItem._id !== tag._id);
+		setData({
+			...data,
+			tags: newArray,
+
+			tagInput: '',
+		});
+		clearTags();
 	};
 
 	const setLocation = (index) => {
-		const { geometry, name, formatted_address: address } = results[index];
+		const {
+			geometry,
+			name,
+			formatted_address: address,
+		} = locationResults[index];
 		let { location } = geometry;
 		location = {
 			...location,
@@ -89,156 +90,95 @@ const EventForm = ({
 			location,
 			mapInput: address,
 		});
-		clearLocationResults();
 	};
 
-	const returnResults = () => {
-		return results.map((result, index) => {
-			return (
-				<div className='result' onClick={() => setLocation(index)}>
-					{`${result.name} ${result.formatted_address}`}
-				</div>
-			);
-		});
-	};
-
-	const handleLocationResults = () => {
-		if (loading) {
-			return <Spinner />;
-		} else if (results.length) {
-			return returnResults();
-		} else {
-			return null;
-		}
-	};
-
-	const onSubmit = (e) => {
+	const onSubmit = async (e) => {
 		console.log('Submitted');
 		e.preventDefault();
+		try {
+		} catch (err) {
+			console.log(err.message);
+		}
 	};
 
 	return (
 		<>
-			<form onSubmit={onSubmit} className={`form`} autoComplete='off'>
+			<form className={`form`} autoComplete='off'>
 				<div className='form__row'>
-					<div className='form__group'>
-						<label htmlFor='title' className={'form__label'}>
-							Title:
-						</label>
-						<input
-							type='text'
-							name='title'
-							value={data.title}
-							className={'form__input'}
-							onChange={handleChange}
-						/>
-					</div>
-					<div className='form__group'>
-						<label htmlFor='mapInput' className={'form__label'}>
-							Location:
-						</label>
-						<input
-							type='text'
-							name='mapInput'
-							value={data.mapInput}
-							className={'form__input'}
-							onChange={handleChange}
-						/>
-						<div className='autofill-container'>{handleLocationResults()}</div>
-					</div>
+					<FormGroup
+						inputValue={data.title}
+						inputName='title'
+						classNames={null}
+						inputType='text'
+						label='Title'
+						handleInputChange={handleChange}
+					/>
+					<LocationInput
+						setLocation={setLocation}
+						inputValue={data.mapInput}
+						handleInputChange={handleChange}
+					/>
 				</div>
 
-				<div className='form__row'>
-					<div className='form__group text-area'>
-						<label htmlFor='description' className={'form__label'}>
-							Description:
-						</label>
-						<textarea
-							name='description'
-							cols='30'
-							rows='10'
-							value={data.description}
-							onChange={handleChange}></textarea>
-					</div>
-					<div className='form__group image'>
-						<label htmlFor='imageFile' className={'form__label'}>
-							Image:
-						</label>
-						<input
-							type='file'
-							name='imageFile'
-							value={data.imageFile}
-							onChange={handleChange}
-						/>
-					</div>
+				<div className='form__row description'>
+					<FormGroup
+						inputValue={data.description}
+						inputName='description'
+						classNames='text-area'
+						inputType='text-area'
+						label='Description'
+						handleInputChange={handleChange}
+					/>
+
+					<ImageInput inputValue={data.imageFile} />
 				</div>
 				<div className='form__row'>
-					<div className='form__group'>
-						<label htmlFor='title' className={'form__label'}>
-							Start Date:
-						</label>
-						<input
-							type='date'
-							placeholder='Start Date'
-							name='startDate'
-							value={data.startDate}
-							className={'form__input'}
-							onChange={handleChange}
-						/>
-					</div>
-					<div className='form__group'>
-						<label htmlFor='startDate' className={'form__label'}>
-							Start Time:
-						</label>
-						<input
-							type='time'
-							placeholder='Start Time'
-							name='startTime'
-							value={data.startTime}
-							className={'form__input'}
-							onChange={handleChange}
-						/>
-					</div>
+					<FormGroup
+						inputValue={data.startDate}
+						inputName='startDate'
+						classNames={null}
+						inputType='date'
+						label='Start Date'
+						handleInputChange={handleChange}
+					/>
+
+					<FormGroup
+						inputValue={data.startTime}
+						inputName='startTime'
+						classNames={null}
+						inputType='time'
+						label='Start Time'
+						handleInputChange={handleChange}
+					/>
 				</div>
 				<div className='form__row'>
-					<div className='form__group'>
-						<label htmlFor='endDate' className={'form__label'}>
-							End Date:
-						</label>
-						<input
-							type='date'
-							value={data.endDate}
-							name='endDate'
-							className={'form__input'}
-							onChange={handleChange}
-						/>
-					</div>
-					<div className='form__group'>
-						<label htmlFor='endTime' className={'form__label'}>
-							End Time
-						</label>
-						<input
-							type='time'
-							name='endTime'
-							value={data.endTime}
-							className={'form__input'}
-							onChange={handleChange}
-						/>
-					</div>
+					<FormGroup
+						inputValue={data.endDate}
+						inputName='endDate'
+						classNames={null}
+						inputType='date'
+						label='End Date'
+						handleInputChange={handleChange}
+					/>
+
+					<FormGroup
+						inputValue={data.endTime}
+						inputName='endTime'
+						classNames={null}
+						inputType='time'
+						label='End Time'
+						handleInputChange={handleChange}
+					/>
 				</div>
-				<div className='form__row'>
-					<div className='form__group'>
-						<label htmlFor='tagInput' className={'form__label'}>
-							Tags:
-						</label>
-						<input
-							type='text'
-							name='tagInput'
-							value={data.tagInput}
-							className={'form__input'}
-							onChange={handleChange}
-						/>
-					</div>
+
+				<div className='form__row tag-row'>
+					<TagInput
+						inputValue={data.tagInput}
+						addTag={null}
+						handleInputChange={handleChange}
+						handleTagField={handleTagField}
+						addedTags={data.tags}
+					/>
 				</div>
 				<button type='submit' className={`btn btn-primary`}>
 					Submit
@@ -249,14 +189,13 @@ const EventForm = ({
 };
 
 EventForm.propTypes = {};
+
 const mapStateToProps = (state) => ({
-	tags: state.tags,
-	results: state.location.results,
-	loading: state.location.loading,
+	locationResults: state.location.results,
 });
 
 export default connect(mapStateToProps, {
 	getLocations,
 	getTags,
-	clearLocationResults,
+	clearTags,
 })(EventForm);

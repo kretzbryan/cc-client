@@ -8,7 +8,7 @@ export const dashboardButtonData = [
 	},
 	{
 		index: 2,
-		path: null,
+		path: '/messages',
 		classNames: 'dashboard-btn',
 		icon: 'fas dashboard-icon fa-envelope-open',
 		buttonText: 'Messages',
@@ -22,7 +22,7 @@ export const dashboardButtonData = [
 	},
 	{
 		index: 4,
-		path: null,
+		path: '/gig',
 		classNames: 'dashboard-btn',
 		icon: 'fas dashboard-icon fa-money-bill-alt',
 		buttonText: 'Gigs',
@@ -57,7 +57,7 @@ export const dashboardButtonData = [
 	},
 	{
 		index: 9,
-		path: null,
+		path: '/dashboard/edit-profile',
 		classNames: 'dashboard-btn',
 		icon: 'fas dashboard-icon fa-cogs',
 		buttonText: 'Settings',
