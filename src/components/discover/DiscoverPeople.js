@@ -18,6 +18,7 @@ const DiscoverPeople = ({ people, setDiscover }) => {
 				? people.map((person) => {
 						return (
 							<BrowseProfileCard
+								id={person._id}
 								firstName={person.firstName}
 								lastName={person.lastName}
 								location={person.location}

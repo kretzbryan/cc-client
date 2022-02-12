@@ -40,8 +40,8 @@ const ProfileRequestForm = ({ profile, toggleForm, connect }) => {
 				}
 			} else {
 				res = await post(
-					'/api/data/new-message-thread',
-					{ message: formData },
+					'/api/data/message/new-message-thread',
+					{ message: { ...formData, messageType: 'direct' } },
 					authRequired
 				);
 			}

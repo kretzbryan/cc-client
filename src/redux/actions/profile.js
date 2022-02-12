@@ -1,4 +1,5 @@
 import { get, post, put, remove } from '../../utils/api';
+import { setFeed } from './feed';
 import { setPosts } from './post';
 import {
 	GET_PROFILE,
@@ -13,9 +14,9 @@ export const getUserDashboard = () => async (dispatch) => {
 		const res = await get('/api/data/user', {}, authRequired);
 		dispatch({
 			type: GET_PROFILE,
-			payload: res.data,
+			payload: res.data.user,
 		});
-		dispatch(setPosts(res.data.user.posts));
+		dispatch(setFeed(res.data.user.posts));
 	} catch (err) {
 		dispatch({
 			type: PROFILE_ERROR,
@@ -25,13 +26,17 @@ export const getUserDashboard = () => async (dispatch) => {
 };
 
 export const getUserProfile = (id) => async (dispatch) => {
+	console.log('id', id);
 	try {
 		const authRequired = true;
 		const res = await get(`/api/data/profile/${id}`, {}, authRequired);
+		console.log(res.data);
 		dispatch({
 			type: GET_PROFILE,
 			payload: res.data,
 		});
+
+		dispatch(setFeed(res.data.posts));
 	} catch (err) {
 		dispatch({
 			type: PROFILE_ERROR,

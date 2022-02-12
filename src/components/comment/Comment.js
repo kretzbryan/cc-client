@@ -9,6 +9,7 @@ import image from '../../images/default.png';
 
 const Comment = ({ comment, loading, postId, deletePostComment }) => {
 	const { _id, text, name, createdBy, createdAt } = comment;
+	console.log('comment', comment);
 	const { firstName, lastName } = createdBy;
 	const [commentFormOpen, setCommentFormOpen] = useState(false);
 

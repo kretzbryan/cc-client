@@ -15,6 +15,7 @@ import { getUserPosts } from '../redux/actions/post';
 import Popup from '../components/layout/Popup';
 import requireAuth from '../components/hoc/AuthComponent';
 import redirectHOC from '../components/hoc/RedirectHOC';
+import useCheckPathname from '../hooks/useCheckPathname';
 
 const ProfileDetail = ({
 	getUserProfile,
@@ -23,23 +24,29 @@ const ProfileDetail = ({
 	profile: { profile, loading },
 	match,
 }) => {
+	const { profileDetail, editProfile } = useCheckPathname(
+		window.location.pathname
+	);
+
 	let { id } = useParams();
 	console.log('match.params.id', match.params.id.toString());
 
 	useEffect(() => {
 		getUserProfile(id);
-		getUserPosts(match.params.id);
+
+		console.log('window', window.location);
+		// getUserPosts(match.params.id);
 	}, []);
 
 	return (
 		<div className='row main__container user-profile'>
 			<div className='user-info'>
-				{!loading && <ProfileCard />}
+				{!loading && <ProfileCard profile={profile} />}
 				<GigNav2 />
 			</div>
 			<div className='column-primary'>
 				<UserCardMobile />
-				<PostColumn />
+				<PostColumn items={profile && profile.posts} loading={loading} />
 			</div>
 			<div className='column-tertiary'>
 				<GigNav1 />

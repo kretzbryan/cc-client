@@ -62,12 +62,12 @@ body {
 /* All pages except the landing page are contained within this container */
 .row.main__container {
 	width: 100vw;
-	height: 92vh;
+	height: calc(100vh - 7rem);
 	display: flex;
 	margin: 0 auto;
 	padding: 0;
 	position: fixed;
-	top: 8vh;
+	top: 7rem;
 	&.landing {
 		width: 100vw;
 		height: 90vh;

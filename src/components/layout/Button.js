@@ -1,7 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Button = ({ classNames, buttonText, icon, path }) => {
+const Button = ({
+	classNames,
+	buttonText,
+	icon,
+	path,
+	itemReference,
+	itemAmount,
+	setWindow,
+}) => {
 	return (
 		<div>
 			{path ? (
@@ -9,10 +17,14 @@ const Button = ({ classNames, buttonText, icon, path }) => {
 					<button type='button' className={`btn ${classNames}`}>
 						{icon}
 						{buttonText}
+						{!!itemAmount && <span className='item-amount'>{itemAmount}</span>}
 					</button>
 				</Link>
 			) : (
-				<button type='button' className={`btn ${classNames}`}>
+				<button
+					onClick={setWindow}
+					type='button'
+					className={`btn ${classNames}`}>
 					{icon}
 					{buttonText}
 				</button>

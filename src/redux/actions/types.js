@@ -41,3 +41,7 @@ export const CLEAR_DISCOVER = 'CLEAR_DISCOVER';
 export const EDIT_USER_FIELD = 'EDIT_USER_FIELD';
 export const CHECK_UNIQUE_USER_FIELD = 'CHECK_UNIQUE_USER_FIELD';
 export const CLEAR_TAGS = 'CLEAR_TAGS ';
+export const SET_FEED = 'SET_FEED';
+export const EDIT_FEED_ITEM = 'EDIT_FEED_ITEM';
+export const ADD_FEED_ITEM = 'ADD_FEED_ITEM';
+export const SET_MESSAGES = 'SET_MESSAGES';

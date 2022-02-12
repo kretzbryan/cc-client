@@ -1,14 +1,15 @@
 import React, { Fragment, useState, setState, useEffect } from 'react';
-import { addPost, editPost } from '../../redux/actions/post';
+import { editPost } from '../../redux/actions/post';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { addFeedPost } from '../../redux/actions/feed';
 
-const AddPostForm = ({ toggleForm, addPost }) => {
+const AddPostForm = ({ toggleForm, addFeedPost }) => {
 	const [text, setText] = useState();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		addPost({ text, postType: 'self' });
+		addFeedPost({ text, postType: 'self' });
 		toggleForm();
 	};
 
@@ -46,7 +47,7 @@ const AddPostForm = ({ toggleForm, addPost }) => {
 };
 
 AddPostForm.propTypes = {
-	addPost: PropTypes.func.isRequired,
+	addFeedPost: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addPost, editPost })(AddPostForm);
+export default connect(null, { addFeedPost, editPost })(AddPostForm);

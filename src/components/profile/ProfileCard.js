@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import defaultImage from '../../images/default.png';
 import { setPopup } from '../../redux/actions/popup';
 
-const ProfileCard = ({ profile: { profile }, setPopup }) => {
+const ProfileCard = ({ profile, setPopup }) => {
 	const { firstName, lastName, location, occupation } = profile;
 	const connectFormInfo = {
 		name: 'connect',
@@ -19,7 +19,7 @@ const ProfileCard = ({ profile: { profile }, setPopup }) => {
 		submitAction: null,
 	};
 
-	return (
+	return profile ? (
 		<Fragment>
 			<section className='card profile-card'>
 				<img src={defaultImage} alt='' className='profile-card__image' />
@@ -41,7 +41,7 @@ const ProfileCard = ({ profile: { profile }, setPopup }) => {
 				</section>
 			</section>
 		</Fragment>
-	);
+	) : null;
 };
 
 ProfileCard.propTypes = {
@@ -49,7 +49,7 @@ ProfileCard.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-	profile: state.profile,
+	profile: state.profile.profile,
 });
 
 export default connect(mapStateToProps, { setPopup })(ProfileCard);

@@ -83,12 +83,12 @@ body::-webkit-scrollbar {
 /* All pages except the landing page are contained within this container */
 .row.main__container {
   width: 100vw;
-  height: 92vh;
+  height: calc(100vh - 7rem);
   display: flex;
   margin: 0 auto;
   padding: 0;
   position: fixed;
-  top: 8vh;
+  top: 7rem;
 }
 .row.main__container.landing {
   width: 100vw;
@@ -270,7 +270,7 @@ section.card {
 
 .column-profile, .column-primary, .column-tertiary, .column-secondary {
   overflow: scroll;
-  height: 93vh;
+  height: 100%;
 }
 .column-profile::-webkit-scrollbar, .column-primary::-webkit-scrollbar, .column-tertiary::-webkit-scrollbar, .column-secondary::-webkit-scrollbar {
   display: none;
@@ -281,9 +281,18 @@ section.card {
 }
 .column-primary {
   background-color: #dce7fa;
-  padding: 0 3rem;
   overflow: scroll;
-  width: calc(65vw - 21rem);
+  width: calc(100vw - 25rem);
+  display: flex;
+  gap: 8rem;
+  padding-left: 8rem;
+}
+@media only screen and (max-width: 75em) {
+  .column-primary {
+    gap: 3rem;
+    padding: 0 3rem;
+    display: block;
+  }
 }
 @media only screen and (max-width: 43.75em) {
   .column-primary {
@@ -296,10 +305,10 @@ section.card {
   }
 }
 .column-secondary {
-  width: 21rem;
+  width: 25rem;
   background: linear-gradient(to bottom right, #1e53a8, #6c99e1);
   box-shadow: 0 2rem 2rem 0 rgba(0, 0, 0, 0.15);
-  height: 93vh;
+  height: 100%;
 }
 @media only screen and (max-width: 43.75em) {
   .column-secondary {
@@ -381,10 +390,16 @@ footer.footer h5 {
 }
 
 .card.media-card {
-  width: 100%;
+  width: 30rem;
   height: 50rem;
   border-radius: 15px;
   box-shadow: 0 1rem 1rem 0 rgba(0, 0, 0, 0.15);
+  margin-top: 3rem;
+}
+@media only screen and (max-width: 75em) {
+  .card.media-card {
+    display: none;
+  }
 }
 .card.media-card__title {
   padding-left: 1rem;
@@ -482,6 +497,19 @@ div.modal-body {
 
 button.dashboard-btn {
   height: 4rem;
+  position: relative;
+}
+button.dashboard-btn span {
+  position: absolute;
+  top: 0.5rem;
+  display: inline-block;
+  background-color: red;
+  height: 1.5rem;
+  width: 1.5rem;
+  text-align: center;
+  letter-spacing: 1.5px;
+  line-height: 1.5rem;
+  border-radius: 100%;
 }
 
 /* Current Users profile card */
@@ -1758,6 +1786,144 @@ a.content-options__link:hover {
   border: none;
   color: #fff;
   font-size: 1.75rem;
+}
+
+.message-body {
+  padding: 0.5rem 0;
+  margin-bottom: 0.75rem;
+}
+.message-body__container {
+  max-height: 30rem;
+  overflow-y: scroll;
+}
+.message-body__container::-webkit-scrollbar {
+  /* width */
+  width: 5px;
+  /* Track */
+  /* Handle */
+  /* Handle on hover */
+}
+.message-body__container::-webkit-scrollbar-thumb {
+  background: rgba(0, 128, 255, 0.8);
+}
+.message-body__container::-webkit-scrollbar-thumb:hover {
+  background: #0080ff;
+}
+.message-body h5 span {
+  margin-bottom: 0rem;
+  margin-top: 0.75rem;
+  border-bottom: 1px solid black;
+}
+.message-body h5.right {
+  text-align: end;
+}
+.message-body h5.right span {
+  margin-right: 0.1rem;
+  padding: 0 0.5rem 0.25rem 1.25rem;
+}
+.message-body h5.left span {
+  margin-left: 0.1rem;
+  padding: 0 1.25rem 0.25rem 0.5rem;
+}
+.message-body p {
+  margin-top: 1rem;
+  padding-left: 2.75rem;
+}
+.message-thread__container {
+  margin-top: 3rem;
+}
+.message-thread__container .thread {
+  width: 80rem;
+  background-color: #fbf9fa;
+  padding: 1rem 2rem;
+  display: grid;
+  grid-template-columns: 6rem 12rem 12rem auto;
+  align-items: center;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+}
+.message-thread__container .thread.expanded {
+  z-index: 100;
+}
+.message-thread__container .thread-view {
+  position: absolute;
+  width: 100%;
+  top: -3px;
+  background-color: #fbf9fa;
+  z-index: 10000;
+  border-radius: 3px;
+}
+.message-thread__container .thread-view .main {
+  display: grid;
+  grid-template-rows: auto 5rem;
+}
+.message-thread__container .thread-view .main footer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  margin-right: 1.5rem;
+}
+.message-thread__container .thread-view .main footer img {
+  margin: 0;
+  height: 5rem;
+}
+.message-thread__container .thread-view .main footer button {
+  padding: 0;
+  height: 5rem;
+  margin: 0;
+  width: 5rem;
+  background-color: transparent;
+  border: none;
+}
+.message-thread__container .thread-view textarea {
+  display: inline-block;
+  margin: 0 0 0 3rem;
+  border-radius: 30px;
+  width: calc(100% - 6rem);
+  height: 4rem;
+}
+.message-thread__container .thread-view h4 {
+  margin: 0.75rem 0;
+}
+.message-thread__container .thread-view .user-button {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem 1rem;
+}
+.message-thread__container .thread-view header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin: 0 1rem;
+  padding: 0.75rem 0.5rem;
+  gap: 1.5rem;
+}
+.message-thread__container .thread-view header span {
+  font-weight: 800;
+}
+.message-thread__container .thread:hover {
+  transform: scale(1.01);
+  transition: all 0.5s;
+}
+.message-thread__container .thread .message-text {
+  display: inline-block;
+  margin: 0 3rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.main__container.message .column-primary {
+  width: calc(100vw - 21rem);
+}
+.main__container.message .column-tertiary {
+  width: 0;
+  display: none;
 }
 
 .settings-general {

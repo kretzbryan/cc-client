@@ -2,7 +2,8 @@ import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { deletePost } from '../../redux/actions/post';
-import { addPostComment } from '../../redux/actions/post';
+import useCheckPathname from '../../hooks/useCheckPathname';
+import { addFeedComment } from '../../redux/actions/feed';
 // import TextareaAutosize from 'react-autosize-textarea';
 
 const PostFooter = ({
@@ -12,13 +13,15 @@ const PostFooter = ({
 	user,
 	postId,
 	toggleEditPost,
-	addPostComment,
+	addFeedComment,
 }) => {
 	const [commentData, setCommentData] = useState({
 		text: '',
 		itemId: postId,
 		itemType: 'post',
 	});
+
+	const { profileDetail, home } = useCheckPathname(window.location.pathname);
 	const handleChange = (e) => {
 		setCommentData({
 			...commentData,
@@ -28,7 +31,7 @@ const PostFooter = ({
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		addPostComment(commentData);
+		addFeedComment(commentData);
 		setCommentData({
 			...commentData,
 			text: '',
@@ -63,13 +66,13 @@ PostFooter.propTypes = {
 	auth: PropTypes.object.isRequired,
 	deletePost: PropTypes.func.isRequired,
 	loading: PropTypes.bool,
-	addPostComment: PropTypes.func.isRequired,
+	addFeedComment: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
 	auth: state.auth,
 	loading: state.post.loading,
 });
-export default connect(mapStateToProps, { deletePost, addPostComment })(
+export default connect(mapStateToProps, { deletePost, addFeedComment })(
 	PostFooter
 );

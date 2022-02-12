@@ -6,11 +6,13 @@ import post from './post';
 import gig from './gig';
 import form from './form';
 import discover from './discover';
+import feed from './feed';
 
 import redirect from './redirect';
 import popup from './popup';
 import location from './location';
 import tags from './tags';
+import message from './message';
 
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
@@ -33,6 +35,8 @@ const rootReducer = combineReducers({
 	tags,
 	location,
 	discover,
+	feed,
+	message,
 });
 
 export default persistReducer(persistConfig, rootReducer);

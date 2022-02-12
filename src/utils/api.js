@@ -17,8 +17,6 @@ const makeRequest = async (method, pathname, data, authRequired) => {
 	const body = data;
 	if (authRequired) headers = { ...headers, 'x-auth-token': token };
 	const response = await axios({ method, url, headers, data });
-	console.log('response', response);
-	console.log({ method, url, headers, data });
 	return response;
 };
 

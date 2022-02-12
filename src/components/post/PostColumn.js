@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 
-const PostColumn = ({ posts, loading }) => {
+const PostColumn = ({ loading, feed }) => {
 	return (
 		<Fragment>
 			<div className='post-section'>
@@ -13,9 +13,9 @@ const PostColumn = ({ posts, loading }) => {
 				{loading ? (
 					<Spinner />
 				) : (
-					posts.map((post) => {
+					feed.map((item) => {
 						return (
-							<PostContainer key={post._id} post={post} loading={loading} />
+							<PostContainer key={item._id} post={item} loading={loading} />
 						);
 					})
 				)}
@@ -25,8 +25,8 @@ const PostColumn = ({ posts, loading }) => {
 };
 
 const mapStateToProps = (state) => ({
-	posts: state.post.posts,
-	loading: state.post.loading,
+	feed: state.feed.feed,
+	loading: state.feed.loading,
 });
 
 export default connect(mapStateToProps, null)(PostColumn);

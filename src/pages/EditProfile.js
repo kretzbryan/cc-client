@@ -11,11 +11,6 @@ const EditProfile = (props) => {
 	const [window, setWindow] = useState('general');
 	return (
 		<div className='row main__container'>
-			<section className='column-secondary'>
-				<UserCard />
-				<DashboardNav />
-				<GigNav2 />
-			</section>
 			<section className='settings-container'>
 				<UserCardMobile />
 				<SettingsSubnav window={window} />

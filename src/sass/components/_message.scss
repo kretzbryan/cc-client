@@ -1,0 +1,167 @@
+.message {
+	&-body {
+		padding: 0.5rem 0;
+		margin-bottom: 0.75rem;
+
+		&__container {
+			max-height: 30rem;
+			overflow-y: scroll;
+			&::-webkit-scrollbar {
+				/* width */
+
+				width: 5px;
+
+				/* Track */
+				// &-track {
+				// 	background: rgba($color: #0080ff, $alpha: 0.5);
+				// }
+
+				/* Handle */
+				&-thumb {
+					background: rgba($color: #0080ff, $alpha: 0.8);
+				}
+
+				/* Handle on hover */
+				&-thumb:hover {
+					background: #0080ff;
+				}
+			}
+		}
+
+		& h5 {
+			& span {
+				margin-bottom: 0rem;
+				margin-top: 0.75rem;
+				border-bottom: 1px solid rgba($color: #000000, $alpha: 1);
+			}
+			&.right {
+				text-align: end;
+				& span {
+					margin-right: 0.1rem;
+					padding: 0 0.5rem 0.25rem 1.25rem;
+				}
+			}
+
+			&.left {
+				& span {
+					margin-left: 0.1rem;
+					padding: 0 1.25rem 0.25rem 0.5rem;
+				}
+			}
+		}
+		& p {
+			margin-top: 1rem;
+			padding-left: 2.75rem;
+		}
+	}
+	&-thread__container {
+		margin-top: 3rem;
+		& .thread {
+			width: 80rem;
+			background-color: $color-offwhite;
+			padding: 1rem 2rem;
+			display: grid;
+			grid-template-columns: 6rem 12rem 12rem auto;
+			align-items: center;
+			border-bottom: 2px solid rgba($color: #000000, $alpha: 0.1);
+			position: relative;
+			z-index: 1;
+			&.expanded {
+				z-index: 100;
+			}
+
+			&-view {
+				position: absolute;
+				width: 100%;
+				top: -3px;
+				background-color: $color-offwhite;
+				z-index: 10000;
+				border-radius: 3px;
+				// display: grid;
+				// grid-template-rows: auto 5rem;
+
+				& .main {
+					display: grid;
+
+					grid-template-rows: auto 5rem;
+
+					& footer {
+						display: flex;
+						align-items: center;
+						margin-bottom: 0.5rem;
+						margin-right: 1.5rem;
+						& img {
+							margin: 0;
+							height: 5rem;
+						}
+
+						& button {
+							padding: 0;
+							height: 5rem;
+							margin: 0;
+							width: 5rem;
+							background-color: transparent;
+							border: none;
+						}
+					}
+				}
+
+				& textarea {
+					display: inline-block;
+					margin: 0 0 0 3rem;
+					border-radius: 30px;
+					width: calc(100% - 6rem);
+					height: 4rem;
+				}
+
+				& h4 {
+					margin: 0.75rem 0;
+				}
+
+				& .user-button {
+					background-color: transparent;
+					border: none;
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					width: 100%;
+					padding: 1rem 1rem;
+				}
+
+				& header {
+					display: flex;
+					align-items: center;
+					border-bottom: 1px solid rgba($color: #000000, $alpha: 0.2);
+					margin: 0 1rem;
+					padding: 0.75rem 0.5rem;
+					gap: 1.5rem;
+					& span {
+						font-weight: 800;
+					}
+				}
+			}
+			&:hover {
+				transform: scale(1.01);
+				transition: all 0.5s;
+			}
+			& .message-text {
+				display: inline-block;
+				margin: 0 3rem;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+		}
+	}
+}
+
+.main__container.message {
+	& .column-primary {
+		width: calc(100vw - 21rem);
+	}
+
+	& .column-tertiary {
+		width: 0;
+		display: none;
+	}
+}

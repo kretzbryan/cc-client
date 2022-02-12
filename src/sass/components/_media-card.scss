@@ -1,9 +1,14 @@
 .card.media-card {
-	width: 100%;
+	// width: 100%;
+	width: 30rem;
 	height: 50rem;
 	border-radius: 15px;
 	box-shadow: $box-shadow-3;
+	margin-top: 3rem;
 
+	@include respond(tab-land) {
+		display: none;
+	}
 	&__title {
 		padding-left: 1rem;
 	}

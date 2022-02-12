@@ -6,19 +6,14 @@ import DashboardNav from '../components/user/dashboard/DashboardNav';
 import UserCard from '../components/user/UserCard';
 import UserCardMobile from '../components/user/UserCardMobile';
 import GigNav2 from '../components/gig/GigNav2';
+import MessageThreadContainer from '../components/message/MessageThreadContainer';
 
 const MessageBoard = (props) => {
 	return (
-		<div className='row main__container'>
-			<section className='column-secondary'>
-				<UserCard />
-				<DashboardNav />
-				<GigNav2 />
-			</section>
-			<section className='column-primary'>
-				<UserCardMobile />
-			</section>
-			<section className='column-tertiary'></section>
+		<div className='message'>
+			<GigNav2 />
+			<UserCardMobile />
+			<MessageThreadContainer />
 		</div>
 	);
 };

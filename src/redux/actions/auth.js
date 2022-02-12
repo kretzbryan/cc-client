@@ -13,6 +13,8 @@ import {
 import { get, post, put, remove } from '../../utils/api';
 import { setRedirect } from './redirect';
 import { setPosts } from './post';
+import { setFeed } from './feed';
+import { setMessages } from './message';
 
 export const loadUser = () => async (dispatch) => {
 	try {
@@ -22,7 +24,10 @@ export const loadUser = () => async (dispatch) => {
 			type: USER_LOADED,
 			payload: res.data.user,
 		});
-		dispatch(setPosts(res.data.user.posts));
+
+		const { posts, message } = res.data.user;
+		dispatch(setMessages(message.messages));
+		dispatch(setFeed(posts));
 	} catch (err) {
 		console.log(err.message);
 		dispatch({
