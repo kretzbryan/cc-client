@@ -4,6 +4,7 @@ import {
 	SET_LOCATIONS,
 	CLEAR_LOCATION_RESULTS,
 	SET_MESSAGES,
+	EDIT_MESSAGE,
 } from '../actions/types';
 
 const initialState = {
@@ -12,9 +13,24 @@ const initialState = {
 };
 
 export default function (state = initialState, action) {
-	switch (action.type) {
+	const { type, payload } = action;
+	switch (type) {
 		case SET_MESSAGES:
-			return { loading: false, messages: action.payload };
+			return { loading: false, messages: payload };
+		case EDIT_MESSAGE:
+			return {
+				...state,
+				messages: state.messages.map((thread, index) => {
+					if (index === payload.threadIndex) {
+						return {
+							...thread,
+							messages: [...thread.messages, payload.message],
+						};
+					} else {
+						return thread;
+					}
+				}),
+			};
 		case CLEAR_LOCATION_RESULTS:
 			return initialState;
 		default:

@@ -30,6 +30,7 @@ export const loadUser = () => async (dispatch) => {
 		dispatch(setFeed(posts));
 	} catch (err) {
 		console.log(err.message);
+		dispatch(logout());
 		dispatch({
 			type: AUTH_DENIED,
 		});

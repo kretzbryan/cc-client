@@ -1,15 +1,34 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import defaultImage from '../../images/default.png';
 import Message from './Message';
 import { connect } from 'react-redux';
 import sendImage from '../../images/noun-send-1342298-2054A8.svg';
+import { useState } from 'react';
+import { sendMessage } from '../../redux/actions/message';
+import { useEffect } from 'react';
 
-const ThreadView = ({ thread, authUser }) => {
+const ThreadView = ({ thread, authUser, index, sendMessage }) => {
+	const bottomRef = useRef(null);
+	const [messageText, setMessageText] = useState('');
 	const isCreator = (message) => {
 		if (authUser && authUser._id === message.createdBy._id) return true;
 		else return false;
 	};
+
+	const handleSubmit = () => {
+		const threadId = thread._id;
+		const message = {
+			text: messageText,
+			createdBy: authUser,
+		};
+		if (messageText) sendMessage({ threadId, message }, thread, index);
+		setMessageText('');
+	};
+
+	useEffect(() => {
+		bottomRef.current.scrollIntoView();
+	});
 	return (
 		<div className='thread-view'>
 			{/* <section>
@@ -27,10 +46,14 @@ const ThreadView = ({ thread, authUser }) => {
 					{thread.messages.map((message) => {
 						return <Message message={message} creator={isCreator(message)} />;
 					})}
+					<div style={{ float: 'left', clear: 'both' }} ref={bottomRef}></div>
 				</div>
 				<footer>
-					<textarea name='name'></textarea>{' '}
-					<button>
+					<textarea
+						name='name'
+						onChange={(e) => setMessageText(e.target.value)}
+						value={messageText}></textarea>{' '}
+					<button onClick={handleSubmit}>
 						<img src={sendImage} alt='' />
 					</button>
 				</footer>
@@ -45,4 +68,4 @@ const mapStateToProps = (state) => ({
 	authUser: state.auth.user,
 });
 
-export default connect(mapStateToProps, null)(ThreadView);
+export default connect(mapStateToProps, { sendMessage })(ThreadView);

@@ -45,3 +45,4 @@ export const SET_FEED = 'SET_FEED';
 export const EDIT_FEED_ITEM = 'EDIT_FEED_ITEM';
 export const ADD_FEED_ITEM = 'ADD_FEED_ITEM';
 export const SET_MESSAGES = 'SET_MESSAGES';
+export const EDIT_MESSAGE = 'EDIT_MESSAGE';

@@ -27,6 +27,7 @@ const Button = ({
 					className={`btn ${classNames}`}>
 					{icon}
 					{buttonText}
+					{!!itemAmount && <span className='item-amount'>{itemAmount}</span>}
 				</button>
 			)}
 		</div>

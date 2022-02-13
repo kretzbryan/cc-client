@@ -1792,6 +1792,10 @@ a.content-options__link:hover {
   padding: 0.5rem 0;
   margin-bottom: 0.75rem;
 }
+.message-body.right p {
+  text-align: end;
+  padding-right: 2.75rem;
+}
 .message-body__container {
   max-height: 30rem;
   overflow-y: scroll;
@@ -1882,6 +1886,7 @@ a.content-options__link:hover {
   border-radius: 30px;
   width: calc(100% - 6rem);
   height: 4rem;
+  padding: 1rem;
 }
 .message-thread__container .thread-view h4 {
   margin: 0.75rem 0;

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { useState } from 'react';
 import ThreadView from './ThreadView';
 
-const Thread = ({ image, subject, body, users, authUser, thread }) => {
+const Thread = ({ image, subject, body, users, authUser, thread, index }) => {
 	const [expanded, setExpanded] = useState(false);
 	const notAuthUser =
 		authUser && users.find((user) => user._id !== authUser._id);
@@ -20,7 +20,7 @@ const Thread = ({ image, subject, body, users, authUser, thread }) => {
 			<span className='message-text' onClick={() => setExpanded(!expanded)}>
 				{body}
 			</span>
-			{expanded && <ThreadView thread={thread} />}
+			{expanded && <ThreadView thread={thread} index={index} />}
 		</div>
 	);
 };
