@@ -9,7 +9,7 @@ const DiscoverMain = ({ window }) => {
 		}
 	};
 
-	return handleWindow();
+	return <div className='discover-main'>{handleWindow()}</div>;
 };
 
 DiscoverMain.propTypes = {};

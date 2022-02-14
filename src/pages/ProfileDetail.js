@@ -48,10 +48,6 @@ const ProfileDetail = ({
 				<UserCardMobile />
 				<PostColumn items={profile && profile.posts} loading={loading} />
 			</div>
-			<div className='column-tertiary'>
-				<GigNav1 />
-				<Popup />
-			</div>
 		</div>
 	);
 };

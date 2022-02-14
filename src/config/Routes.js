@@ -34,6 +34,7 @@ const Routes = () => {
 			{/* <Route path='/browse-profile/:id' component={ProfileShow} /> */}
 			<Route exact path='/gig' component={GigBrowse} />
 			<Route path='/gig/:id' component={GigDetail} />
+			<Route path='*' component={Landing} />
 		</Switch>
 	);
 };

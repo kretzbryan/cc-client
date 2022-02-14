@@ -91,6 +91,19 @@ const GeneralSettingsForm = ({
 						<div className='autofill-container'>{handleLocationResults()}</div>
 					</div>
 				</div>
+				<div className='settings-item'>
+					<span>Occupation:</span>
+					<div className='input-area'>
+						<input
+							type='text'
+							name='occupation'
+							onChange={onUniqueChange}
+							value={user.occupation}
+							id=''
+						/>
+						{handleAlert('occupation')}
+					</div>
+				</div>
 			</form>
 		</>
 	);

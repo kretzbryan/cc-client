@@ -9,7 +9,11 @@ const Notifications = ({ user }) => {
 		<div className='notifications'>
 			{notifications &&
 				notifications.new.map((notification) => {
-					return <Notification />;
+					return (
+						<Notification
+							username={`${notification.data.createdBy.firstName} ${notification.data.createdBy.lastName}`}
+						/>
+					);
 				})}
 		</div>
 	);

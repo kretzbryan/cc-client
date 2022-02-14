@@ -1,5 +1,10 @@
 .user-profile {
 	& .user-info {
 		background-color: #dce7fa;
+		width: 25vw;
+	}
+
+	& .column-primary {
+		padding-left: 0;
 	}
 }

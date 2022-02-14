@@ -1443,20 +1443,38 @@ section.card.gig-card-browse {
   align-items: start;
   position: relative;
 }
+.card.profile-card .profile-card__text {
+  color: black;
+}
+.card.profile-card .profile-card__text.location, .card.profile-card .profile-card__text.occupation {
+  font-weight: 500;
+}
+.card.profile-card .profile-card__image {
+  display: block;
+}
+.card.profile-card h6 {
+  text-align: center;
+  font-size: 1.3rem;
+  margin-top: 0.5rem;
+}
 .card.profile-card .action-section {
   margin-top: 0.75rem;
   margin-bottom: 0.5rem;
   display: flex;
   width: 100%;
+  align-items: center;
 }
-.card.profile-card .action-section button {
-  font-size: 1.2rem;
+.card.profile-card .action-section a {
+  display: inline-block;
+  text-align: center;
   border: none;
   background-color: #fbf9fa;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  width: 50%;
+  text-decoration: none;
 }
-.card.profile-card .action-section button:first-child {
+.card.profile-card .action-section a:first-child {
   border-right: 1px solid #37455c;
 }
 @media only screen and (max-width: 31.25em) {
@@ -1611,6 +1629,10 @@ a.content-options__link:hover {
 
 .user-profile .user-info {
   background-color: #dce7fa;
+  width: 25vw;
+}
+.user-profile .column-primary {
+  padding-left: 0;
 }
 
 .popup {
@@ -1712,10 +1734,10 @@ a.content-options__link:hover {
 }
 
 .subnav {
-  width: calc(100vw - 21rem);
+  width: calc(100vw - 25rem);
   position: fixed;
   top: calc(7rem + 1px);
-  left: 21rem;
+  left: 25rem;
   z-index: 40;
   background-color: #6c99e1;
   height: 6.5rem;
@@ -1723,6 +1745,15 @@ a.content-options__link:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.subnav .add-event {
+  margin: 0 2rem 0 2rem;
+  font-size: 4rem;
+  font-weight: 500;
+  color: #f5faff;
+  background-color: transparent;
+  text-decoration: none;
+  border: none;
 }
 .subnav.no-list {
   justify-content: end;
@@ -1754,7 +1785,18 @@ a.content-options__link:hover {
   top: 13.5rem;
   right: 0;
   height: calc(100vh - 13.5rem);
-  width: calc(100vw - 21rem);
+  width: calc(100vw - 25rem);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.discover-main .card.profile-card {
+  height: 25rem;
+}
+.discover-main a {
+  text-decoration: none;
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 .tag-row .form__group.tag-search {
@@ -1933,9 +1975,12 @@ a.content-options__link:hover {
 
 .settings-general {
   display: inline-block;
-  width: 65rem;
-  padding-top: 2rem;
-  padding-left: 2rem;
+  position: fixed;
+  top: 12.5rem;
+  left: 25rem;
+  height: calc(100vh - 13.5rem);
+  width: calc(100vw - 25rem);
+  padding: 3rem;
 }
 .settings-general header {
   display: flex;

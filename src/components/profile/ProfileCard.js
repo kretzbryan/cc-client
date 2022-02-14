@@ -36,7 +36,7 @@ const ProfileCard = ({ profile, setPopup }) => {
 						Connect
 					</a>
 					<a href='#send-message' onClick={() => setPopup(messageFormInfo)}>
-						Send Message
+						Message
 					</a>
 				</section>
 			</section>

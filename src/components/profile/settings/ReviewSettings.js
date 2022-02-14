@@ -42,6 +42,7 @@ const ReviewSettings = ({
 	const onUniqueChange = async (e) => {
 		const { name, value } = e.target;
 		editUserField(name, value);
+
 		let valid = false;
 		if (name === 'location') {
 			setLocationDisplay(value);
@@ -134,8 +135,12 @@ const ReviewSettings = ({
 					<div className='settings-item'>
 						<span>Location</span>
 						<span className='value'>
-							{user.location && user.location.formatted_address}
+							{user.location && user.location.address}
 						</span>
+					</div>
+					<div className='settings-item'>
+						<span>Occupation</span>
+						<span className='value'>{user.occupation && user.occupation}</span>
 					</div>
 				</>
 			);

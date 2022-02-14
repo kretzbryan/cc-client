@@ -7,17 +7,42 @@
 	align-items: start;
 	position: relative;
 
+	& .profile-card__text {
+		color: black;
+		&.location,
+		&.occupation {
+			font-weight: 500;
+		}
+	}
+
+	& .profile-card__image {
+		display: block;
+	}
+
+	& h6 {
+		text-align: center;
+		font-size: 1.3rem;
+		margin-top: 0.5rem;
+	}
+
 	& .action-section {
 		margin-top: 0.75rem;
 		margin-bottom: 0.5rem;
 		display: flex;
 		width: 100%;
-		& button {
-			font-size: 1.2rem;
+		align-items: center;
+
+		& a {
+			// font-size: 1.2rem;
+			display: inline-block;
+			text-align: center;
 			border: none;
 			background-color: $color-offwhite;
 			padding-top: 1rem;
 			padding-bottom: 1rem;
+			width: 50%;
+			// width: 8rem;
+			text-decoration: none;
 			&:first-child {
 				border-right: 1px solid $color-blue-dark-1;
 			}

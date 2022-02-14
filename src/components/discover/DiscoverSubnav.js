@@ -26,11 +26,11 @@ const DiscoverSubnav = (props) => {
 						<img src={gig} alt='gig icon' /> <br /> Gigs
 					</button>
 				</li>
-				<li>
+				{/* <li>
 					<button>
 						<img src={group} alt='group icon' /> <br /> Groups
 					</button>
-				</li>
+				</li> */}
 			</ul>
 			<ToolBar type='general' />
 		</div>

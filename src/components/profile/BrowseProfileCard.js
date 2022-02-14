@@ -13,16 +13,19 @@ const BrowseProfileCard = ({
 }) => {
 	return (
 		<Fragment>
-			<a href={`/profile/${id}`}>
-				<section className='card profile-card'>
+			<section className='card profile-card'>
+				<a href={`/profile/${id}`}>
 					<img src={defaultImage} alt='' className='profile-card__image' />
 					<section className='profile-card__info'>
 						<ProfileCardText text={firstName + ' ' + lastName} />
-						<ProfileCardText text={location} />
-						<ProfileCardText className='occupation' text={occupation} />
+						<ProfileCardText
+							cName='location'
+							text={'San Francisco, Bay Area, Ca'}
+						/>
+						<ProfileCardText cName='occupation' text={'Aerialist/Generalist'} />
 					</section>
-				</section>
-			</a>
+				</a>
+			</section>
 		</Fragment>
 	);
 };

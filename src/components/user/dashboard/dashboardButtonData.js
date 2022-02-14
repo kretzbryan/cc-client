@@ -1,13 +1,13 @@
 export const dashboardButtonData = [
-	{
-		index: 1,
-		itemReference: 'notification',
-		window: 'notifications',
-		path: null,
-		classNames: 'dashboard-btn',
-		icon: 'far dashboard-icon fa-bell',
-		buttonText: 'Notifications',
-	},
+	// {
+	// 	index: 1,
+	// 	itemReference: 'notification',
+	// 	window: 'notifications',
+	// 	path: null,
+	// 	classNames: 'dashboard-btn',
+	// 	icon: 'far dashboard-icon fa-bell',
+	// 	buttonText: 'Notifications',
+	// },
 	{
 		index: 2,
 		window: 'message-board',
@@ -66,7 +66,8 @@ export const dashboardButtonData = [
 	},
 	{
 		index: 9,
-		path: '/dashboard/edit-profile',
+		window: 'edit-profile',
+		path: null,
 		classNames: 'dashboard-btn',
 		icon: 'fas dashboard-icon fa-cogs',
 		buttonText: 'Settings',

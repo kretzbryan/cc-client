@@ -1,9 +1,12 @@
 .settings {
 	&-general {
 		display: inline-block;
-		width: 65rem;
-		padding-top: 2rem;
-		padding-left: 2rem;
+		position: fixed;
+		top: 12.5rem;
+		left: 25rem;
+		height: calc(100vh - 13.5rem);
+		width: calc(100vw - 25rem);
+		padding: 3rem;
 
 		& header {
 			display: flex;
