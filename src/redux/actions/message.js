@@ -1,5 +1,5 @@
 import { EDIT_MESSAGE, SET_MESSAGES } from './types';
-import { post } from '../../utilsapi';
+import { post } from '../../utils/api';
 
 export const setMessages = (messages) => async (dispatch) => {
 	dispatch({

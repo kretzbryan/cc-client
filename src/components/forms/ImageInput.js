@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FormGroup from './FormGroup';
-import { post } from '../../utilsapi';
+import { post } from '../../utils/api';
 
 const ImageInput = ({ inputValue, handleImage }) => {
 	const handleUploadImage = async (e) => {

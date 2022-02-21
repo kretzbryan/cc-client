@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { get } from '../../utilsapi';
+import { get } from '../../utils/api';
 
 import { SET_EVENTS, REMOVE_ALERT } from './types';
 

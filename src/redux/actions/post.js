@@ -1,4 +1,4 @@
-import { get, post, put, remove } from '../../utilsapi';
+import { get, post, put, remove } from '../../utils/api';
 import {
 	ADD_POST,
 	EDIT_POST,

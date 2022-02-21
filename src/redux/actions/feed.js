@@ -1,4 +1,4 @@
-import { post } from '../../utilsapi';
+import { post } from '../../utils/api';
 import { ADD_FEED_ITEM, EDIT_FEED_ITEM, SET_FEED } from '../actions/types';
 
 export const setFeed = (items) => (dispatch) => {

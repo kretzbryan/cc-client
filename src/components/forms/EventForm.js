@@ -4,7 +4,7 @@ import { clearTags, getTags } from '../../redux/actions/tags';
 import { getLocations } from '../../redux/actions/location';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
-import { post } from '../../utilsapi';
+import { post } from '../../utils/api';
 import FormGroup from './FormGroup';
 import LocationInput from './LocationInput';
 import ImageInput from './ImageInput';

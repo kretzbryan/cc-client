@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { get, post } from '../../utilsapi';
+import { get, post } from '../../utils/api';
 
 import {
 	SET_ALERT,

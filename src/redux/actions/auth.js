@@ -10,7 +10,7 @@ import {
 	CLEAR_PROFILE,
 	EDIT_USER_FIELD,
 } from './types';
-import { get, post, put, remove } from '../../utilsapi';
+import { get, post, put, remove } from '../../utils/api';
 import { setRedirect } from './redirect';
 import { setPosts } from './post';
 import { setFeed } from './feed';

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import FormGroup from './FormGroup';
 import Spinner from '../layout/Spinner';
 import { connect } from 'react-redux';
-import { post } from '../../utilsapi';
+import { post } from '../../utils/api';
 import { useEffect } from 'react';
 import { getTags } from '../../redux/actions/tags';
 import { editUserField } from '../../redux/actions/auth';

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ReviewSettings from './ReviewSettings';
-import { post } from '../../../utilsapi';
+import { post } from '../../../utils/api';
 import { connect } from 'react-redux';
 
 const GeneralSettings = ({ user }) => {

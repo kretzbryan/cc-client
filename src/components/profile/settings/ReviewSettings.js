@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as EmailValidator from 'email-validator';
 import { editUserField } from '../../../redux/actions/auth';
-import { post } from '../../../utilsapi';
+import { post } from '../../../utils/api';
 import Spinner from '../../layout/Spinner';
 import {
 	clearLocationResults,

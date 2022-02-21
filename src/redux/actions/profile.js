@@ -1,4 +1,4 @@
-import { get, post, put, remove } from '../../utilsapi';
+import { get, post, put, remove } from '../../utils/api';
 import { setFeed } from './feed';
 import { setPosts } from './post';
 import {

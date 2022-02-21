@@ -1,4 +1,4 @@
-import { get, post, put, remove } from '../../utilsapi';
+import { get, post, put, remove } from '../../utils/api';
 import { setProfile } from './profile';
 import {
 	ADD_GIG,

@@ -1,4 +1,4 @@
-import { get } from '../../utilsapi';
+import { get } from '../../utils/api';
 import { SET_DISCOVER_ERROR, SET_DISCOVER_VALUE } from './types';
 
 export const setDiscover = (key) => async (dispatch) => {

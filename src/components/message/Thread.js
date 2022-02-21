@@ -4,7 +4,7 @@ import auth from '../../redux/reducers/auth';
 import { connect } from 'react-redux';
 import { useState } from 'react';
 import ThreadView from './ThreadView';
-import { post } from '../../utilsapi';
+import { post } from '../../utils/api';
 
 const Thread = ({ image, subject, body, users, authUser, thread, index }) => {
 	const [expanded, setExpanded] = useState(false);

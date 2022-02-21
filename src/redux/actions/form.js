@@ -6,7 +6,7 @@ import {
 	gigForm,
 	userForm,
 } from '../../utils/forms';
-import { get, post, put, remove } from '../../utilsapi';
+import { get, post, put, remove } from '../../utils/api';
 
 export const setLogin = () => async (dispatch) => {
 	try {

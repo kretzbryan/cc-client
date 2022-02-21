@@ -1,4 +1,4 @@
-import { post } from '../../utilsapi';
+import { post } from '../../utils/api';
 
 export const denyConnection = (connectionId) => async (dispatch) => {
 	try {
