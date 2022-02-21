@@ -19,19 +19,21 @@ const EventForm = ({
 	clearTags,
 }) => {
 	const [data, setData] = useState({
-		title: '',
-		imageLocation: '',
-		description: '',
-		startDate: '',
-		endDate: '',
-		startTime: '',
-		endTime: '',
+		title: 'Dummy Title',
+		imageLocation:
+			'https://s3-us-west-1.amazonaws.com/cirque-connections-images/4d972733-84ec-44fd-9146-0d58dc3e9035',
+		description:
+			'This is a description. This is a description. This is a description. This is a description. This is a description. This is a description. This is a description. This is a description. ',
+		startDate: '2022-03-03',
+		endDate: '2022-03-05',
+		startTime: '08:00',
+		endTime: '08:00',
 		tags: [],
 		location: {
-			name: '',
-			address: '',
-			lat: '',
-			long: '',
+			address: 'Oakland, CA, USA',
+			lng: '-122.2711639',
+			lat: '37.8043514',
+			name: 'Oakland',
 		},
 		tagInput: '',
 		mapInput: '',
@@ -57,6 +59,12 @@ const EventForm = ({
 		} catch (err) {
 			console.log(err.message);
 		}
+	};
+	const handleImage = (imageLocation) => {
+		setData({
+			...data,
+			imageLocation,
+		});
 	};
 
 	const handleTagField = (tag, handleType) => {
@@ -96,6 +104,9 @@ const EventForm = ({
 		console.log('Submitted');
 		e.preventDefault();
 		try {
+			const authRequired = true;
+			const res = await post('/api/data/event/create', data, authRequired);
+			console.log('Success!');
 		} catch (err) {
 			console.log(err.message);
 		}
@@ -103,7 +114,7 @@ const EventForm = ({
 
 	return (
 		<>
-			<form className={`form`} autoComplete='off'>
+			<form className={`form`} onSubmit={onSubmit} autoComplete='off'>
 				<div className='form__row'>
 					<FormGroup
 						inputValue={data.title}
@@ -130,7 +141,7 @@ const EventForm = ({
 						handleInputChange={handleChange}
 					/>
 
-					<ImageInput inputValue={data.imageFile} />
+					<ImageInput inputValue={data.imageFile} handleImage={handleImage} />
 				</div>
 				<div className='form__row'>
 					<FormGroup

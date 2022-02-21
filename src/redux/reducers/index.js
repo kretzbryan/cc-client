@@ -7,6 +7,7 @@ import gig from './gig';
 import form from './form';
 import discover from './discover';
 import feed from './feed';
+import event from './event';
 
 import redirect from './redirect';
 import popup from './popup';
@@ -37,6 +38,7 @@ const rootReducer = combineReducers({
 	discover,
 	feed,
 	message,
+	event,
 });
 
 export default persistReducer(persistConfig, rootReducer);

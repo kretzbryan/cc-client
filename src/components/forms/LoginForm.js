@@ -49,7 +49,7 @@ const LoginForm = ({ login, isAuthenticated, show, toggle }) => {
 				</div>
 				<div className='login-form__group form__group'>
 					<input
-						type='text'
+						type='password'
 						placeholder='Password'
 						name='password'
 						className={'form__input login-form__input'}

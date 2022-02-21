@@ -8,6 +8,13 @@ import {
 	UPDATE_PROFILE,
 } from './types';
 
+export const setProfile = (profile) => (dispatch) => {
+	dispatch({
+		type: GET_PROFILE,
+		payload: profile,
+	});
+};
+
 export const getUserDashboard = () => async (dispatch) => {
 	try {
 		const authRequired = true;

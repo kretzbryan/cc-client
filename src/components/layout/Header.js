@@ -34,16 +34,7 @@ const Header = ({
 						</a>
 					</li>
 				)}
-				<li className='nav-item'>
-					<a className='nav-link' href='/browse-profile'>
-						Browse Profiles
-					</a>
-				</li>
-				<li className='nav-item'>
-					<a className='nav-link' href='#gigForm' onClick={setAddGig}>
-						Add Gig
-					</a>
-				</li>
+
 				<li className='nav-item'>
 					<a href='/' className='nav-link' onClick={logout}>
 						Log Out

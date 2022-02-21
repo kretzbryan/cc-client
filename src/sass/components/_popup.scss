@@ -45,9 +45,32 @@
 		transform: translate(-50%, -50%);
 		border-radius: 3px;
 
-		&.event-info {
-			width: 80vw;
-			padding: 0 4rem;
+		&.event-info,
+		&.gig-info {
+			width: 80rem;
+			height: 58rem;
+			padding: 0;
+			transform: translate(-50%, -55%);
+
+			@include respond(surface-duo) {
+				width: 70rem;
+				height: 58rem;
+			}
+
+			@include respond(iphone-xr) {
+				width: 56rem;
+				height: 75rem;
+			}
+
+			@include respond(pixel-5) {
+				width: 53rem;
+				height: 75rem;
+			}
+
+			@include respond(iphone-se) {
+				width: 50rem;
+				height: 75rem;
+			}
 			& .form {
 				display: flex;
 				flex-direction: column;
@@ -77,6 +100,9 @@
 					margin: 1rem auto;
 					margin-left: 0;
 					padding: 0 7%;
+					@include respond(iphone-se) {
+						padding: 0 2rem;
+					}
 					&.text-area {
 						padding-right: 0;
 						height: 100%;
@@ -94,6 +120,10 @@
 					padding: 0 0.5rem 0.5rem;
 				}
 			}
+		}
+
+		&.gig-info {
+			height: 64rem;
 		}
 	}
 

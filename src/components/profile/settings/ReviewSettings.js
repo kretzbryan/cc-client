@@ -148,7 +148,7 @@ const ReviewSettings = ({
 	};
 
 	useEffect(() => {
-		if (user.location && user.location.address) {
+		if (user && user.location && user.location.address) {
 			setLocationDisplay(user.location.address);
 		}
 	}, []);

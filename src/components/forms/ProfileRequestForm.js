@@ -30,7 +30,7 @@ const ProfileRequestForm = ({ profile, toggleForm, connect }) => {
 					console.log('this is partially filled, clear or finish!');
 				} else {
 					res = await post(
-						'/api/data/new-connection',
+						'/api/data/connection/new',
 						{
 							recipient: profile,
 							message: isValidForm ? formData : null,

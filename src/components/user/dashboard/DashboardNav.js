@@ -17,6 +17,13 @@ const DashboardNav = ({ user, setCurrentWindow }) => {
 			console.log('notificationLength', user && user.notifications.new.length);
 			return user && user.notifications.new.length;
 		}
+		if (itemReference === 'connection') {
+			console.log(
+				'notificationLength',
+				user && user.connections.requests.incoming.length
+			);
+			return user && user.connections.requests.incoming.length;
+		}
 	};
 
 	return (
@@ -36,7 +43,7 @@ const DashboardNav = ({ user, setCurrentWindow }) => {
 							window,
 						} = button;
 
-						return index === 6 ? (
+						return index === 4 ? (
 							<Fragment>
 								<Button
 									itemAmount={

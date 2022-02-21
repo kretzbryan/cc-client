@@ -28,7 +28,7 @@ import ProfileBrowse from '../components/dashboardViews/ProfileBrowse';
 
 const Home = ({ loadUser, getGigs, getPosts, auth, profile, feed }) => {
 	const [currentWindow, setCurrentWindow] = useState('feed');
-
+	console.log(auth);
 	const handleWindow = () => {
 		if (currentWindow === 'feed') return <PostColumn items={feed} />;
 		if (currentWindow === 'connections') return <Connections />;
@@ -49,7 +49,7 @@ const Home = ({ loadUser, getGigs, getPosts, auth, profile, feed }) => {
 	return (
 		<div className='row main__container'>
 			<section className='column-secondary'>
-				<UserCard />
+				<UserCard user={auth.user} />
 				<DashboardNav setCurrentWindow={setCurrentWindow} />
 			</section>
 			<section className='column-primary'>

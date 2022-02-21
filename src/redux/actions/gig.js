@@ -1,4 +1,5 @@
 import { get, post, put, remove } from '../../utils/api';
+import { setProfile } from './profile';
 import {
 	ADD_GIG,
 	GET_GIGS,
@@ -9,37 +10,33 @@ import {
 	GET_GIG,
 } from './types';
 
-export const addGig =
-	({ title, location, text }) =>
-	async (dispatch) => {
-		const config = {
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		};
-
-		const body = JSON.stringify({ title, location, text });
-		try {
-			const authRequired = true;
-			const res = await post('/api/data/gig', body, authRequired).catch(
-				(err) => {
-					throw {
-						message: err.message,
-					};
-				}
-			);
-			console.log(res.data);
-			dispatch({
-				type: ADD_GIG,
-				payload: res.data,
-			});
-		} catch (err) {
-			dispatch({
-				type: GIG_ERROR,
-				payload: err,
-			});
-		}
+export const addGig = (body) => async (dispatch) => {
+	const config = {
+		headers: {
+			'Content-Type': 'application/json',
+		},
 	};
+
+	// body = JSON.stringify(body);
+	try {
+		const authRequired = true;
+		const res = await post('/api/data/gig', body, authRequired).catch((err) => {
+			throw {
+				message: err.message,
+			};
+		});
+		console.log(res.data);
+		dispatch({
+			type: ADD_GIG,
+			payload: res.data,
+		});
+	} catch (err) {
+		dispatch({
+			type: GIG_ERROR,
+			payload: err,
+		});
+	}
+};
 
 export const getGig = (id) => async (dispatch) => {
 	try {
@@ -55,6 +52,7 @@ export const getGig = (id) => async (dispatch) => {
 			type: GET_GIG,
 			payload: res.data,
 		});
+		dispatch(setProfile(res.data.createdBy));
 	} catch (err) {
 		dispatch({
 			type: GIG_ERROR,

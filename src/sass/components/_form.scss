@@ -7,6 +7,10 @@
 	top: 0;
 	left: 0;
 
+	@include respond(iphone-xr) {
+		padding: 2rem 0;
+	}
+
 	& b {
 		display: inline-block;
 		margin-bottom: 1rem;

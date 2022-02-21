@@ -30,6 +30,65 @@ $breakpoint arguement choices
 			@content;
 		} // 500px
 	}
+
+	@if $breakpoint == gfold-port {
+		@media only screen and (max-width: 280px) {
+			@content;
+		} // 700px
+	}
+
+	@if $breakpoint == pixel-5 {
+		@media only screen and (max-width: 393px) {
+			@content;
+		} // 700px
+	}
+
+	@if $breakpoint == iphone-se {
+		@media only screen and (max-width: 375px) {
+			@content;
+		} // 500px
+	}
+	@if $breakpoint == s8-plus {
+		@media only screen and (max-width: 360px) {
+			@content;
+		} // 500px
+	}
+
+	@if $breakpoint == s2-ultra {
+		@media only screen and (max-width: 412px) {
+			@content;
+		} // 500px
+	}
+
+	@if $breakpoint == iphone-xr {
+		@media only screen and (max-width: 414px) {
+			@content;
+		} // 500px
+	}
+
+	@if $breakpoint == surface-duo {
+		@media only screen and (max-width: 540px) {
+			@content;
+		} // 500px
+	}
+
+	@if $breakpoint == ipad-mini {
+		@media only screen and (max-width: 768px) {
+			@content;
+		} // 500px
+	}
+
+	@if $breakpoint == ipad-air {
+		@media only screen and (max-width: 820px) {
+			@content;
+		} // 500px
+	}
+
+	@if $breakpoint == surface-pro {
+		@media only screen and (max-width: 912px) {
+			@content;
+		} // 500px
+	}
 	@if $breakpoint == tab-port-sm {
 		@media only screen and (max-width: 37.5em) {
 			@content;

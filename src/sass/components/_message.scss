@@ -73,6 +73,7 @@
 			border-bottom: 2px solid rgba($color: #000000, $alpha: 0.1);
 			position: relative;
 			z-index: 1;
+			margin: 0 auto;
 			&.expanded {
 				z-index: 100;
 			}

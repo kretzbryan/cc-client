@@ -1,0 +1,25 @@
+.connections {
+	& .subnav button {
+		width: auto;
+		padding: 1rem 2rem;
+	}
+
+	& .card.profile-card {
+		height: 28rem;
+		margin: 3rem 2rem 3rem 0;
+		& a {
+			text-decoration: none;
+		}
+		& .actions {
+			margin-top: 0.5rem;
+			width: 100%;
+			display: flex;
+			justify-content: space-around;
+
+			& button {
+				background-color: transparent;
+				border: none;
+			}
+		}
+	}
+}

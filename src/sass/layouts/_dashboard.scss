@@ -1,0 +1,14 @@
+.dashboard {
+	&-main {
+		height: calc(100vh - 13.5rem);
+		position: relative;
+		top: 6.5rem;
+
+		&.connections {
+			display: flex;
+			justify-content: flex-start;
+			width: 100%;
+			padding: 0 3rem;
+		}
+	}
+}

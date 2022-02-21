@@ -4,14 +4,25 @@ import auth from '../../redux/reducers/auth';
 import { connect } from 'react-redux';
 import { useState } from 'react';
 import ThreadView from './ThreadView';
+import { post } from '../../utils/api';
 
 const Thread = ({ image, subject, body, users, authUser, thread, index }) => {
 	const [expanded, setExpanded] = useState(false);
 	const notAuthUser =
 		authUser && users.find((user) => user._id !== authUser._id);
-	console.log('subject', subject);
-	console.log('body', body);
-	console.log('notAuthUser', notAuthUser);
+
+	const handleRead = async () => {
+		try {
+			const authRequired = true;
+			const res = await post(
+				'/api/data/message/read',
+				{ threadId: thread._id },
+				authRequired
+			);
+		} catch (err) {
+			console.log(err.message);
+		}
+	};
 	return (
 		<div className={`thread${expanded ? ' expanded' : ''}`}>
 			<img src={image} alt='' className='nav-thumb' />

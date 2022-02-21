@@ -10,9 +10,9 @@ const GigColumn = ({ getGigs, gig: { gigs, loading } }) => {
 		getGigs();
 	}, [getGigs]);
 	return (
-		<Fragment>
+		<div className='gig-browse'>
 			{!loading && gigs.map((gig) => <GigCard key={gig._id} gig={gig} />)}
-		</Fragment>
+		</div>
 	);
 };
 

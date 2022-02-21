@@ -1,322 +1,302 @@
-
 .edit__gig__container {
-    display: block;
+	display: block;
 }
 
-
-
-
-
 .gig__name {
-    margin: auto 10px;
+	margin: auto 10px;
 }
 
 .gig {
+	&__text {
+		display: inline-block;
+	}
 
-    &__text {
-        display: inline-block;
-    }
+	&__title,
+	&__subtext {
+		width: 11rem;
+		margin-left: 1rem;
+		margin-bottom: 0;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
 
-    &__title, &__subtext {
-        width: 11rem;
-        margin-left: 1rem;
-        margin-bottom: 0;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+	&__thumb {
+		width: 3rem;
+		height: 3rem;
+		border-radius: 100%;
+		object-fit: cover;
+		position: relative;
+		bottom: 0.7rem;
 
-    &__thumb {
-        width: 3rem;
-        height: 3rem;
-        border-radius: 100%;
-        object-fit:cover;
-        position: relative;
-        bottom: .7rem;
+		&-container {
+			display: inline-block;
+			height: 100%;
+		}
+	}
 
-        &-container {
-            display: inline-block;
-            height: 100%;
-        }
-    }
+	&__container {
+		border-radius: 5px;
+		width: 22rem;
+		position: relative;
+		padding: 0 1rem;
 
-    &__container {
-        border-radius: 5px;
-        width: 22rem;
-        position: relative;
-        padding: 0 1rem;
+		&-right {
+			float: left;
+		}
 
+		&-left {
+			float: right;
+			margin-right: 1rem;
 
-        &-right {
-            float: left;
-        }
+			@include respond(tab-port-sm) {
+			}
+		}
+	}
 
-        &-left {
-            float: right;
-            margin-right: 1rem;
+	&__anchor,
+	&__anchor:link,
+	&__anchor:visited {
+		text-decoration: none;
+		color: $color-black;
+	}
 
-            @include respond(tab-port-sm) {
+	&__list {
+		padding: 0;
+		width: 100%;
+		margin-bottom: 0;
+		list-style: none;
 
-            }
+		&-item {
+			margin: 0 auto;
+			padding: 1rem 0.5rem 0.5rem 0.5rem;
+			width: 100%;
+			display: inline-block;
+			flex-wrap: nowrap;
 
-        }
-       
-    }
+			&::before {
+				content: '\2022';
+				color: $color-red;
+				display: inline-block;
+				width: 1em;
+				font-size: large;
+				font-weight: 600;
+				position: relative;
+				bottom: 0.5rem;
+				padding-left: 0.5rem;
+			}
 
-    &__anchor,
-    &__anchor:link, 
-    &__anchor:visited {
-        text-decoration: none;
-        color: $color-black;
-    }
+			&:after {
+				content: '';
+				height: 1px;
+				display: block;
+				margin: 0 auto;
+				position: relative;
+				width: 0;
+				border-bottom: 1px solid red;
+				transition: all 0.3s;
+			}
 
-    &__list {
-        padding: 0;
-        width: 100%;
-        margin-bottom: 0;
-        list-style: none;
+			&:hover {
+				&:after {
+					width: 100%;
+					display: block;
+				}
+			}
+		}
+	}
 
+	&__header {
+		width: 90%;
+		margin: 1rem auto 0;
+		font-size: $font-lg;
+		text-align: center;
+		border-bottom: 1px solid $color-red;
+		padding: 0.25rem 0.5rem 1rem;
+	}
 
-    &-item {
-        margin: 0 auto;
-        padding: 1rem .5rem .5rem .5rem;
-        width: 100%;
-        display: inline-block;
-        flex-wrap: nowrap;
+	&__footer {
+		position: relative;
+		top: calc(-0.5rem + 1px);
+		width: 100%;
+		text-align: center;
+		border-top: 1px solid transparent;
+		transition: 0.4s;
 
-        &::before {
-            content: '\2022';
-            color: $color-red;
-            display: inline-block;
-            width: 1em;
-            font-size: large;
-            font-weight: 600;
-            position: relative;
-            bottom: .5rem;
-            padding-left: .5rem;
-        }
+		&:hover {
+			border-top: 1px solid rgba($color-red, 0.5);
+		}
+	}
 
-        
-        &:after {
-            content: '';
-            height: 1px;
-            display: block;
-            margin: 0 auto;
-            position: relative;
-            width: 0;
-            border-bottom: 1px solid red;
-            transition: all .3s;
-        }
+	&__description {
+		padding: 5px;
+	}
 
-        &:hover {
+	&__link-all {
+		font-size: $font-default;
+		display: block;
+		width: 100%;
+		color: rgba($color-red, 0.5);
+		transition: 0.4s;
 
-            &:after {
-                width: 100%;
-                display: block;
-
-                }
-        }
-
-    }
-
-       
-    }
-
-   
-
-    &__header {
-        width: 90%;
-        margin: 1rem auto 0;
-        font-size: $font-lg;
-        text-align: center;
-        border-bottom: 1px solid $color-red;
-        padding: .25rem .5rem 1rem;
-    }
-
-    &__footer {
-        position: relative;
-        top: calc(-.5rem + 1px);
-        width: 100%;
-        text-align: center;
-        border-top: 1px solid transparent;
-        transition: .4s;
-
-        &:hover {
-            border-top: 1px solid rgba($color-red, .5);
-        }
-    }
-
-    &__description {
-        padding: 5px;
-    }
-
-    &__link-all {
-        font-size: $font-default;
-        display: block;
-        width: 100%;
-        color: rgba($color-red, .5);
-        transition: .4s;
-
-        &:hover {
-            text-decoration: none;
-            color: $color-red;
-        }
-    }
-
+		&:hover {
+			text-decoration: none;
+			color: $color-red;
+		}
+	}
 }
 
 section.card.gig__container-left {
-    margin-right: 1rem;
-    display: none;
+	margin-right: 1rem;
+	display: none;
 
-    @include respond(gfold-land) {
-        display: initial;
-    }
+	@include respond(gfold-land) {
+		display: initial;
+	}
 }
 
 .card.gig-card {
-    padding: 0;
-    position: relative;
-    height: 10rem;
-
-    &-show {
-        height: auto;
-        display: flex;
-
-        &__main p {
-            width: 40rem;
-        }
-    }
+	padding: 0;
+	position: relative;
+	&-show {
+		height: auto;
+		width: 49rem;
+		&__main p {
+			width: 40rem;
+		}
+	}
 }
 
 .gig-card {
+	&__anchor:hover {
+		text-decoration: none;
+	}
+	&__text {
+		padding-left: 0.5rem;
+	}
 
-    &__anchor:hover {
-        text-decoration: none;
-    }
+	&__thumb {
+		height: 100%;
+		width: 15rem;
+		object-fit: initial;
 
-    &__thumb {
-        height: 8rem;
-        width: 7rem;
-        object-fit:cover;
-        margin: auto 1rem;
-        border-radius: .6rem;
-        border: 1px solid $color-black;
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-        
-        &-container {
-            width: 25%;
-            height: 100%;
-        }
+		&-container {
+			width: 25%;
+			height: 100%;
+		}
 
-        @include respond(phone) {
-        }
-    }
-    
-    &-browse {
-        align-items: start;
-        transition: all .4s;
-        box-shadow: $box-shadow-1;
-         &:hover {
-            transform: scale(1.05);
-            
-         }
-    }
+		@include respond(phone) {
+		}
+	}
 
-    &__info {
-        width: 75%;
-        display: flex;
-        font-size: $font-sm;
+	&-browse {
+		align-items: start;
+		transition: all 0.4s;
+		box-shadow: $box-shadow-1;
+		&:hover {
+			transform: scale(1.05);
+		}
+		height: 100%;
+	}
 
-        &-left, &-right {
-            width: 100%;
-        }
-    }
+	&__info {
+		width: 75%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		font-size: $font-sm;
+		& p {
+			margin: 0;
+		}
 
-    &-show {
+		& .timestamp {
+			padding-left: 0.5rem;
+		}
 
+		&-left,
+		&-right {
+			width: 100%;
+		}
+	}
 
-        &__title {
-            font-weight: 600;
-        }
+	&-show {
+		&__title {
+			font-weight: 600;
+		}
 
-        &__image {
-            width: 13rem;
-            height: 13rem;
-            display: block;
-            margin: auto;
-            border-radius: .5rem;
+		&__image {
+			width: 13rem;
+			height: 13rem;
+			display: block;
+			margin: auto;
+			border-radius: 0.5rem;
 
-            &-container {
-                width: 50%;
-                margin: auto;
+			&-container {
+				width: 50%;
+				margin: auto;
+			}
+		}
 
-               
-            }
-        }
+		&__header {
+			width: 100%;
+			position: relative;
+			height: 20rem;
+			display: flex;
 
-        &__header {
-            width: 100%;
-            position: relative;
-            height: 20rem;
+			& p {
+				display: block;
+				margin: 1.5rem 2.5rem;
+			}
 
-            & p {
-                display: block;
-                margin: 1.5rem 2.5rem;
-            }
+			&-details {
+				position: relative;
+				width: 50%;
+				padding: 3rem auto;
+				margin: 1.5rem auto;
+				border-left: 1px solid $color-blue-dark-1;
+				align-content: center;
 
-            &-details {
-                position: relative;
-                width: 50%;
-                padding: 3rem auto; 
-                margin: 1.5rem auto;
-                border-left: 1px solid $color-red;
-                align-content: center;
+				& .detail-container {
+					position: absolute;
+					top: 50%;
+					transform: translateY(-50%);
 
-                & .detail-container {
-                    position: absolute;
-                    top: 50%;
-                    transform: translateY(-50%)
-                }
+					& .message {
+						margin-left: 2.5rem;
+					}
+				}
+			}
+		}
 
-               
-            }
+		&__main p {
+			width: 80%;
+			margin: 2rem auto;
+			padding: 2rem;
+			border-top: 1px solid $color-blue-dark-1;
+			text-align: center;
+		}
 
-        }
-
-        &__main p {
-            width: 80%;
-            margin: 2rem auto;
-            padding: 2rem;
-            border-top: 1px solid $color-red;
-
-            
-        }
-
-        &__main {
-            margin: auto;
-           
-        }
-    }
+		&__main {
+			margin: auto;
+		}
+	}
 }
 
 section.card.gig-card-browse {
-    display: flex;
-    align-items: initial;
-    justify-content: center;
+	display: flex;
+	justify-content: center;
+	align-content: center;
 }
 
 .card.gig-card-show {
-    margin: 3rem auto;
-    @include respond(phone) {
-        margin-top: 18rem;
-    }
+	margin: 3rem auto;
+	@include respond(phone) {
+		margin-top: 18rem;
+	}
 }
 
 .row.gig-card-show__main {
-    margin-left: 0;
-    margin-right: 0;
+	margin-left: 0;
+	margin-right: 0;
 }
-

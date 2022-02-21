@@ -23,7 +23,6 @@ const GigDetail = ({ gig, gigLoading, getGig, match }) => {
 			<section className='column-primary'>
 				{!gigLoading && <GigCardShow gig={gig} />}
 			</section>
-			<section className='column-tertiary'></section>
 		</div>
 	);
 };
