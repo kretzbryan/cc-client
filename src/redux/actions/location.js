@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { get, post } from '../../utils/api';
+import { get, post } from '../../utilsapi';
 
 import {
 	SET_ALERT,
@@ -13,7 +13,7 @@ export const getLocations = (text) => async (dispatch) => {
 	console.log(text);
 	try {
 		const authRequired = true;
-		const res = await post('/api/data/locations', { text }, authRequired);
+		const res = await post('api/data/locations', { text }, authRequired);
 		dispatch({
 			type: SET_LOCATIONS,
 			payload: res.data.results,

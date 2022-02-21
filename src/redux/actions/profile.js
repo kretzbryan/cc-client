@@ -1,4 +1,4 @@
-import { get, post, put, remove } from '../../utils/api';
+import { get, post, put, remove } from '../../utilsapi';
 import { setFeed } from './feed';
 import { setPosts } from './post';
 import {
@@ -18,7 +18,7 @@ export const setProfile = (profile) => (dispatch) => {
 export const getUserDashboard = () => async (dispatch) => {
 	try {
 		const authRequired = true;
-		const res = await get('/api/data/user', {}, authRequired);
+		const res = await get('api/data/user', {}, authRequired);
 		dispatch({
 			type: GET_PROFILE,
 			payload: res.data.user,
@@ -36,7 +36,7 @@ export const getUserProfile = (id) => async (dispatch) => {
 	console.log('id', id);
 	try {
 		const authRequired = true;
-		const res = await get(`/api/data/profile/${id}`, {}, authRequired);
+		const res = await get(`api/data/profile/${id}`, {}, authRequired);
 		console.log(res.data);
 		dispatch({
 			type: GET_PROFILE,
@@ -55,7 +55,7 @@ export const getUserProfile = (id) => async (dispatch) => {
 export const getAllProfiles = () => async (dispatch) => {
 	try {
 		const authRequired = true;
-		const res = await get('/api/data/profile/all', {}, authRequired);
+		const res = await get('api/data/profile/all', {}, authRequired);
 
 		dispatch({
 			type: GET_PROFILES,
@@ -75,7 +75,7 @@ export const editProfileImage = (file) => async (dispatch) => {
 
 	try {
 		const authRequired = true;
-		const res = await put('/api/data/profile/image/', formData, authRequired);
+		const res = await put('api/data/profile/image/', formData, authRequired);
 		dispatch({
 			type: UPDATE_PROFILE,
 			payload: res.data,

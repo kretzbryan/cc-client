@@ -6,7 +6,7 @@ import {
 	gigForm,
 	userForm,
 } from '../../utils/forms';
-import { get, post, put, remove } from '../../utils/api';
+import { get, post, put, remove } from '../../utilsapi';
 
 export const setLogin = () => async (dispatch) => {
 	try {
@@ -53,7 +53,7 @@ export const setAddGig = () => async (dispatch) => {
 export const setEditPost = (id) => async (dispatch) => {
 	try {
 		const authRequired = true;
-		const res = await get(`/api/data/post/${id}`, {}, authRequired);
+		const res = await get(`api/data/post/${id}`, {}, authRequired);
 		dispatch({
 			type: SET_FORM,
 			payload: {

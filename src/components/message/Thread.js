@@ -4,7 +4,7 @@ import auth from '../../redux/reducers/auth';
 import { connect } from 'react-redux';
 import { useState } from 'react';
 import ThreadView from './ThreadView';
-import { post } from '../../utils/api';
+import { post } from '../../utilsapi';
 
 const Thread = ({ image, subject, body, users, authUser, thread, index }) => {
 	const [expanded, setExpanded] = useState(false);
@@ -15,7 +15,7 @@ const Thread = ({ image, subject, body, users, authUser, thread, index }) => {
 		try {
 			const authRequired = true;
 			const res = await post(
-				'/api/data/message/read',
+				'api/data/message/read',
 				{ threadId: thread._id },
 				authRequired
 			);

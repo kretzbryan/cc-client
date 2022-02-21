@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FormGroup from './FormGroup';
-import { post } from '../../utils/api';
+import { post } from '../../utilsapi';
 
 const ImageInput = ({ inputValue, handleImage }) => {
 	const handleUploadImage = async (e) => {
@@ -11,7 +11,7 @@ const ImageInput = ({ inputValue, handleImage }) => {
 		body.append('image', imageFile);
 		try {
 			const authRequired = true;
-			const res = await post('/api/data/image/upload', body, authRequired);
+			const res = await post('api/data/image/upload', body, authRequired);
 			handleImage(res.data);
 		} catch (err) {
 			console.log(err.message);

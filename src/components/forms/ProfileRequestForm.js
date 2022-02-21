@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { post } from '../../utils/api';
+import { post } from '../../utilsapi';
 
 const ProfileRequestForm = ({ profile, toggleForm, connect }) => {
 	const [formData, setFormData] = useState({
@@ -30,7 +30,7 @@ const ProfileRequestForm = ({ profile, toggleForm, connect }) => {
 					console.log('this is partially filled, clear or finish!');
 				} else {
 					res = await post(
-						'/api/data/connection/new',
+						'api/data/connection/new',
 						{
 							recipient: profile,
 							message: isValidForm ? formData : null,
@@ -40,7 +40,7 @@ const ProfileRequestForm = ({ profile, toggleForm, connect }) => {
 				}
 			} else {
 				res = await post(
-					'/api/data/message/new-message-thread',
+					'api/data/message/new-message-thread',
 					{ message: { ...formData, messageType: 'direct' } },
 					authRequired
 				);

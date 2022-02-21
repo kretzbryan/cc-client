@@ -1,10 +1,10 @@
-import { post } from '../../utils/api';
+import { post } from '../../utilsapi';
 
 export const denyConnection = (connectionId) => async (dispatch) => {
 	try {
 		const authRequired = true;
 		const res = await post(
-			'/api/data/connection/deny',
+			'api/data/connection/deny',
 			{ connectionId },
 			authRequired
 		);
@@ -17,7 +17,7 @@ export const approveConnection = (connectionId) => async (dispatch) => {
 	try {
 		const authRequired = true;
 		const res = await post(
-			'/api/data/connection/approve',
+			'api/data/connection/approve',
 			{ connectionId },
 			authRequired
 		);

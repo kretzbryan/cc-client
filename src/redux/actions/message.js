@@ -1,5 +1,5 @@
 import { EDIT_MESSAGE, SET_MESSAGES } from './types';
-import { post } from '../../utils/api';
+import { post } from '../../utilsapi';
 
 export const setMessages = (messages) => async (dispatch) => {
 	dispatch({
@@ -11,11 +11,7 @@ export const setMessages = (messages) => async (dispatch) => {
 export const sendMessage = (body, thread, threadIndex) => async (dispatch) => {
 	try {
 		const authRequired = true;
-		const res = await post(
-			'/api/data/message/send-message',
-			body,
-			authRequired
-		);
+		const res = await post('api/data/message/send-message', body, authRequired);
 
 		dispatch({
 			type: EDIT_MESSAGE,
@@ -28,7 +24,7 @@ export const sendMessage = (body, thread, threadIndex) => async (dispatch) => {
 // 	console.log(text);
 // 	try {
 // 		const authRequired = true;
-// 		const res = await post('/api/data/messages', { text }, authRequired);
+// 		const res = await post('api/data/messages', { text }, authRequired);
 // 		dispatch({
 // 			type: SET_LOCATIONS,
 // 			payload: res.data.results,

@@ -4,7 +4,7 @@ import { clearTags, getTags } from '../../redux/actions/tags';
 import { getLocations } from '../../redux/actions/location';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
-import { post } from '../../utils/api';
+import { post } from '../../utilsapi';
 import FormGroup from './FormGroup';
 import LocationInput from './LocationInput';
 import ImageInput from './ImageInput';
@@ -105,7 +105,7 @@ const EventForm = ({
 		e.preventDefault();
 		try {
 			const authRequired = true;
-			const res = await post('/api/data/event/create', data, authRequired);
+			const res = await post('api/data/event/create', data, authRequired);
 			console.log('Success!');
 		} catch (err) {
 			console.log(err.message);

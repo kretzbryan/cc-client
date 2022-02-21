@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as EmailValidator from 'email-validator';
 import { editUserField } from '../../../redux/actions/auth';
-import { post } from '../../../utils/api';
+import { post } from '../../../utilsapi';
 import Spinner from '../../layout/Spinner';
 import {
 	clearLocationResults,
@@ -59,7 +59,7 @@ const ReviewSettings = ({
 			try {
 				const authRequired = true;
 				const res = await post(
-					`/api/data/user/check-unique-field`,
+					`api/data/user/check-unique-field`,
 					{ key: name, value },
 					authRequired
 				).catch((err) => {

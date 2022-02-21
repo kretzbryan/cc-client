@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import FormGroup from './FormGroup';
 import Spinner from '../layout/Spinner';
 import { connect } from 'react-redux';
-import { post } from '../../utils/api';
+import { post } from '../../utilsapi';
 import { useEffect } from 'react';
 import { getTags } from '../../redux/actions/tags';
 import { editUserField } from '../../redux/actions/auth';
@@ -28,7 +28,7 @@ const TagInput = ({
 		try {
 			const authRequired = true;
 			const res = await post(
-				'/api/data/tag/create-tag',
+				'api/data/tag/create-tag',
 				{ value },
 				authRequired
 			);

@@ -10,7 +10,7 @@ import {
 	CLEAR_PROFILE,
 	EDIT_USER_FIELD,
 } from './types';
-import { get, post, put, remove } from '../../utils/api';
+import { get, post, put, remove } from '../../utilsapi';
 import { setRedirect } from './redirect';
 import { setPosts } from './post';
 import { setFeed } from './feed';
@@ -19,7 +19,7 @@ import { setMessages } from './message';
 export const loadUser = () => async (dispatch) => {
 	try {
 		const authRequired = true;
-		const res = await get('/api/data/user', {}, authRequired);
+		const res = await get('api/data/user', {}, authRequired);
 		dispatch({
 			type: USER_LOADED,
 			payload: res.data.user,
@@ -51,7 +51,7 @@ export const register =
 
 		try {
 			const authRequired = false;
-			const res = await post('/api/auth/register', body, authRequired);
+			const res = await post('api/auth/register', body, authRequired);
 			dispatch(setAlert('Register Success!', 'success'));
 			dispatch({
 				type: REGISTER_CONFIRMED,
@@ -80,7 +80,7 @@ export const login =
 		try {
 			const authRequired = false;
 			const res = await post(
-				'/api/auth/login',
+				'api/auth/login',
 				{ username, password },
 				authRequired
 			).catch((err) => {
@@ -127,7 +127,7 @@ export const editUserField = (key, value) => (dispatch) => {
 // 	try {
 // 		const authRequired = true;
 // 		const res = await post(
-// 			`/api/data/user/check-unique-field`,
+// 			`api/data/user/check-unique-field`,
 // 			{ key, value },
 // 			authRequired
 // 		);
