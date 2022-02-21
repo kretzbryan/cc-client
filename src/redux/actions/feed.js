@@ -18,7 +18,7 @@ export const editFeedItem = (item) => (dispatch) => {
 export const addFeedPost = (body) => async (dispatch) => {
 	try {
 		const authRequired = true;
-		const res = await post('api/data/post', body, authRequired);
+		const res = await post('/api/data/post', body, authRequired);
 		dispatch({
 			type: ADD_FEED_ITEM,
 			payload: res.data,
@@ -31,7 +31,7 @@ export const addFeedPost = (body) => async (dispatch) => {
 export const addFeedComment = (body) => async (dispatch) => {
 	try {
 		const authRequired = true;
-		const res = await post(`api/data/comment`, body, authRequired);
+		const res = await post(`/api/data/comment`, body, authRequired);
 		dispatch(editFeedItem(res.data.item));
 	} catch (err) {
 		console.log(err.message);

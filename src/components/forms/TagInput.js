@@ -28,7 +28,7 @@ const TagInput = ({
 		try {
 			const authRequired = true;
 			const res = await post(
-				'api/data/tag/create-tag',
+				'/api/data/tag/create-tag',
 				{ value },
 				authRequired
 			);

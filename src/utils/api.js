@@ -39,7 +39,7 @@ export const remove = (pathname, data, authRequired) =>
 // 		let old_ip_address = localStorage.getItem('ip_address');
 
 // 		if (old_ip_address !== new_ip_address) {
-// 			post('api/v1/amadeus_test/save_ip', { ip: new_ip_address }, true).then(
+// 			post('/api/v1/amadeus_test/save_ip', { ip: new_ip_address }, true).then(
 // 				(response) => {
 // 					localStorage.setItem('ip_address', new_ip_address);
 // 				}

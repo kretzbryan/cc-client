@@ -19,7 +19,7 @@ export const addPost = (body) => async (dispatch) => {
 	// const body = JSON.stringify({ text });
 	try {
 		const authRequired = true;
-		const res = await post('api/data/post', body, authRequired);
+		const res = await post('/api/data/post', body, authRequired);
 		dispatch({
 			type: ADD_POST,
 			payload: res.data,
@@ -46,7 +46,7 @@ export const getPosts =
 			if (profileId === true) {
 				const authRequired = true;
 				const res = await get(
-					`api/data/post/user/${profileId}`,
+					`/api/data/post/user/${profileId}`,
 					{},
 					authRequired
 				).catch((err) => {
@@ -60,7 +60,7 @@ export const getPosts =
 				});
 			} else {
 				const authRequired = true;
-				const res = await get(`api/data/post`, {}, authRequired).catch(
+				const res = await get(`/api/data/post`, {}, authRequired).catch(
 					(err) => {
 						throw {
 							message: `In post ${err.message}`,
@@ -83,7 +83,7 @@ export const getUserPosts = (profileId) => async (dispatch) => {
 	try {
 		const authRequired = true;
 		const res = await get(
-			`api/data/post/user/${profileId}`,
+			`/api/data/post/user/${profileId}`,
 			{},
 			authRequired
 		).catch((err) => {
@@ -106,7 +106,7 @@ export const getUserPosts = (profileId) => async (dispatch) => {
 export const deletePost = (id) => async (dispatch) => {
 	try {
 		const authRequired = true;
-		const res = await remove(`api/data/post/${id}`, {}, authRequired);
+		const res = await remove(`/api/data/post/${id}`, {}, authRequired);
 		dispatch({
 			type: DELETE_POST,
 			payload: res.data,
@@ -122,7 +122,7 @@ export const deletePost = (id) => async (dispatch) => {
 export const getPost = (id) => async (dispatch) => {
 	try {
 		const authRequired = true;
-		const res = await get(`api/data/post/${id}`, {}, authRequired);
+		const res = await get(`/api/data/post/${id}`, {}, authRequired);
 
 		dispatch({
 			type: GET_POST,
@@ -141,7 +141,7 @@ export const editPost = (post) => async (dispatch) => {
 
 	try {
 		const authRequired = true;
-		const res = await put(`api/data/post/${post.id}`, body, authRequired);
+		const res = await put(`/api/data/post/${post.id}`, body, authRequired);
 		dispatch({
 			type: EDIT_POST,
 			payload: res.data,
@@ -157,7 +157,7 @@ export const editPost = (post) => async (dispatch) => {
 export const addPostComment = (body) => async (dispatch) => {
 	try {
 		const authRequired = true;
-		const res = await post(`api/data/comment`, body, authRequired);
+		const res = await post(`/api/data/comment`, body, authRequired);
 		dispatch({
 			type: HANDLE_COMMENT,
 			payload: res.data.item,
@@ -178,7 +178,7 @@ export const editPostComment =
 		try {
 			const authRequired = true;
 			const res = await put(
-				`api/data/post/${postId}/comment/${commentId}`,
+				`/api/data/post/${postId}/comment/${commentId}`,
 				body,
 				authRequired
 			);
@@ -199,7 +199,7 @@ export const deletePostComment = (postId, commentId) => async (dispatch) => {
 	try {
 		const authRequired = true;
 		const res = await remove(
-			`api/data/post/${postId}/comment/${commentId}`,
+			`/api/data/post/${postId}/comment/${commentId}`,
 			{},
 			authRequired
 		);

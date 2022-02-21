@@ -105,7 +105,7 @@ const EventForm = ({
 		e.preventDefault();
 		try {
 			const authRequired = true;
-			const res = await post('api/data/event/create', data, authRequired);
+			const res = await post('/api/data/event/create', data, authRequired);
 			console.log('Success!');
 		} catch (err) {
 			console.log(err.message);

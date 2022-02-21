@@ -13,7 +13,7 @@ export const setEvents = (payload) => (dispatch) => {
 export const getEvents = (payload) => async (dispatch) => {
 	try {
 		const authRequired = true;
-		const res = await get('api/data/event/all', {}, authRequired);
+		const res = await get('/api/data/event/all', {}, authRequired);
 		dispatch({
 			type: SET_EVENTS,
 			payload: res.data.events,

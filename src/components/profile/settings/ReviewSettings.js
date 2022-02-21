@@ -59,7 +59,7 @@ const ReviewSettings = ({
 			try {
 				const authRequired = true;
 				const res = await post(
-					`api/data/user/check-unique-field`,
+					`/api/data/user/check-unique-field`,
 					{ key: name, value },
 					authRequired
 				).catch((err) => {

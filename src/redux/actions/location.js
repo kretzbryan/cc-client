@@ -13,7 +13,7 @@ export const getLocations = (text) => async (dispatch) => {
 	console.log(text);
 	try {
 		const authRequired = true;
-		const res = await post('api/data/locations', { text }, authRequired);
+		const res = await post('/api/data/locations', { text }, authRequired);
 		dispatch({
 			type: SET_LOCATIONS,
 			payload: res.data.results,

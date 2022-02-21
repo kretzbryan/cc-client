@@ -15,7 +15,7 @@ const Thread = ({ image, subject, body, users, authUser, thread, index }) => {
 		try {
 			const authRequired = true;
 			const res = await post(
-				'api/data/message/read',
+				'/api/data/message/read',
 				{ threadId: thread._id },
 				authRequired
 			);

@@ -10,7 +10,7 @@ const GeneralSettings = ({ user }) => {
 		if (edit) {
 			try {
 				const authRequired = true;
-				const res = await post('api/data/user/update', { user }, authRequired);
+				const res = await post('/api/data/user/update', { user }, authRequired);
 			} catch (err) {
 				console.log(err.message);
 			}

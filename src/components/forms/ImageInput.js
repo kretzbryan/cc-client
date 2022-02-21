@@ -11,7 +11,7 @@ const ImageInput = ({ inputValue, handleImage }) => {
 		body.append('image', imageFile);
 		try {
 			const authRequired = true;
-			const res = await post('api/data/image/upload', body, authRequired);
+			const res = await post('/api/data/image/upload', body, authRequired);
 			handleImage(res.data);
 		} catch (err) {
 			console.log(err.message);
