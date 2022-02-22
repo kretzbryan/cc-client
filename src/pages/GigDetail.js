@@ -3,8 +3,6 @@ import { getGig } from '../redux/actions/gig';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import GigCardShow from '../components/gig/GigCardShow';
-import UserCard from '../components/user/UserCard';
-import DashboardNav from '../components/user/dashboard/DashboardNav';
 import requireAuth from '../components/hoc/AuthComponent';
 import redirectHOC from '../components/hoc/RedirectHOC';
 
@@ -14,17 +12,7 @@ const GigDetail = ({ gig, gigLoading, getGig, match }) => {
 		getGig(match.params.id);
 	}, [getGig]);
 
-	return (
-		<div className='row main__container'>
-			<section className='column-secondary'>
-				<UserCard />
-				<DashboardNav />
-			</section>
-			<section className='column-primary'>
-				{!gigLoading && <GigCardShow gig={gig} />}
-			</section>
-		</div>
-	);
+	return <>{!gigLoading && <GigCardShow gig={gig} />}</>;
 };
 
 GigDetail.propTypes = {

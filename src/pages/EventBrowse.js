@@ -1,102 +1,53 @@
+import requireAuth from '../components/hoc/AuthComponent';
+import redirectHOC from '../components/hoc/RedirectHOC';
+
 import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import UserCard from '../components/user/UserCard';
-import DashboardNav from '../components/user/dashboard/DashboardNav';
-import GigNav2 from '../components/gig/GigNav2';
-import UserCardMobile from '../components/user/UserCardMobile';
-import PostColumn from '../components/post/PostColumn';
-import MediaCard from '../components/MediaCard';
 
 import { connect } from 'react-redux';
 import EventCard from '../components/event/EventCard';
 import ToolBar from '../components/event/ToolBar';
-import requireAuth from '../components/hoc/AuthComponent';
-import redirectHOC from '../components/hoc/RedirectHOC';
 import { setPopup } from '../redux/actions/popup';
+import { getEvents } from '../redux/actions/event';
 
-const EventBrowse = ({ setPopup }) => {
+const EventBrowse = ({ setPopup, events, getEvents }) => {
 	const [formOpen, toggleForm] = useState(false);
-	const categories = ['arch', 'nature', 'animals', 'tech'];
-	const filters = [null, 'grayscale', 'sepia'];
-	const [events, setEvents] = useState(null);
+	// const categories = ['arch', 'nature', 'animals', 'tech'];
+	// const filters = [null, 'grayscale', 'sepia'];
+	// const [events, setEvents] = useState(null);
 	const eventFormInfo = {
 		name: 'event-info',
 		headerValue: 'New Event',
 		submitAction: null,
 	};
 
-	// useEffect(() => {
-	// 	const results = [];
-	// 	for (let num = 0; num < 25; num++) {
-	// 		let randomDate, startDate, endDate;
-	// 		randomDate = new Date();
-	// 		randomDate.setDate(randomDate.getDate() + Math.floor(Math.random() * 31));
-
-	// 		startDate = new Date(randomDate);
-
-	// 		startDate.setHours(startDate.getHours() + Math.floor(Math.random() * 23));
-
-	// 		endDate = new Date(startDate);
-
-	// 		const trimMinuteRange = (date) => {
-	// 			const randomNumber = Math.floor(Math.random() * 2);
-	// 			const mins = date.getMinutes();
-	// 			const remainder = mins % 30;
-
-	// 			return randomNumber ? mins - remainder : mins - remainder + 30;
-	// 		};
-	// 		startDate.setMinutes(trimMinuteRange(startDate));
-	// 		endDate.setHours(endDate.getHours() + Math.floor(Math.random() * 6));
-
-	// 		results.push({
-	// 			category: categories[Math.floor(Math.random() * categories.length)],
-	// 			filter: filters[Math.floor(Math.random() * filters.length)],
-	// 			startDate,
-	// 			endDate,
-	// 		});
-	// 	}
-
-	// 	setEvents(results);
-	// }, []);
+	useEffect(() => {
+		getEvents();
+	}, []);
 	return (
-		<div className='row main__container'>
-			<section className='column-secondary'>
-				<UserCard />
-				<DashboardNav />
-				<GigNav2 />
-			</section>
-			<section className='event__browse-container'>
-				<UserCardMobile />
-				{/* <a className='nav-link' href='#gigForm'>
-					Add Gig
-				</a> */}
-				<div className='subnav no-list'>
-					<ToolBar type='event' />
-					<a
-						href='#event-info'
-						className='add-event'
-						onClick={() => setPopup(eventFormInfo)}>
-						+
-					</a>
-				</div>
+		<section className='event__browse-container'>
+			<div className='subnav no-list'>
+				<ToolBar type='event' />
+				<a
+					href='#event-info'
+					className='add-event'
+					onClick={() => setPopup(eventFormInfo)}>
+					+
+				</a>
+			</div>
 
-				{events &&
-					events.map((event) => (
-						<EventCard
-							category={event.category}
-							filter={event.filter}
-							start={event.startDate}
-							end={event.endDate}
-						/>
-					))}
-			</section>
-		</div>
+			{events.length && events.map((event) => <EventCard event={event} />)}
+		</section>
 	);
 };
 EventBrowse.propTypes = {
 	getUserDashboard: PropTypes.func.isRequired,
 };
 
-export default connect(null, { setPopup })(
+const mapStateToProps = (state) => ({
+	events: state.event.events,
+});
+
+export default connect(mapStateToProps, { setPopup, getEvents })(
 	redirectHOC(requireAuth(EventBrowse))
 );

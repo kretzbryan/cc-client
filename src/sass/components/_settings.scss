@@ -8,6 +8,13 @@
 		width: calc(100vw - 25rem);
 		padding: 3rem;
 
+		@include respond(iphone-xr) {
+			width: auto;
+			position: relative;
+
+			top: auto;
+			left: auto;
+		}
 		& header {
 			display: flex;
 			justify-content: space-between;

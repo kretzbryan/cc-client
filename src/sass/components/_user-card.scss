@@ -10,6 +10,9 @@
 	height: 22rem;
 	display: flex;
 	flex-direction: column;
+	@include respond(iphone-xr) {
+		display: none;
+	}
 
 	&-mobile {
 		margin: 3rem auto;

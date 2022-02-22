@@ -16,23 +16,23 @@ const DiscoverSubnav = (props) => {
 						People
 					</button>
 				</li>
-				<li>
+				{/* <li>
 					<button>
 						<img src={event} alt='event icon' /> <br /> Events
 					</button>
-				</li>
-				<li>
+				</li> */}
+				{/* <li>
 					<button>
 						<img src={gig} alt='gig icon' /> <br /> Gigs
 					</button>
-				</li>
+				</li> */}
 				{/* <li>
 					<button>
 						<img src={group} alt='group icon' /> <br /> Groups
 					</button>
 				</li> */}
 			</ul>
-			<ToolBar type='general' />
+			{/* <ToolBar type='general' /> */}
 		</div>
 	);
 };

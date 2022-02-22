@@ -1,19 +1,11 @@
-footer.page__footer,
-footer.footer {
+.footer {
 	color: $logo-color;
 	position: fixed;
-	bottom: 0px;
-	left: 0px;
-	width: 100vw;
-	padding: 15px;
-	height: 5vh;
+	bottom: 1rem;
+	right: 1rem;
 	z-index: 7;
+	font-family: 'Permanent Marker', cursive;
 
 	& h5 {
-		font-family: 'Permanent Marker', cursive;
-		position: absolute;
-		bottom: -0.5rem;
-		right: 1vw;
-		z-index: -1;
 	}
 }

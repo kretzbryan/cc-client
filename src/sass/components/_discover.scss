@@ -10,6 +10,14 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+
+	@include respond(iphone-xr) {
+		width: 100%;
+		position: relative;
+
+		top: auto;
+		left: auto;
+	}
 	& .add-event {
 		// position: fixed;
 		margin: 0 2rem 0 2rem;

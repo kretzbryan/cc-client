@@ -17,12 +17,13 @@ const BrowseProfileCard = ({
 	request,
 	approveConnection,
 	denyConnection,
+	user,
 }) => {
 	const returnRequestActions = () => {
 		return (
 			<div className='actions'>
-				<button onClick={() => approveConnection(id)}>Accept</button>
-				<button onClick={() => denyConnection(id)}>Delete</button>
+				<button onClick={() => approveConnection(id, user)}>Accept</button>
+				<button onClick={() => denyConnection(id, user)}>Delete</button>
 			</div>
 		);
 	};
@@ -52,6 +53,7 @@ BrowseProfileCard.propTypes = {
 
 const mapStateToProps = (state) => ({
 	profile: state.profile,
+	user: state.auth.user,
 });
 
 export default connect(mapStateToProps, {

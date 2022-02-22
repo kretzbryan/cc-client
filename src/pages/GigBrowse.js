@@ -1,31 +1,40 @@
+import requireAuth from '../components/hoc/AuthComponent';
+import redirectHOC from '../components/hoc/RedirectHOC';
+
 import PropTypes from 'prop-types';
 import React, { Fragment, useEffect } from 'react';
 import { getRecentGigs } from '../redux/actions/gig';
 import { connect } from 'react-redux';
 import auth from '../redux/reducers/auth';
-import UserCard from '../components/user/UserCard';
 import GigColumn from '../components/gig/GigColumn';
-import requireAuth from '../components/hoc/AuthComponent';
-import redirectHOC from '../components/hoc/RedirectHOC';
-import DashboardNav from '../components/user/dashboard/DashboardNav';
+import ToolBar from '../components/event/ToolBar';
+import { setPopup } from '../redux/actions/popup';
 
-const GigBrowse = ({ getRecentGigs, authLoading, user }) => {
+const GigBrowse = ({ getRecentGigs, authLoading, user, setPopup }) => {
+	const gigFormInfo = {
+		name: 'gig-info',
+		headerValue: 'New Gig',
+		submitAction: null,
+	};
 	useEffect(() => {
 		getRecentGigs();
 	}, []);
 
 	return (
-		<div className='row main__container'>
-			<div className='column-secondary'>
-				{!authLoading && <UserCard />}
-				<DashboardNav />
+		<>
+			<div className='subnav no-list'>
+				{/* <ToolBar type='event' /> */}
+				<a
+					href='#gig-info'
+					className='add-event'
+					onClick={() => setPopup(gigFormInfo)}>
+					+
+				</a>
 			</div>
-			<div className='column-primary'>
-				<GigColumn />
-			</div>
+			<GigColumn />
 			{/* <div className="column-tertiary">
             </div> */}
-		</div>
+		</>
 	);
 };
 
@@ -39,6 +48,6 @@ const mapStateToProps = (state) => ({
 	user: auth.user,
 });
 
-export default connect(mapStateToProps, { getRecentGigs })(
+export default connect(mapStateToProps, { getRecentGigs, setPopup })(
 	redirectHOC(requireAuth(GigBrowse))
 );

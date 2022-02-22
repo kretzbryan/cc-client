@@ -16,6 +16,13 @@ import { setPosts } from './post';
 import { setFeed } from './feed';
 import { setMessages } from './message';
 
+export const setUser = (user) => (dispatch) => {
+	dispatch({
+		type: USER_LOADED,
+		payload: user,
+	});
+};
+
 export const loadUser = () => async (dispatch) => {
 	try {
 		const authRequired = true;
@@ -25,8 +32,8 @@ export const loadUser = () => async (dispatch) => {
 			payload: res.data.user,
 		});
 
-		const { posts, message } = res.data.user;
-		dispatch(setMessages(message.messages));
+		const { posts, threads } = res.data.user;
+		dispatch(setMessages(threads));
 		dispatch(setFeed(posts));
 	} catch (err) {
 		console.log(err.message);
@@ -52,6 +59,10 @@ export const register =
 		try {
 			const authRequired = false;
 			const res = await post('/api/auth/register', body, authRequired);
+			localStorage.setItem('authToken', res.data.token);
+			if (localStorage.getItem('authToken')) {
+				dispatch(setRedirect('/home'));
+			}
 			dispatch(setAlert('Register Success!', 'success'));
 			dispatch({
 				type: REGISTER_CONFIRMED,

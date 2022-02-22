@@ -11,6 +11,7 @@ let requireAuth = (WrappedComponent) => {
 		logout,
 		...props
 	}) => {
+		console.log(localStorage.getItem('authToken'));
 		if (!localStorage.getItem('authToken')) {
 			logout();
 			return <Redirect to='/' />;

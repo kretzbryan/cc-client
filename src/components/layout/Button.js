@@ -11,12 +11,12 @@ const Button = ({
 	setWindow,
 }) => {
 	return (
-		<div>
+		<div className='dashboard-button__container'>
 			{path ? (
 				<Link to={path}>
 					<button type='button' className={`btn ${classNames}`}>
 						{icon}
-						{buttonText}
+						<span className='button-text'>{buttonText}</span>
 						{!!itemAmount && <span className='item-amount'>{itemAmount}</span>}
 					</button>
 				</Link>
@@ -26,7 +26,7 @@ const Button = ({
 					type='button'
 					className={`btn ${classNames}`}>
 					{icon}
-					{buttonText}
+					<span className='button-text'>{buttonText}</span>
 					{!!itemAmount && <span className='item-amount'>{itemAmount}</span>}
 				</button>
 			)}

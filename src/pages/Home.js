@@ -46,19 +46,7 @@ const Home = ({ loadUser, getGigs, getPosts, auth, profile, feed }) => {
 		loadUser();
 	}, []);
 
-	return (
-		<div className='row main__container'>
-			<section className='column-secondary'>
-				<UserCard user={auth.user} />
-				<DashboardNav setCurrentWindow={setCurrentWindow} />
-			</section>
-			<section className='column-primary'>
-				<UserCardMobile />
-				{handleWindow()}
-				{/* <MediaCard /> */}
-			</section>
-		</div>
-	);
+	return <>{handleWindow()}</>;
 };
 
 Home.propTypes = {

@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import defaultImage from '../../images/default.png';
 import { setPopup } from '../../redux/actions/popup';
+import { removeConnection } from '../../redux/actions/connections';
 
-const ProfileCard = ({ profile, setPopup }) => {
+const ProfileCard = ({ profile, setPopup, user, removeConnection }) => {
 	const { firstName, lastName, location, occupation } = profile;
 	const connectFormInfo = {
 		name: 'connect',
@@ -18,6 +19,12 @@ const ProfileCard = ({ profile, setPopup }) => {
 		headerValue: 'New Message',
 		submitAction: null,
 	};
+	// const isConnection = true;
+	const isConnection =
+		user &&
+		user.connections.confirmed.find(
+			(connection) => connection._id === profile._id
+		);
 
 	return profile ? (
 		<Fragment>
@@ -32,9 +39,16 @@ const ProfileCard = ({ profile, setPopup }) => {
 					/>
 				</section>
 				<section className='action-section'>
-					<a href='#connect' onClick={() => setPopup(connectFormInfo)}>
-						Connect
-					</a>
+					{isConnection ? (
+						<a href='#' onClick={() => removeConnection(profile._id, user)}>
+							Remove Connection
+						</a>
+					) : (
+						<a href='#connect' onClick={() => setPopup(connectFormInfo)}>
+							Connect
+						</a>
+					)}
+
 					<a href='#send-message' onClick={() => setPopup(messageFormInfo)}>
 						Message
 					</a>
@@ -50,6 +64,9 @@ ProfileCard.propTypes = {
 
 const mapStateToProps = (state) => ({
 	profile: state.profile.profile,
+	user: state.auth.user,
 });
 
-export default connect(mapStateToProps, { setPopup })(ProfileCard);
+export default connect(mapStateToProps, { setPopup, removeConnection })(
+	ProfileCard
+);

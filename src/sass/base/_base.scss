@@ -68,6 +68,11 @@ body {
 	padding: 0;
 	position: fixed;
 	top: 7rem;
+	@include respond(iphone-xr) {
+		flex-direction: column;
+		height: calc(100vh - 5rem);
+		top: 5rem;
+	}
 	&.landing {
 		width: 100vw;
 		height: 90vh;

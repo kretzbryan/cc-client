@@ -47,3 +47,6 @@ export const ADD_FEED_ITEM = 'ADD_FEED_ITEM';
 export const SET_MESSAGES = 'SET_MESSAGES';
 export const EDIT_MESSAGE = 'EDIT_MESSAGE';
 export const SET_EVENTS = 'SET_EVENTS';
+export const SET_EVENT = 'SET_EVENT';
+export const SET_EVENT_BY_ID = 'SET_EVENT_BY_ID';
+export const EDIT_THREADS = 'EDIT_THREADS';

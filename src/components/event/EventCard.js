@@ -5,10 +5,10 @@ import noImage from '../../images/noun-image-unavailable-4379574-2054A8.svg';
 
 const EventCard = ({ event }) => {
 	console.log(event);
-	const { imageLocation, startTime, startDate, endTime, endDate } = event;
+	const { imageLocation, startTime, startDate, endTime, endDate, _id } = event;
 	return (
 		<div className='event__card'>
-			<a href=''>
+			<a href={`/event/${_id}`}>
 				<img src={imageLocation || noImage} alt='' />
 				<main className='event__card-main'>
 					<h3 className='event__card-date'></h3>

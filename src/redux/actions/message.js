@@ -1,14 +1,14 @@
-import { EDIT_MESSAGE, SET_MESSAGES } from './types';
+import { EDIT_MESSAGE, EDIT_THREADS, SET_MESSAGES } from './types';
 import { post } from '../../utils/api';
 
-export const setMessages = (messages) => async (dispatch) => {
+export const setMessages = (threads) => async (dispatch) => {
 	dispatch({
 		type: SET_MESSAGES,
-		payload: messages,
+		payload: threads,
 	});
 };
 
-export const sendMessage = (body, thread, threadIndex) => async (dispatch) => {
+export const sendMessage = (body) => async (dispatch) => {
 	try {
 		const authRequired = true;
 		const res = await post(
@@ -19,9 +19,16 @@ export const sendMessage = (body, thread, threadIndex) => async (dispatch) => {
 
 		dispatch({
 			type: EDIT_MESSAGE,
-			payload: { threadIndex, message: res.data.savedMessage },
+			payload: { updatedThread: res.data.savedThread },
 		});
 	} catch (error) {}
+};
+
+export const updateThreads = (threads) => (dispatch) => {
+	dispatch({
+		type: EDIT_THREADS,
+		payload: threads,
+	});
 };
 
 // export const getMessages = (text) => async (dispatch) => {

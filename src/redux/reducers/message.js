@@ -8,7 +8,8 @@ import {
 } from '../actions/types';
 
 const initialState = {
-	messages: null,
+	unreadMessages: null,
+	readMessages: null,
 	loading: false,
 };
 
@@ -16,19 +17,23 @@ export default function (state = initialState, action) {
 	const { type, payload } = action;
 	switch (type) {
 		case SET_MESSAGES:
-			return { loading: false, messages: payload };
+			return {
+				loading: false,
+				unreadMessages: payload.unread,
+				readMessages: payload.read,
+			};
 		case EDIT_MESSAGE:
 			return {
 				...state,
-				messages: state.messages.map((thread, index) => {
-					if (index === payload.threadIndex) {
-						return {
-							...thread,
-							messages: [...thread.messages, payload.message],
-						};
-					} else {
-						return thread;
-					}
+				unreadMessages: state.unreadMessages.map((thread) => {
+					if (thread._id === payload.updatedThread._id) {
+						return payload.updatedThread;
+					} else return thread;
+				}),
+				readMessages: state.readMessages.map((thread) => {
+					if (thread._id === payload.updatedThread._id) {
+						return payload.updatedThread;
+					} else return thread;
 				}),
 			};
 		case CLEAR_LOCATION_RESULTS:

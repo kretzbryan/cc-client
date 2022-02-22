@@ -5,15 +5,36 @@
 		font-weight: 400;
 		padding: 1rem 0;
 		margin: 1.5rem 2rem auto;
+		@include respond(iphone-xr) {
+			display: none;
+		}
+	}
+
+	&-button__container {
+		& a {
+			text-decoration: none;
+		}
+
+		& .button-text {
+			text-align: center;
+		}
 	}
 
 	&-line {
 		margin: 0 2rem 0.5rem;
+		@include respond(iphone-xr) {
+			display: none;
+		}
 	}
 	&-icon {
 		margin-left: 0;
 		margin-right: 0.5rem;
 		color: #f5faff;
+
+		@include respond(iphone-xr) {
+			font-size: 2rem;
+			margin: 0 auto 0.5rem;
+		}
 	}
 
 	&-btn {
@@ -38,7 +59,21 @@
 button.dashboard-btn {
 	height: 4rem;
 	position: relative;
-	& span {
+
+	@include respond(iphone-xr) {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-content: center;
+	}
+
+	// & .button-text {
+	// 	@include respond(iphone-xr) {
+	// 		display: none;
+	// 	}
+	// }
+
+	& .item-amount {
 		position: absolute;
 		top: 0.5rem;
 		display: inline-block;

@@ -22,7 +22,7 @@ const ThreadView = ({ thread, authUser, index, sendMessage }) => {
 			text: messageText,
 			createdBy: authUser,
 		};
-		if (messageText) sendMessage({ threadId, message }, thread, index);
+		if (messageText) sendMessage({ threadId, message });
 		setMessageText('');
 	};
 

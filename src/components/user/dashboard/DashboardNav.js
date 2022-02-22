@@ -10,8 +10,8 @@ const DashboardNav = ({ user, setCurrentWindow }) => {
 	}, []);
 	const returnItemReferenceAmount = (itemReference) => {
 		if (itemReference === 'message') {
-			console.log('messageLength', user && user.message.messages.length);
-			return user && user.message.messages.length;
+			console.log('messageLength', user && user.threads.unread.length);
+			return user && user.threads.unread.length;
 		}
 		if (itemReference === 'notification') {
 			console.log('notificationLength', user && user.notifications.new.length);
@@ -39,11 +39,11 @@ const DashboardNav = ({ user, setCurrentWindow }) => {
 							classNames,
 							icon,
 							buttonText,
-							itemReference,
 							window,
+							itemReference,
 						} = button;
 
-						return index === 4 ? (
+						return index === 3 ? (
 							<Fragment>
 								<Button
 									itemAmount={
