@@ -3,17 +3,38 @@
 		background-color: $background-color;
 		margin: 1.5rem;
 		width: 100vw;
-		height: 90vh;
+		height: calc(100vh - 5rem);
 		position: fixed;
-		top: 5vh;
+		top: 5rem;
 		display: grid;
 		grid-gap: 0 1.5rem;
 		grid-template-columns: repeat(3, 1fr);
-		grid-template-rows: 1fr 3rem 20rem;
+		grid-template-rows: 1fr 3rem 15rem;
 		grid-template-areas:
 			'form-container form-container landing-photo'
 			'.... about-title ......'
 			'column1 column2 column3';
+		overflow-x: scroll;
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+		@include respond(surface-pro) {
+			width: 100%;
+			margin: 0;
+			grid-template-columns: 100%;
+			grid-template-rows: repeat(6, auto);
+			grid-template-areas:
+				'form-container'
+				'landing-photo'
+				'about-title '
+				'column1'
+				'column2'
+				'column3';
+			padding-bottom: 6rem;
+		}
 	}
 
 	&-form__container {
@@ -21,6 +42,29 @@
 		display: flex;
 		position: absolute;
 		height: 45rem;
+
+		@include respond(surface-pro) {
+			position: relative;
+			left: 10rem;
+		}
+
+		@include respond(surface-duo) {
+			left: 6rem;
+		}
+
+		@include respond(iphone-xr) {
+			left: -11.5rem;
+		}
+		@include respond(iphone-12) {
+			left: -13.5rem;
+		}
+
+		@include respond(pixel-5) {
+			left: -13.75rem;
+		}
+		@include respond(iphone-se) {
+			left: -12.5rem;
+		}
 	}
 
 	&__photo {
@@ -30,5 +74,11 @@
 		left: -20rem;
 		z-index: -10;
 		grid-area: landing-photo;
+
+		@include respond(surface-pro) {
+			position: relative;
+			left: -3rem;
+			margin: auto;
+		}
 	}
 }

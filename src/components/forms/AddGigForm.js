@@ -154,7 +154,7 @@ const GigForm = ({ toggleForm, addGig, clearTags, locationResults }) => {
 						/>
 					</div>
 				</div>
-				<div className='form__group'>
+				<div className='form__group description'>
 					<label className='label' htmlFor='description'>
 						Description
 					</label>

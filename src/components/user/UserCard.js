@@ -16,7 +16,7 @@ const UserCard = ({ user }) => {
 				<div className='user-card__options-container'>
 					<a
 						className='edit__modal__anchor user-card__anchor'
-						href='#'
+						href='#profile-image'
 						data-toggle='modal'
 						data-target='#profilePhotoModal'>
 						<p className='user-card__options'>edit photo</p>

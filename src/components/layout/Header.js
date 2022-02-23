@@ -17,9 +17,11 @@ const Header = ({
 }) => {
 	const authorized = (
 		<Fragment>
-			<h1 className='navbar-brand navbar-brand-authorized' href='#'>
-				Cirque-Connections
-			</h1>
+			<a href='/home'>
+				<h1 className='navbar-brand navbar-brand-authorized'>
+					Cirque-Connections
+				</h1>
+			</a>
 			<ul className='navbar-nav'>
 				<li className='nav-item'>
 					<a className='nav-link' href='/home'>

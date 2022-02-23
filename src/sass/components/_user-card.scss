@@ -185,4 +185,9 @@
 	}
 	padding-bottom: 1rem;
 	padding-left: 1.5rem;
+
+	@include respond(iphone-xr) {
+		grid-template-columns: repeat(2, 1fr);
+		padding: 0;
+	}
 }

@@ -42,10 +42,8 @@ const ProfileDetail = ({
 		<div className='row main__container user-profile'>
 			<div className='user-info'>
 				{!loading && <ProfileCard profile={profile} />}
-				<GigNav2 />
 			</div>
 			<div className='column-primary'>
-				<UserCardMobile />
 				<PostColumn items={profile && profile.posts} loading={loading} />
 			</div>
 		</div>

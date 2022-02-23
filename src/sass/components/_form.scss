@@ -8,7 +8,15 @@
 	left: 0;
 
 	@include respond(iphone-xr) {
-		padding: 2rem 0;
+		padding: 2rem 7rem;
+	}
+
+	@include respond(iphone-se) {
+		padding: 2rem 5rem;
+	}
+
+	@include respond(s8-plus) {
+		padding: 2rem 5rem;
 	}
 
 	& b {
@@ -60,6 +68,7 @@
 			opacity: 1;
 			visibility: visible;
 			transition: all 0.5s;
+			padding: 2rem 6rem;
 		}
 	}
 
@@ -104,10 +113,31 @@
 			height: 35rem;
 			width: 60rem;
 			background-color: $color-grey-dark-1;
-			transform: translateX(15%);
+			transform: translateX(20.5%);
 			opacity: 1;
 			visibility: visible;
 			transition: all 0.5s;
+
+			@include respond(iphone-xr) {
+				transform: translateX(24.5%);
+			}
+
+			@include respond(iphone-12) {
+				transform: translateX(25%);
+			}
+
+			@include respond(pixel-5) {
+				transform: translateX(26%);
+			}
+
+			@include respond(iphone-se) {
+				transform: translateX(27%);
+			}
+
+			@include respond(s8-plus) {
+				padding: 2rem 4rem;
+				transform: translateX(28%);
+			}
 		}
 	}
 
@@ -244,12 +274,18 @@
 }
 
 .auth-footer {
-	margin: auto;
+	margin: 1.5rem auto auto;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	align-content: center;
 	text-align: center;
 	grid-area: auth-footer;
+
+	& a {
+		margin-left: 0.5rem;
+		text-decoration: none;
+	}
 }
 
 .first-name {

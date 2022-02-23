@@ -46,6 +46,8 @@
 		border-radius: 3px;
 
 		&.event-info,
+		&.send-message,
+		&.connect,
 		&.gig-info {
 			width: 80rem;
 			height: 58rem;
@@ -59,7 +61,9 @@
 
 			@include respond(iphone-xr) {
 				width: 56rem;
-				height: 75rem;
+				height: auto;
+
+				transform: translate(-50%, -95%);
 			}
 
 			@include respond(pixel-5) {
@@ -71,6 +75,7 @@
 				width: 50rem;
 				height: 75rem;
 			}
+
 			& .form {
 				display: flex;
 				flex-direction: column;
@@ -79,6 +84,9 @@
 					width: 18rem;
 					padding: 0.75rem;
 					border-radius: 50px;
+				}
+				@include respond(iphone-xr) {
+					padding: 2rem 0;
 				}
 				&__row {
 					display: flex;
@@ -100,6 +108,9 @@
 					margin: 1rem auto;
 					margin-left: 0;
 					padding: 0 7%;
+					&.description {
+						height: auto;
+					}
 					@include respond(iphone-se) {
 						padding: 0 2rem;
 					}
@@ -122,8 +133,11 @@
 			}
 		}
 
-		&.gig-info {
-			height: 64rem;
+		&.connect,
+		&.send-message {
+			@include respond(iphone-xr) {
+				padding: 0 3rem;
+			}
 		}
 	}
 

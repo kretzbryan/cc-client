@@ -60,6 +60,12 @@ $breakpoint arguement choices
 		} // 500px
 	}
 
+	@if $breakpoint == iphone-12 {
+		@media only screen and (max-width: 390px) {
+			@content;
+		} // 500px
+	}
+
 	@if $breakpoint == iphone-xr {
 		@media only screen and (max-width: 414px) {
 			@content;

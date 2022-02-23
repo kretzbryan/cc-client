@@ -109,13 +109,6 @@ body {
 	width: 300px;
 }
 
-.post-section,
-.gig-section {
-	@include respond(phone) {
-		margin-top: 18rem;
-	}
-}
-
 .options {
 	&:hover {
 		text-decoration: none;
@@ -170,7 +163,7 @@ body {
 
 	.row.create__post,
 	.card.post__container {
-		width: 100%;
+		width: 80%;
 	}
 
 	.create__post__caption {

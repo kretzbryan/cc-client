@@ -32,6 +32,11 @@
 		width: 100%;
 		align-items: center;
 
+		@include respond(iphone-xr) {
+			flex-direction: column;
+			width: 13rem;
+		}
+
 		& a {
 			// font-size: 1.2rem;
 			display: inline-block;
@@ -44,7 +49,13 @@
 			// width: 8rem;
 			text-decoration: none;
 			&:first-child {
-				border-right: 1px solid $color-blue-dark-1;
+				border-bottom: 1px solid $color-blue-dark-1;
+			}
+
+			@include respond(iphone-xr) {
+				width: 8rem;
+				padding-right: 1rem;
+				padding-left: 1rem;
 			}
 		}
 	}
@@ -52,6 +63,14 @@
 	@include respond(phone) {
 		height: 22rem;
 		width: 19rem;
+	}
+
+	@include respond(iphone-xr) {
+		height: 10rem;
+		width: 80%;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
 	}
 }
 
@@ -67,9 +86,10 @@
 		margin: 1rem auto 0 auto;
 		border: 1px solid $color-black;
 
-		@include respond(phone) {
-			height: 13rem;
-			width: 11rem;
+		@include respond(iphone-xr) {
+			height: 8rem;
+			width: 8rem;
+			margin: 0 1.5rem;
 		}
 	}
 }

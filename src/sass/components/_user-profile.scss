@@ -1,7 +1,11 @@
 .user-profile {
 	& .user-info {
 		background-color: #dce7fa;
-		width: 25vw;
+		width: 25rem;
+
+		@include respond(iphone-xr) {
+			width: 100vw;
+		}
 	}
 
 	& .column-primary {
