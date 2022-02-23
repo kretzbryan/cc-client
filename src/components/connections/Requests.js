@@ -10,6 +10,7 @@ const Requests = ({ requests }) => {
 				requests.map((connection) => {
 					return (
 						<BrowseProfileCard
+							profileImage={connection.profileImage}
 							request={true}
 							id={connection._id}
 							firstName={connection.firstName}

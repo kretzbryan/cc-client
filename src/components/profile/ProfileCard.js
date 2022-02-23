@@ -29,7 +29,11 @@ const ProfileCard = ({ profile, setPopup, user, removeConnection }) => {
 	return profile ? (
 		<Fragment>
 			<section className='card profile-card'>
-				<img src={defaultImage} alt='' className='profile-card__image' />
+				<img
+					src={profile.profileImage || defaultImage}
+					alt=''
+					className='profile-card__image'
+				/>
 				<section className='profile-card__info'>
 					<ProfileCardText text={firstName + ' ' + lastName} />
 					<ProfileCardText text={`San Francisco, Bay Area, Ca`} />
@@ -41,7 +45,7 @@ const ProfileCard = ({ profile, setPopup, user, removeConnection }) => {
 				<section className='action-section'>
 					{isConnection ? (
 						<a href='#' onClick={() => removeConnection(profile._id, user)}>
-							Remove Connection
+							Remove
 						</a>
 					) : (
 						<a href='#connect' onClick={() => setPopup(connectFormInfo)}>

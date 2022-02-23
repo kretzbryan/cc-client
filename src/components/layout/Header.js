@@ -44,7 +44,11 @@ const Header = ({
 				</li>
 				<li className='nav-item'>
 					<a href='/' className='nav-link'>
-						<img src={image} alt='profile thumbnail' className='nav-thumb' />
+						<img
+							src={(user && user.profileImage) || image}
+							alt='profile thumbnail'
+							className='nav-thumb'
+						/>
 					</a>
 				</li>
 			</ul>

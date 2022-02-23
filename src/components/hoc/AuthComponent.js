@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 import { logout } from '../../redux/actions/auth';
@@ -12,6 +13,7 @@ let requireAuth = (WrappedComponent) => {
 		...props
 	}) => {
 		console.log(localStorage.getItem('authToken'));
+
 		if (!localStorage.getItem('authToken')) {
 			logout();
 			return <Redirect to='/' />;

@@ -7,6 +7,7 @@ import popup from '../../redux/reducers/popup';
 import EventForm from '../forms/EventForm';
 import ProfileRequestForm from '../forms/ProfileRequestForm';
 import AddGigForm from '../forms/AddGigForm';
+import ProfileImageForm from '../forms/ProfileImageForm';
 
 const Popup = ({ popup, clearForm }) => {
 	const handleFormShow = () => {
@@ -15,6 +16,7 @@ const Popup = ({ popup, clearForm }) => {
 		if (name === 'connect') return <ProfileRequestForm connect={true} />;
 		if (name === 'send-message') return <ProfileRequestForm />;
 		if (name === 'gig-info') return <AddGigForm toggleForm={clearForm} />;
+		if (name === 'profile-image') return <ProfileImageForm />;
 	};
 
 	return (

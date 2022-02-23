@@ -49,13 +49,22 @@
 			// width: 8rem;
 			text-decoration: none;
 			&:first-child {
-				border-bottom: 1px solid $color-blue-dark-1;
+				border-right: 1px solid $color-blue-dark-1;
+				text-align: end;
+
+				padding-right: 1rem;
+			}
+
+			&:last-child {
+				text-align: left;
+				padding-left: 1rem;
 			}
 
 			@include respond(iphone-xr) {
 				width: 8rem;
 				padding-right: 1rem;
 				padding-left: 1rem;
+				border-bottom: 1px solid $color-blue-dark-1;
 			}
 		}
 	}

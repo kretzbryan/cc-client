@@ -61,6 +61,7 @@ export const dashboardButtonData = [
 	{
 		index: 8,
 		path: null,
+		itemReference: 'log-out',
 		classNames: 'dashboard-btn',
 		icon: 'fas dashboard-icon fa-sign-out-alt',
 		buttonText: 'Log Out',

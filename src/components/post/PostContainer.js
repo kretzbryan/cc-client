@@ -23,6 +23,7 @@ const PostContainer = ({ post, loading }) => {
 					<Fragment>
 						<PostHeader
 							name={`${firstName} ${lastName}`}
+							profileImage={createdBy.profileImage}
 							id={_id}
 							post={post}
 							createdAt={createdAt}

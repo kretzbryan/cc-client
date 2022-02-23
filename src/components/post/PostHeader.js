@@ -13,11 +13,16 @@ const PostHeader = ({
 	createdAt,
 	toggleForm,
 	deletePost,
+	profileImage,
 }) => (
 	<Fragment>
 		<header className='profile__header post__header'>
 			<div className='poster__thumb'>
-				<img src={image} alt='profile thumbnail' className='image__thumb' />
+				<img
+					src={profileImage || image}
+					alt='profile thumbnail'
+					className='image__thumb'
+				/>
 			</div>
 			<div className='right'>
 				<div className='poster__name'>

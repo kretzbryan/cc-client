@@ -3,22 +3,27 @@ import PropTypes from 'prop-types';
 import UploadImage from '../forms/UploadImage';
 import image from '../../images/default.png';
 import { connect } from 'react-redux';
+import { setPopup } from '../../redux/actions/popup';
 
-const UserCard = ({ user }) => {
+const UserCard = ({ user, setPopup }) => {
+	const editPhoto = {
+		name: 'profile-image',
+		headerValue: 'Profile Image',
+		submitAction: null,
+	};
 	return user ? (
 		<Fragment>
 			<section className='row card user-card'>
 				<img
 					className='user-card__image'
-					src='https://cirque-connections-images.s3.us-west-1.amazonaws.com/d378aadd-0d4b-4e7b-9d0b-c2038002733e'
+					src={user.profileImage || image}
 					alt='profile image'
 				/>
 				<div className='user-card__options-container'>
 					<a
 						className='edit__modal__anchor user-card__anchor'
 						href='#profile-image'
-						data-toggle='modal'
-						data-target='#profilePhotoModal'>
+						onClick={() => setPopup(editPhoto)}>
 						<p className='user-card__options'>edit photo</p>
 					</a>
 					<a className='edit__modal__anchor user-card__anchor' href='/settings'>
@@ -39,4 +44,4 @@ const mapStateToProps = (state) => ({
 	user: state.auth.user,
 });
 
-export default connect(mapStateToProps, null)(UserCard);
+export default connect(mapStateToProps, { setPopup })(UserCard);

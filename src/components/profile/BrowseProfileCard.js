@@ -18,6 +18,7 @@ const BrowseProfileCard = ({
 	approveConnection,
 	denyConnection,
 	user,
+	profileImage,
 }) => {
 	const returnRequestActions = () => {
 		return (
@@ -31,7 +32,11 @@ const BrowseProfileCard = ({
 		<Fragment>
 			<section className='card profile-card'>
 				<a href={`/profile/${id}`}>
-					<img src={defaultImage} alt='' className='profile-card__image' />
+					<img
+						src={profileImage || defaultImage}
+						alt=''
+						className='profile-card__image'
+					/>
 					<section className='profile-card__info'>
 						<ProfileCardText text={firstName + ' ' + lastName} />
 						<ProfileCardText

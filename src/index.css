@@ -1683,13 +1683,20 @@ section.card.gig-card-browse {
   text-decoration: none;
 }
 .card.profile-card .action-section a:first-child {
-  border-bottom: 1px solid #37455c;
+  border-right: 1px solid #37455c;
+  text-align: end;
+  padding-right: 1rem;
+}
+.card.profile-card .action-section a:last-child {
+  text-align: left;
+  padding-left: 1rem;
 }
 @media only screen and (max-width: 414px) {
   .card.profile-card .action-section a {
     width: 8rem;
     padding-right: 1rem;
     padding-left: 1rem;
+    border-bottom: 1px solid #37455c;
   }
 }
 @media only screen and (max-width: 31.25em) {

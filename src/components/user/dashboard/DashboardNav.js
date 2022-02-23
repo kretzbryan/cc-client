@@ -41,6 +41,7 @@ const DashboardNav = ({ user, setCurrentWindow }) => {
 							buttonText,
 							window,
 							itemReference,
+							buttonAction,
 						} = button;
 
 						return index === 3 ? (
@@ -52,8 +53,10 @@ const DashboardNav = ({ user, setCurrentWindow }) => {
 									setWindow={() => setCurrentWindow(window)}
 									path={path}
 									classNames={classNames}
+									itemReference={itemReference}
 									icon={<i className={icon}></i>}
 									buttonText={buttonText}
+									buttonAction={buttonAction}
 								/>
 								<h4 className='dashboard-title'>
 									<i className='fas dashboard-icon fa-id-card'></i>Profile
@@ -68,8 +71,10 @@ const DashboardNav = ({ user, setCurrentWindow }) => {
 								}
 								setWindow={() => setCurrentWindow(window)}
 								classNames={classNames}
+								itemReference={itemReference}
 								icon={<i className={icon}></i>}
 								buttonText={buttonText}
+								buttonAction={buttonAction}
 							/>
 						);
 				  })

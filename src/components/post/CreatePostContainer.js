@@ -1,8 +1,9 @@
 import React, { Fragment, useState } from 'react';
 import AddPostForm from '../forms/AddPostForm';
 import image from '../../images/default.png';
+import { connect } from 'react-redux';
 
-const CreatePostContainer = () => {
+const CreatePostContainer = ({ user }) => {
 	const [formOpen, setFormOpen] = useState(false);
 
 	const toggleForm = () => {
@@ -13,7 +14,7 @@ const CreatePostContainer = () => {
 		<Fragment>
 			<section className='row card create__post'>
 				<img
-					src={image}
+					src={(user && user.profileImage) || image}
 					alt='profile thumbnail'
 					className='create__post__thumb'
 				/>
@@ -26,4 +27,8 @@ const CreatePostContainer = () => {
 	);
 };
 
-export default CreatePostContainer;
+const mapStateToProps = (state) => ({
+	user: state.auth.user,
+});
+
+export default connect(mapStateToProps, null)(CreatePostContainer);

@@ -9,6 +9,7 @@ const Current = ({ current }) => {
 				current.map((connection) => {
 					return (
 						<BrowseProfileCard
+							profileImage={connection.profileImage}
 							id={connection._id}
 							firstName={connection.firstName}
 							lastName={connection.lastName}
