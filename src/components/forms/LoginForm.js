@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { login } from '../../redux/actions/auth';
 import { Redirect } from 'react-router-dom';
+import { setError } from '../../redux/actions/alert';
+import ErrMessage from '../layout/ErrMessage';
 
 const LoginForm = ({ login, isAuthenticated, show, toggle }) => {
+	const [loginError, setLoginError] = useState('');
 	const [data, setData] = useState({
 		username: '',
 		password: '',
@@ -18,10 +21,13 @@ const LoginForm = ({ login, isAuthenticated, show, toggle }) => {
 		});
 	};
 
-	const onSubmit = (e) => {
+	const onSubmit = async (e) => {
 		console.log('Submitted');
 		e.preventDefault();
-		login(data);
+		const res = await login(data);
+		if (!res) {
+			setLoginError('Username or password incorrect');
+		}
 	};
 
 	if (isAuthenticated) {
@@ -35,6 +41,7 @@ const LoginForm = ({ login, isAuthenticated, show, toggle }) => {
 				className={`form login-form${toggle()}`}
 				autoComplete='off'>
 				<h2 className='form-title'>Sign In</h2>
+				{loginError && <ErrMessage text={loginError} />}
 				<div className='login-form__group form__group'>
 					<input
 						type='text'

@@ -1,20 +1,24 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import { SET_ALERT, REMOVE_ALERT } from './types';
+export const setError = (key, value) => (dispatch) => {
+	const id = uuidv4();
+	dispatch({
+		type: 'SET_ERROR',
+		payload: { key, value },
+	});
+};
 
-export const setAlert = (msg, alertType) => dispatch => {
-    const id = uuidv4();
-    dispatch({
-        type: SET_ALERT,
-        payload: { msg, alertType, id }
-    });
-    
-    setTimeout(() => dispatch({ type: REMOVE_ALERT, payload: id }), 5000)
-}
+export const setErrorFields = (fields) => (dispatch) => {
+	const id = uuidv4();
+	dispatch({
+		type: 'SET_ERROR_FIELDS',
+		payload: fields,
+	});
+};
 
-export const removeAlert = id => dispatch => {
-    dispatch({
-        type: REMOVE_ALERT,
-        payload: id
-    })
-}
+export const removeAlert = (key) => (dispatch) => {
+	dispatch({
+		type: 'REMOVE_ERROR',
+		payload: key,
+	});
+};

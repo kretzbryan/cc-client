@@ -12,6 +12,7 @@ import event from './event';
 import redirect from './redirect';
 import popup from './popup';
 import location from './location';
+import errors from './errors';
 import tags from './tags';
 import message from './message';
 
@@ -39,6 +40,7 @@ const rootReducer = combineReducers({
 	feed,
 	message,
 	event,
+	errors,
 });
 
 export default persistReducer(persistConfig, rootReducer);

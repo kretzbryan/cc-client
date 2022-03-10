@@ -1,4 +1,3 @@
-import { setAlert } from './alert';
 import {
 	REGISTER_CONFIRMED,
 	REGISTER_DENIED,
@@ -63,16 +62,11 @@ export const register =
 			if (localStorage.getItem('authToken')) {
 				dispatch(setRedirect('/home'));
 			}
-			dispatch(setAlert('Register Success!', 'success'));
 			dispatch({
 				type: REGISTER_CONFIRMED,
 			});
 		} catch (err) {
 			const errors = err.response.data.errors;
-			console.log(errors);
-			if (errors) {
-				errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
-			}
 			dispatch({
 				type: REGISTER_DENIED,
 			});
@@ -108,8 +102,10 @@ export const login =
 			if (localStorage.getItem('authToken')) {
 				dispatch(setRedirect('/home'));
 			}
+			return true;
 			// dispatch(loadUser());
 		} catch (err) {
+			return false;
 			const errors = err.message;
 			console.log(errors);
 			/*  if(errors) {

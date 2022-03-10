@@ -37,6 +37,7 @@
 
 	&-title {
 		margin: auto;
+		align-self: flex-start;
 		grid-area: form-title;
 	}
 
@@ -69,6 +70,11 @@
 			visibility: visible;
 			transition: all 0.5s;
 			padding: 2rem 6rem;
+
+			& .error-message {
+				text-align: center;
+				color: rgb(238, 16, 16);
+			}
 		}
 	}
 
@@ -90,7 +96,7 @@
 			'password password2'
 			'form-button form-button'
 			'auth-footer auth-footer';
-		height: 35rem;
+		height: 37rem;
 		width: 60rem;
 		background-color: $color-grey-dark-1;
 		transition: all 0.5s;
@@ -102,7 +108,7 @@
 			grid-gap: 0 1rem;
 			box-shadow: $box-shadow-1;
 			grid-template-columns: repeat(2, 1fr);
-			grid-template-rows: repeat(5, 1fr);
+			grid-template-rows: 5rem repeat(4, 1fr);
 			grid-template-areas:
 				'form-title form-title'
 				'first-name last-name'
@@ -110,7 +116,7 @@
 				'password password2'
 				'form-button form-button'
 				'auth-footer auth-footer';
-			height: 35rem;
+			height: 37rem;
 			width: 60rem;
 			background-color: $color-grey-dark-1;
 			transform: translateX(20.5%);
@@ -151,6 +157,15 @@
 		display: block;
 		margin: auto;
 		height: 5.5rem;
+		position: relative;
+		& .error-message {
+			font-size: 1.2rem;
+			position: absolute;
+			font-weight: 700;
+			bottom: -0.5rem;
+			left: 0.25rem;
+			white-space: nowrap;
+		}
 
 		&.text-area {
 			width: 60rem;
@@ -251,11 +266,11 @@
 	}
 
 	&__label {
-		width: 50%;
+		width: 100%;
 		display: block;
 		font-size: 1.2rem;
 		font-weight: 700;
-		margin: 0 auto;
+		margin: 0;
 		transition: all 0.6s;
 		padding-left: 1.5rem;
 	}
@@ -282,6 +297,9 @@
 	text-align: center;
 	grid-area: auth-footer;
 
+	& span {
+		font-size: 1.2rem;
+	}
 	& a {
 		margin-left: 0.5rem;
 		text-decoration: none;

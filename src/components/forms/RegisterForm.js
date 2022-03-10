@@ -1,32 +1,59 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { register } from '../../redux/actions/auth';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import authFormHOC from '../hoc/AuthForm';
+import AuthFormGroup from './AuthFormGroup';
 
-const RegisterForm = ({ register, show, toggle }) => {
-	const [data, setData] = useState({
-		firstName: '',
-		lastName: '',
-		email: '',
-		username: '',
-		password: '',
-		password2: '',
-	});
+const RegisterForm = ({
+	register,
+	show,
+	toggle,
+	returnError,
+	handleChange,
+	handlePasswordStatus,
+	setErrorFields,
+	setFormData,
+	formData,
+	handleSamePassword,
+	canBeSubmitted,
+}) => {
+	console.log(formData);
 
-	const onChange = (e) => {
-		e.preventDefault();
-		setData({
-			...data,
-			[e.target.name]: e.target.value,
-		});
-	};
+	// const onChange = (e) => {
+	// 	e.preventDefault();
+	// 	setData({
+	// 		...data,
+	// 		[e.target.name]: e.target.value,
+	// 	});
+	// };
 
 	const onSubmit = (e) => {
 		e.preventDefault();
-		register(data);
+		if (canBeSubmitted()) {
+			register(formData);
+		}
 	};
+	useEffect(() => {
+		setErrorFields({
+			firstName: '',
+			lastName: '',
+			email: '',
+			username: '',
+			password: '',
+			password2: '',
+		});
+		setFormData({
+			firstName: '',
+			lastName: '',
+			email: '',
+			username: '',
+			password: '',
+			password2: '',
+		});
+	}, []);
 
-	return (
+	return formData ? (
 		<Fragment>
 			<form
 				onSubmit={onSubmit}
@@ -34,106 +61,87 @@ const RegisterForm = ({ register, show, toggle }) => {
 				className={`form register-form${toggle()}`}
 				autoComplete='off'>
 				<h2 className='form-title'>Sign Up</h2>
-				<div className='register-form__group form__group first-name'>
-					<input
-						type='text'
-						placeholder='First Name'
-						name='firstName'
-						className={'form__input register-form__input'}
-						onChange={onChange}
-					/>
-					<label
-						htmlFor='firstName'
-						className={'form__label register-form__label'}>
-						First Name
-					</label>
-				</div>
-				<div className='register-form__group form__group last-name'>
-					<input
-						type='text'
-						placeholder='Last Name'
-						name='lastName'
-						className={'form__input register-form__input'}
-						onChange={onChange}
-					/>
-					<label
-						htmlFor='lastName'
-						className={'form__label register-form__label'}>
-						Last Name
-					</label>
-				</div>
-				<div className='register-form__group form__group email'>
-					<input
-						type='text'
-						placeholder='Email'
-						name='email'
-						className={'form__input register-form__input'}
-						onChange={onChange}
-					/>
-					<label htmlFor='email' className={'form__label register-form__label'}>
-						Email
-					</label>
-				</div>
-				<div className='register-form__group form__group username'>
-					<input
-						type='text'
-						placeholder='Username'
-						name='username'
-						className={'form__input register-form__input'}
-						onChange={onChange}
-					/>
-					<label
-						htmlFor='username'
-						className={'form__label register-form__label'}>
-						Username
-					</label>
-				</div>
-				<div className='register-form__group form__group password'>
-					<input
-						type='text'
-						placeholder='Password'
-						name='password'
-						className={'form__input register-form__input'}
-						onChange={onChange}
-					/>
-					<label
-						htmlFor='password'
-						className={'form__label register-form__label'}>
-						Password
-					</label>
-				</div>
-				<div className='register-form__group form__group password2'>
-					<input
-						type='text'
-						placeholder='Re-Type Password'
-						name='password2'
-						className={'form__input register-form__input'}
-						onChange={onChange}
-					/>
-					<label
-						htmlFor='password2'
-						className={'form__label register-form__label'}>
-						Re-Type Password
-					</label>
-				</div>
+				<AuthFormGroup
+					alert={returnError('firstName')}
+					handleChange={handleChange}
+					name='firstName'
+					label='First Name'
+					className='first-name'
+				/>
+				<AuthFormGroup
+					alert={returnError('lastName')}
+					handleChange={handleChange}
+					name='lastName'
+					label='Last Name'
+					className='last-name'
+				/>
+				<AuthFormGroup
+					alert={!formData.email ? returnError('email') : null}
+					handleChange={handleChange}
+					name='email'
+					label={
+						formData.email && returnError('email')
+							? returnError('email')
+							: 'Email'
+					}
+					className='email'
+				/>
+				<AuthFormGroup
+					alert={returnError('username')}
+					handleChange={handleChange}
+					name='username'
+					label={'Username'}
+					className='username'
+				/>
+
+				<AuthFormGroup
+					alert={returnError('password')}
+					handleChange={handleChange}
+					name='password'
+					label={
+						formData.password
+							? handlePasswordStatus(formData.password)
+							: 'Password*'
+					}
+					className='password'
+					// status={handlePasswordStatus(formData.password)}
+				/>
+				<AuthFormGroup
+					alert={returnError('password2')}
+					handleChange={handleChange}
+					name='password2'
+					label={
+						formData.password2
+							? handleSamePassword(formData.password, formData.password2)
+							: 'Re-Type Password'
+					}
+					className='password2'
+					// status={handleSamePassword(formData.password, formData.password2)}
+				/>
 				<button
 					type='submit'
 					className={`btn btn-primary register-form__button`}>
 					Register
 				</button>
 				<footer className='auth-footer'>
-					already have an account?{' '}
-					<a href='#' onClick={show}>
-						Sign in
-					</a>
+					<span>
+						*Password must be at least 8 characters, one Uppercase, one
+						lowercase, one number, and one special character.
+					</span>
+					<div>
+						already have an account?{' '}
+						<a href='#' onClick={show}>
+							Sign in
+						</a>
+					</div>
 				</footer>
 			</form>
 		</Fragment>
-	);
+	) : null;
 };
 
 RegisterForm.propTypes = {
 	register: PropTypes.func.isRequired,
 };
 
-export default connect(null, { register })(RegisterForm);
+export default connect(null, { register })(authFormHOC(RegisterForm));

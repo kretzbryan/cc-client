@@ -1331,6 +1331,7 @@ section.card.gig-card-browse {
 }
 .form-title {
   margin: auto;
+  align-self: flex-start;
   grid-area: form-title;
 }
 .form.login-form {
@@ -1364,6 +1365,10 @@ section.card.gig-card-browse {
   transition: all 0.5s;
   padding: 2rem 6rem;
 }
+.form.login-form-show .error-message {
+  text-align: center;
+  color: #ee1010;
+}
 .form.register-form {
   padding-bottom: 2rem;
   transform: translateX(-50%);
@@ -1376,7 +1381,7 @@ section.card.gig-card-browse {
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(4, 1fr);
   grid-template-areas: "form-title form-title" "first-name last-name" "email username" "password password2" "form-button form-button" "auth-footer auth-footer";
-  height: 35rem;
+  height: 37rem;
   width: 60rem;
   background-color: #cfcece;
   transition: all 0.5s;
@@ -1389,9 +1394,9 @@ section.card.gig-card-browse {
   grid-gap: 0 1rem;
   box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.15);
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: 5rem repeat(4, 1fr);
   grid-template-areas: "form-title form-title" "first-name last-name" "email username" "password password2" "form-button form-button" "auth-footer auth-footer";
-  height: 35rem;
+  height: 37rem;
   width: 60rem;
   background-color: #cfcece;
   transform: translateX(20.5%);
@@ -1434,6 +1439,15 @@ section.card.gig-card-browse {
   display: block;
   margin: auto;
   height: 5.5rem;
+  position: relative;
+}
+.form__group .error-message {
+  font-size: 1.2rem;
+  position: absolute;
+  font-weight: 700;
+  bottom: -0.5rem;
+  left: 0.25rem;
+  white-space: nowrap;
 }
 .form__group.text-area {
   width: 60rem;
@@ -1517,11 +1531,11 @@ section.card.gig-card-browse {
   transform: translateY(-5rem);
 }
 .form__label {
-  width: 50%;
+  width: 100%;
   display: block;
   font-size: 1.2rem;
   font-weight: 700;
-  margin: 0 auto;
+  margin: 0;
   transition: all 0.6s;
   padding-left: 1.5rem;
 }
@@ -1546,6 +1560,9 @@ section.card.gig-card-browse {
   align-content: center;
   text-align: center;
   grid-area: auth-footer;
+}
+.auth-footer span {
+  font-size: 1.2rem;
 }
 .auth-footer a {
   margin-left: 0.5rem;
