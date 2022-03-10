@@ -105,15 +105,15 @@ export const login =
 			return true;
 			// dispatch(loadUser());
 		} catch (err) {
-			return false;
 			const errors = err.message;
 			console.log(errors);
 			/*  if(errors) {
-            errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
-        } */
+				errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+			} */
 			dispatch({
 				type: LOGIN_DENIED,
 			});
+			return false;
 		}
 	};
 

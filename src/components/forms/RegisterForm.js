@@ -62,6 +62,7 @@ const RegisterForm = ({
 				autoComplete='off'>
 				<h2 className='form-title'>Sign Up</h2>
 				<AuthFormGroup
+					type='text'
 					alert={returnError('firstName')}
 					handleChange={handleChange}
 					name='firstName'
@@ -69,6 +70,7 @@ const RegisterForm = ({
 					className='first-name'
 				/>
 				<AuthFormGroup
+					type='text'
 					alert={returnError('lastName')}
 					handleChange={handleChange}
 					name='lastName'
@@ -76,6 +78,7 @@ const RegisterForm = ({
 					className='last-name'
 				/>
 				<AuthFormGroup
+					type='email'
 					alert={!formData.email ? returnError('email') : null}
 					handleChange={handleChange}
 					name='email'
@@ -87,6 +90,7 @@ const RegisterForm = ({
 					className='email'
 				/>
 				<AuthFormGroup
+					type='text'
 					alert={returnError('username')}
 					handleChange={handleChange}
 					name='username'
@@ -95,6 +99,7 @@ const RegisterForm = ({
 				/>
 
 				<AuthFormGroup
+					type='password'
 					alert={returnError('password')}
 					handleChange={handleChange}
 					name='password'
@@ -107,6 +112,7 @@ const RegisterForm = ({
 					// status={handlePasswordStatus(formData.password)}
 				/>
 				<AuthFormGroup
+					type='password'
 					alert={returnError('password2')}
 					handleChange={handleChange}
 					name='password2'

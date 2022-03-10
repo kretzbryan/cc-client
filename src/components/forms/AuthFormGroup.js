@@ -8,6 +8,7 @@ const AuthFormGroup = ({
 	label,
 	status,
 	className,
+	type,
 }) => {
 	return (
 		<div
@@ -15,7 +16,7 @@ const AuthFormGroup = ({
 				className ? ` ${className}` : ''
 			}`}>
 			<input
-				type='text'
+				type={type}
 				placeholder={label}
 				name={name}
 				className={'form__input register-form__input'}
