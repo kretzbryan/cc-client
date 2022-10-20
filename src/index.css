@@ -403,6 +403,7 @@ section.card {
   grid-template-rows: 1fr 3rem 15rem;
   grid-template-areas: "form-container form-container landing-photo" ".... about-title ......" "column1 column2 column3";
   overflow-x: scroll;
+  padding-bottom: 2rem;
   -ms-overflow-style: none;
   /* IE and Edge */
   scrollbar-width: none;
