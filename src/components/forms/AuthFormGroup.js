@@ -10,6 +10,7 @@ const AuthFormGroup = ({
 	className,
 	type,
 }) => {
+	console.log('');
 	return (
 		<div
 			className={`register-form__group form__group${
